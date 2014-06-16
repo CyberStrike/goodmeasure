@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :tasks
+
   resources :comments
 
   resources :submissions
-
-  resources :taks
 
   resources :units
 

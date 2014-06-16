@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @submission.user %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @submission.task %>
+</p>
+
+<p>
+  <strong>Submission:</strong>
+  <%= @submission.submission %>
+</p>
+
+<p>
+  <strong>Correctness:</strong>
+  <%= @submission.correctness %>
+</p>
+
+<p>
+  <strong>Percieved points:</strong>
+  <%= @submission.percieved_points %>
+</p>
+
+<p>
+  <strong>Actual points:</strong>
+  <%= @submission.actual_points %>
+</p>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>

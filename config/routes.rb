@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  resources :comments
+
+  resources :submissions
+
+  resources :taks
+
+  resources :units
+
+  resources :enrollments
+
+  resources :cohorts
+
+  resources :users
+
+  resources :schools
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

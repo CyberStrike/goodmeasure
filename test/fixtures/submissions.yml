@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  task_id: 
+  submission: MyText
+  correctness: false
+  percieved_points: 1
+  actual_points: 1
+
+two:
+  user_id: 
+  task_id: 
+  submission: MyText
+  correctness: false
+  percieved_points: 1
+  actual_points: 1

@@ -9,10 +9,11 @@ class SessionController < ApplicationController
   end
 
   def login_attempt
-  	authorized_user = User.authenticate(params[:username],params[:login_password])
-  	if authorized_user
-  		session[:user_id] = authorized_user.id
-  		redirect_to root_path, success: "Welcome back.  You are now logged in as #{authorized_user.username}"
+  	user = User.find_by(username: params[:username]).try(:authenticate, params[:login_password])
+
+  	if user
+  		session[:user_id] = user.id
+  		redirect_to root_path, success: "Welcome back.  You are now logged in as #{user.username}"
   	else
   		redirect_to :login, error: "Invalid Username or Password"
   	end

@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 		if school
 			@school = school
 		elsif request.subdomain != 'www'
+			@school = nil
 			redirect_to root_url(subdomain: 'www')
 		end
 	end

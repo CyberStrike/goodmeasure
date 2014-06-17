@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   get "login", to: "session#login"
   post "login", to: "session#login_attempt"
-  get "logout", to: "session#logout"
+  get "logout", to: "session#logout" 
+
+  namespace :admin do
+    resources :users
+  end
 
   match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
@@ -35,7 +39,6 @@ Rails.application.routes.draw do
 
   resources :cohorts
 
-  resources :users
 
 
   # The priority is based upon order of creation: first created -> highest priority.

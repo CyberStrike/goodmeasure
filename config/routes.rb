@@ -8,15 +8,14 @@ Rails.application.routes.draw do
 
 
 
-
+  get "login", to: "session#login"
+  post "login", to: "session#login_attempt"
+  get "logout", to: "session#logout"
 
   match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
   root to: "schools#index"
 
-  get "login", to: "session#login"
-  post "login", to: "session#login_attempt"
-  get "logout", to: "session#logout"
 
 
   resources :schools

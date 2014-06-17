@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def redirect_to_login
-		unless @current_user
+		if @current_user.nil? && request.subdomain != 'www'
 			redirect_to '/login'
 		end
 	end

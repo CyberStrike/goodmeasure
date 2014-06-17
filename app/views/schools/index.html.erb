@@ -14,7 +14,7 @@
       <tr>
         <td><%= school.name %></td>
         <td><%= school.description %></td>
-        <td><%= link_to 'Show', school %></td>
+        <td><%= link_to 'Show', root_url(subdomain: school.subdomain) %></td>
         <td><%= link_to 'Edit', edit_school_path(school) %></td>
         <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

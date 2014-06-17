@@ -1,5 +1,17 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+	before_action :get_school
+
+
+	private
+
+	def get_school
+		school = School.find_by subdomain: request.subdomain
+		if school
+			@school = school
+		elsif request.subdomain != 'www'
+			redirect_to root_url(subdomain: 'www')
+		end
+	end
+
+	protect_from_forgery with: :exception
 end

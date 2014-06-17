@@ -4,7 +4,7 @@ class CohortsController < ApplicationController
   # GET /cohorts
   # GET /cohorts.json
   def index
-    @cohorts = Cohort.all
+    @cohorts = @school.cohorts
   end
 
   # GET /cohorts/1
@@ -64,7 +64,7 @@ class CohortsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cohort
-      @cohort = Cohort.find(params[:id])
+      @cohort = @school.cohorts.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

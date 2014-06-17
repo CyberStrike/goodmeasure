@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
+
+  match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]
+  match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
+  root to: "schools#index"
+
+  resources :schools
+
+
   resources :tasks
 
   resources :comments
 
   resources :submissions
 
-  resources :units
+  resources :units do
+    resources :tasks
+  end
 
   resources :enrollments
 
@@ -13,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :schools
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

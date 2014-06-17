@@ -11,6 +11,6 @@ class Cohort < ActiveRecord::Base
 	validates :name, uniqueness: { case_sensitive: false },
                        presence: true,
 
-	validates :description                       
+	validates :description, presence: true                       
                        
 end

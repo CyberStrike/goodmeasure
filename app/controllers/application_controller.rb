@@ -1,19 +1,15 @@
 class ApplicationController < ActionController::Base
-	before_action :get_school, :get_user, :redirect_to_login
+	before_action :get_school, :current_user, :redirect_to_login
 
 
 	private
 
-	def get_user
-		if session[:user_id]
-			@current_user = User.find(session[:user_id])
-		else
-			@current_user = nil
-		end
+	def current_user
+		@current_user ||= User.find(session[:user_id]) rescue nil
 	end
 
 	def redirect_to_login
-		if @current_user.nil? && request.subdomain != 'www'
+		if current_user.nil? && request.subdomain != 'www'
 			redirect_to '/login'
 		end
 	end

@@ -141,7 +141,11 @@ DEPENDENCIES
   neat
   pg
   rails (= 4.1.1)
+<<<<<<< HEAD
   rails-erd
+=======
+  rails-erd (~> 1.1.0)
+>>>>>>> 2a83f0b32fbd1c48a32b56ffa3bd4f745de1eeb8
   refills
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

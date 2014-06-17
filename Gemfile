@@ -16,4 +16,8 @@ gem 'neat'
 gem 'bitters'
 gem 'refills'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+<<<<<<< HEAD
 gem 'rails-erd'
+=======
+gem 'rails-erd', '~> 1.1.0'
+>>>>>>> 2a83f0b32fbd1c48a32b56ffa3bd4f745de1eeb8

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   get "logout", to: "session#logout" 
 
+  get "admin", to: "admin#index"
   namespace :admin do
     resources :cohorts
     resources :enrollments

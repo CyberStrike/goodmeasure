@@ -1,4 +1,4 @@
-class EnrollmentsController < ApplicationController
+class Admin::EnrollmentsController < AdminController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
 
   # GET /enrollments

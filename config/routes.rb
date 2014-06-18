@@ -6,40 +6,64 @@ Rails.application.routes.draw do
 
   get 'session/logout'
 
-
-
   get "login", to: "session#login"
+  
   post "login", to: "session#login_attempt"
+  
   get "logout", to: "session#logout" 
-
-  namespace :admin do
-    resources :users
-    resources :cohorts
-    resources :enrollments
-  end
 
   match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
   root to: "schools#index"
 
-
-
-  resources :schools
-
-
-  resources :tasks
-
-  resources :comments
-
-  resources :submissions
+  resources :schools, :tasks, :comments, :submissions, 
+  
+  # Limit the actions on public enrollments and cohort actions to 
+  # only list all items (index) or just view a specific item (show).
+  resources :enrollments, only [:index, :show]
+  resources :cohorts, only [:index, :show]
 
   resources :units do
     resources :tasks
   end
 
-  resources :enrollments
+  #Allow all actions for namespaced controllers users, cohorts, and enrollments.
+  namespace :admin do
+    resources :users, :cohorts, :enrollments
+    
+    # If we don't want /admin/cohorts in the url,
+    # we can use the following:
+    # scope module: 'admin' do
+    ## resources :users, :cohorts, :enrollments
+    ## end
 
-  resources :cohorts
+    # I'm not sure if we need the following 3 commands but 
+    # I found them in the docs. Keeping them here as a plan b. -Bryan
+    
+    # Directs /admin/users/* to Admin::UsersController
+    #   (app/controllers/admin/users_controller.rb)
+  
+    # Directs /admin/cohorts/* to Admin::CohortsController
+    #   (app/controllers/admin/cohorts_controller.rb)
+
+    # Directs /admin/enrollments/* to Admin::EnrollmentsController
+    #   (app/controllers/admin/enrollments_controller.rb)    
+  end
+
+
+  #TESTING
+
+  assert_generates '/admin/users/1', { controller: 'admin::users', action: 'show', id: '1'}
+  assert_generates '/admin/users/1/edit', { controller: 'admin::users', action: 'edit', id: '1'}
+
+  assert_generates '/admin/cohorts/1', { controller: 'admin::cohorts', action: 'show', id: '1'}
+  assert_generates '/admin/cohorts/1/edit', { controller: 'admin::cohorts', action: 'edit', id: '1'}
+
+  assert_generates '/admin/enrollments/1', { controller: 'admin::enrollments', action: 'show', id: '1'}
+  assert_generates '/admin/enrollments/1/edit', { controller: 'admin::enrollments', action: 'edit', id: '1'}
+
+
+
 
 
 
@@ -97,4 +121,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
 end

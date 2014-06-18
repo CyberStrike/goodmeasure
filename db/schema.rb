@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617212211) do
+ActiveRecord::Schema.define(version: 20140618214256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "carts", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "cohorts", force: true do |t|
     t.string   "name"
@@ -60,44 +48,15 @@ ActiveRecord::Schema.define(version: 20140617212211) do
   add_index "enrollments", ["cohort_id"], name: "index_enrollments_on_cohort_id", using: :btree
   add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
-  create_table "photos", force: true do |t|
-    t.string   "url"
-    t.integer  "product_id"
+  create_table "invites", force: true do |t|
+    t.string   "email"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "school_id"
   end
 
-  add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
-
-  create_table "products", force: true do |t|
-    t.string   "name"
-    t.integer  "price_in_cents"
-    t.integer  "quantity"
-    t.text     "description"
-    t.integer  "category_id"
-    t.boolean  "featured"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-  end
-
-  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-
-  create_table "reviews", force: true do |t|
-    t.string   "title"
-    t.text     "comment"
-    t.integer  "rating"
-    t.integer  "product_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  add_index "invites", ["school_id"], name: "index_invites_on_school_id", using: :btree
 
   create_table "schools", force: true do |t|
     t.string   "name"
@@ -151,6 +110,7 @@ ActiveRecord::Schema.define(version: 20140617212211) do
     t.integer  "school_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin"
     t.string   "password_digest"
   end
 

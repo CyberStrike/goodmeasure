@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :cohorts
     resources :enrollments
     resources :users
+    resources :invites
   end
 
   match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   root to: "schools#index"
 
   resources :schools, :tasks, :comments, :submissions
+  resource :user
   
   # Limit the actions on public enrollments and cohort actions to 
   # only list all items (index) or just view a specific item (show).

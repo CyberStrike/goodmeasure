@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "logout", to: "session#logout" 
 
   namespace :admin do
+    resources :cohorts
+    resources :enrollments
     resources :users
   end
 

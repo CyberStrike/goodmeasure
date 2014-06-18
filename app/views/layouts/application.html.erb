@@ -10,8 +10,8 @@
 
 <%= yield %>
 
-<%= link_to 'Admin', admin_users_path if @current_user && @current_user.admin %>
-<%= link_to 'Logout', '/logout' if @current_user %>
+<%= link_to 'Admin', admin_users_path if current_user && current_user.admin %>
+<%= link_to 'Logout', '/logout' if current_user %>
 
 </body>
 </html>

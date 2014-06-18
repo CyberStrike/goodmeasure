@@ -1,14 +1,13 @@
 @import 'bourbon';
+@import 'base/base';
+@import 'neat';
 
-
-span {
-
-	font-size: 93px;
-	font-weight: lighter;
-	font-family: 'Lato', sans-serif;
+body {
+	@include outer-container;
 }
 
-.fa {
-
-	font-size: 2em;
+table {
+	@include span-columns(12);
 }
+
+

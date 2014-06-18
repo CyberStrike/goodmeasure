@@ -4,7 +4,8 @@ class Invite < ActiveRecord::Base
 
 	validates :email, presence: true, 
 			uniqueness: { case_sensitive: false },
-			format: { with: /\A[^@]+@[^@]+\z/ }
+			format: { with: /\A[^@]+@[^@]+\z/ },
+			exclusion: { in: User.all.map(&:email), message: 'is already in use by a current student!' }
 
 
 	def generate_token
@@ -12,6 +13,7 @@ class Invite < ActiveRecord::Base
 	end
 
 	def check_if_user_exists
-		User.find_by(email: self.email)
+		check = User.find_by(email: self.email)
+		raise "User already exists" if check
 	end
 end

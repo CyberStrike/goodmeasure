@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  school_id_id: 
+  token: MyString
+
+two:
+  email: MyString
+  school_id_id: 
+  token: MyString

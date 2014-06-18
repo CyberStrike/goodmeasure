@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @enrollment.user %>
+</p>
+
+<p>
+  <strong>Cohort:</strong>
+  <%= @enrollment.cohort %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @enrollment.role %>
+</p>
+
+<%= link_to 'Edit', edit_admin_enrollment_path(@enrollment) %> |
+<%= link_to 'Back', admin_enrollments_path %>

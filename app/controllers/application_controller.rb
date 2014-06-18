@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-	before_action :get_school, :current_user, :redirect_to_login
+	before_action :school, :current_user, :redirect_to_login
 
+	helper_method :current_user
 
 	private
 
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def get_school
+	def school
 		school = School.find_by subdomain: request.subdomain
 		if school
 			@school = school

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	has_many :submissions
 	belongs_to :school
 
-validates_associated :cohorts, :comments, :enrollment, :submissions
+validates_associated :cohorts, :comments, :enrollments, :submissions
 
 validates :username, uniqueness: {case_sensitive: false},
 			presence: true

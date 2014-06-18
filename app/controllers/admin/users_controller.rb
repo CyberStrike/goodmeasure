@@ -37,6 +37,10 @@ class Admin::UsersController < AdminController
     end
   end
 
+  def invite
+    @user = User.new
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update

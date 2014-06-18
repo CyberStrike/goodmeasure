@@ -1,9 +1,9 @@
 class Admin::InviteMailer < ActionMailer::Base
   default from: "from@example.com"
 
-	def new_user_invite(invite)
+	def new_user_invite(invite, url)
 	    @invite = invite
-	    # @url  = 'http://example.com/login'
+	    @url  = url + '?token=' + @invite.token
 	    mail(to: @invite.email, subject: "You've been invited to school!")
 	end
 

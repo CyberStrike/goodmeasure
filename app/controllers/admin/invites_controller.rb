@@ -21,7 +21,7 @@ class Admin::InvitesController < AdminController
 
     respond_to do |format|
       if @invite.save
-        Admin::InviteMailer.new_user_invite(@invite).deliver
+        Admin::InviteMailer.new_user_invite(@invite, register_url).deliver
         # , new_admin_user_path(invite_token: @invite.token)
         format.html { redirect_to admin_invites_path, notice: 'Invite was successfully created.' }
         format.json { render :show, status: :created, location: @invite }

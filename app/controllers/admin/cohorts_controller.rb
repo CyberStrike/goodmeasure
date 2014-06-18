@@ -1,4 +1,4 @@
-class CohortsController < ApplicationController
+class Admin::CohortsController < AdminController
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
 
   # GET /cohorts

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :cohorts
+    resources :enrollments
   end
 
   match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]

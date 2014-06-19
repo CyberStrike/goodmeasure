@@ -1,28 +1,31 @@
-<h1>Listing invites</h1>
+<h1>Pending Students</h1>
 
+
+
+
+
+
+<% if @invites.size > 0 %>
 <table>
   <thead>
     <tr>
       <th>Email</th>
-      <th>Token</th>
-      <th>School</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @invites.each do |invite| %>
       <tr>
-        <td><%= invite.email %></td>
-        <td><%= invite.token %></td>
-        <td><%= invite.school.name %></td>
-        <td><%= link_to 'Show', admin_invite_path(invite) %></td>
-        <td><%= link_to 'Edit', edit_admin_invite_path(invite) %></td>
-        <td><%= link_to 'Destroy', admin_invite_path(invite), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= invite.email %> - <%= link_to 'Cancel Invitation', admin_invite_path(invite), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<% else %>
+
+<p>There are currently no pending students.</p>
+
+<% end %>
 
 <br>
 

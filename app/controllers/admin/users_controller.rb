@@ -2,7 +2,7 @@ class Admin::UsersController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = school.users
   end
 
   def show
@@ -16,6 +16,7 @@ class Admin::UsersController < AdminController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user.update(school: school)
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }

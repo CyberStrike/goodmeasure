@@ -1,11 +1,8 @@
 class Admin::InvitesController < AdminController
-  before_action :set_invite, only: [:show, :edit, :update, :destroy]
+  before_action :set_invite, only: [:edit, :update, :destroy]
 
   def index
-    @invites = Invite.all
-  end
-
-  def show
+    @invites = school.invites
   end
 
   def new
@@ -24,7 +21,6 @@ class Admin::InvitesController < AdminController
         Admin::InviteMailer.new_user_invite(@invite, register_url).deliver
         # , new_admin_user_path(invite_token: @invite.token)
         format.html { redirect_to admin_invites_path, notice: 'Invite was successfully created.' }
-        format.json { render :show, status: :created, location: @invite }
       else
         format.html { render :new }
         format.json { render json: @invite.errors, status: :unprocessable_entity }
@@ -45,7 +41,6 @@ class Admin::InvitesController < AdminController
     respond_to do |format|
       if @invite.update(invite_params)
         format.html { redirect_to admin_invites_path, notice: 'Invite was successfully updated.' }
-        format.json { render :show, status: :ok, location: @invite }
       else
         format.html { render :edit }
         format.json { render json: @invite.errors, status: :unprocessable_entity }

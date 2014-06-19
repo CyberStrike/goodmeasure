@@ -1,28 +1,20 @@
 class Admin::CohortsController < AdminController
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
 
-  # GET /cohorts
-  # GET /cohorts.json
   def index
-    @cohorts = @school.cohorts
+    @cohorts = school.cohorts
   end
 
-  # GET /cohorts/1
-  # GET /cohorts/1.json
   def show
   end
 
-  # GET /cohorts/new
   def new
     @cohort = Cohort.new
   end
 
-  # GET /cohorts/1/edit
   def edit
   end
 
-  # POST /cohorts
-  # POST /cohorts.json
   def create
     @cohort = Cohort.new(cohort_params)
 
@@ -37,8 +29,6 @@ class Admin::CohortsController < AdminController
     end
   end
 
-  # PATCH/PUT /cohorts/1
-  # PATCH/PUT /cohorts/1.json
   def update
     respond_to do |format|
       if @cohort.update(cohort_params)
@@ -51,8 +41,6 @@ class Admin::CohortsController < AdminController
     end
   end
 
-  # DELETE /cohorts/1
-  # DELETE /cohorts/1.json
   def destroy
     @cohort.destroy
     respond_to do |format|

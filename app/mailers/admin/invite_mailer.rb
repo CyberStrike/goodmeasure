@@ -3,7 +3,7 @@ class Admin::InviteMailer < ActionMailer::Base
 
 	def new_user_invite(invite, url)
 	    @invite = invite
-	    @url  = url + '?token=' + @invite.token
+	    @url  = url
 	    mail(to: @invite.email, subject: "You've been invited to school!")
 	end
 

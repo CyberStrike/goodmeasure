@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619051300) do
+ActiveRecord::Schema.define(version: 20140619152249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,12 +40,13 @@ ActiveRecord::Schema.define(version: 20140619051300) do
   create_table "enrollments", force: true do |t|
     t.integer  "user_id"
     t.integer  "cohort_id"
-    t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
   add_index "enrollments", ["cohort_id"], name: "index_enrollments_on_cohort_id", using: :btree
+  add_index "enrollments", ["role_id"], name: "index_enrollments_on_role_id", using: :btree
   add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
   create_table "invites", force: true do |t|
@@ -57,6 +58,12 @@ ActiveRecord::Schema.define(version: 20140619051300) do
   end
 
   add_index "invites", ["school_id"], name: "index_invites_on_school_id", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "schools", force: true do |t|
     t.string   "name"
@@ -116,8 +123,10 @@ ActiveRecord::Schema.define(version: 20140619051300) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "role_id"
   end
 
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
   add_index "users", ["school_id"], name: "index_users_on_school_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 

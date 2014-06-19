@@ -2,17 +2,17 @@
 
 <p>
   <strong>User:</strong>
-  <%= @enrollment.user %>
+  <%= @enrollment.user.username %>
 </p>
 
 <p>
   <strong>Cohort:</strong>
-  <%= @enrollment.cohort %>
+  <%= @enrollment.cohort.name %>
 </p>
 
 <p>
   <strong>Role:</strong>
-  <%= @enrollment.role %>
+  <%= @enrollment.role.title %>
 </p>
 
 <%= link_to 'Edit', edit_admin_enrollment_path(@enrollment) %> |

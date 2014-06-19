@@ -45,7 +45,7 @@
 </nav>
 
 <div class="js-menu-screen menu-screen"></div>
-<p id="notice"><%= notice %></p>
+<% if notice %><p id="notice"><%= notice %></p><% end %>
 <%= yield %>
 
 <!--<div class="wrapper-for-content-outside-of-footer">

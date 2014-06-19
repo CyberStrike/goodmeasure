@@ -4,5 +4,5 @@
 <%= render partial: 'form', locals: {f: f} %>
 <% end %>
 
-<%= link_to 'Show', admin_user_path(@user) %> |
+<%= link_to 'Delete This User', admin_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', admin_users_path %>

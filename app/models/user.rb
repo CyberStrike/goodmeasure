@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :enrollments
 	has_many :submissions
 	belongs_to :school
+	belongs_to :role
 
 	validates_associated :cohorts, :comments, :enrollments, :submissions
 

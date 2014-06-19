@@ -4,7 +4,7 @@ class Admin::EnrollmentsController < AdminController
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    @enrollments = school.enrollments
   end
 
   # GET /enrollments/1
@@ -25,11 +25,12 @@ class Admin::EnrollmentsController < AdminController
   # POST /enrollments.json
   def create
     @enrollment = Enrollment.new(enrollment_params)
+    @enrollment.school = school
 
     respond_to do |format|
       if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
-        format.json { render :show, status: :created, location: @enrollment }
+        format.html { redirect_to admin_enrollment_path(@enrollment), notice: 'Enrollment was successfully created.' }
+        format.json { render :show, status: :created, location: admin_enrollment_path(@enrollment) }
       else
         format.html { render :new }
         format.json { render json: @enrollment.errors, status: :unprocessable_entity }
@@ -42,8 +43,8 @@ class Admin::EnrollmentsController < AdminController
   def update
     respond_to do |format|
       if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @enrollment }
+        format.html { redirect_to admin_enrollment_path(@enrollment), notice: 'Enrollment was successfully updated.' }
+        format.json { render :show, status: :ok, location: admin_enrollment_path(@enrollment) }
       else
         format.html { render :edit }
         format.json { render json: @enrollment.errors, status: :unprocessable_entity }
@@ -69,6 +70,6 @@ class Admin::EnrollmentsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
-      params.require(:enrollment).permit(:user_id, :cohort_id, :role)
+      params.require(:enrollment).permit(:user_id, :cohort_id, :role_id)
     end
 end

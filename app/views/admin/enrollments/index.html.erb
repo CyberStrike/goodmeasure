@@ -13,12 +13,12 @@
   <tbody>
     <% @enrollments.each do |enrollment| %>
       <tr>
-        <td><%= enrollment.user %></td>
-        <td><%= enrollment.cohort %></td>
-        <td><%= enrollment.role %></td>
-        <td><%= link_to 'Show', enrollment %></td>
+        <td><%= enrollment.user.username %></td>
+        <td><%= enrollment.cohort.name %></td>
+        <td><%= enrollment.role.title %></td>
+        <td><%= link_to 'Show', admin_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Edit', edit_admin_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', admin_enrollment_path(enrollment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

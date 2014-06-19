@@ -3,6 +3,7 @@ class Admin::UsersController < AdminController
 
   def index
     @users = school.users
+    @invites = school.invites
   end
 
   def show
@@ -46,6 +47,6 @@ class Admin::UsersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :avatar, :first_name, :last_name, :email, :school_id)
+      params.require(:user).permit(:username, :password, :avatar, :admin, :first_name, :last_name, :email, :school_id)
     end
 end

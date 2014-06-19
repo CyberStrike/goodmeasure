@@ -1,29 +1,16 @@
-<%= form_for(@enrollment) do |f| %>
-  <% if @enrollment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
-
-      <ul>
-      <% @enrollment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :cohort_id %><br>
-    <%= f.text_field :cohort_id %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br>
-    <%= f.number_field :role %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+<% if @enrollment.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @enrollment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
+
+  Add <%= f.collection_select :user_id, @school.users, :id, :username, include_blank: true %> to 
+  <%= f.collection_select :cohort_id, @school.cohorts, :id, :name, include_blank: true %> as a(n)
+  <%= f.collection_select :role_id, Role.all, :id, :title, include_blank: true %>
+<div class="actions">
+  <%= f.submit %>
+</div>

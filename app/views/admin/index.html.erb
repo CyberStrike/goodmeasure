@@ -6,3 +6,41 @@
 <li></li>
 <li></li>
 </ul>
+
+<h2>Manage Users</h2>
+
+<section class="admin-pending-invites">
+	<%= link_to_if(@invites.size > 0,
+		@invites.size.to_s + ' pending ' + 'invite'.pluralize(@invites.size) + '.',
+		admin_invites_path)
+		%>
+
+
+	<%= form_for [:admin, @invite] do |f| %>
+	
+		<div class="field">
+			<%= f.label :email %><br>
+			<%= f.text_field :email %>
+		</div>
+
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+
+	<% end %>
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="admin-cohorts-all">
+	<% @cohorts.limit(6).each do |cohort| %>
+	<p><%= link_to cohort.name, admin_cohort_path(cohort) %> - <%= link_to 'Edit', edit_admin_cohort_path(cohort) %></p>
+	<% end %>
+</section>

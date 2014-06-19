@@ -4,7 +4,7 @@ class Admin::EnrollmentsController < AdminController
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    @enrollments = school.enrollments
   end
 
   # GET /enrollments/1

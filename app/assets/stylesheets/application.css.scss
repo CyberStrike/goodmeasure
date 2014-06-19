@@ -33,6 +33,21 @@ table {
   border-radius: 50%;
 }
 
+.admin-pending-invites {
+  background-color: #eee;
+  padding: 10px;
+  @include span-columns(10);
+  @include shift(1);
+}
+.admin-cohorts-all {
+  position: relative;
+  padding: 10px;
+  top: 10px;
+  background-color: #eee;
+  @include span-columns(4);
+  @include shift(4);
+}
+
 ///////////////// NAVBAR CSS
 header.navigation {
   $navigation-padding: 1em;

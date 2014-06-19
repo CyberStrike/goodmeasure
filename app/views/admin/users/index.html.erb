@@ -1,9 +1,39 @@
+<% if @invites.size > 0 %>
+
+<h1>Pending Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invites.each do |invite| %>
+      <tr>
+        <td><%= invite.email %> - <%= link_to 'Cancel Invitation', admin_invite_path(invite), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+
+<p>There are currently no pending students.
+
+<% end %>
+
+<br>
+
+<%= link_to 'Invite a New Student', new_admin_invite_path %>
+
+
 <h1>Listing users</h1>
 
 <% @users.each do |user| %>
 	<article class="admin-user-module">
 		<figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure>
-		<%= link_to user.username, user_path(user) %><br>
+		<%= link_to user.username, user_path(user) %> <% if user.admin %>(Admin)<% end %><br>
 		<%= user.first_name %> <%= user.last_name %><br>
 		<%= user.email %><br>
 		<%= link_to 'Edit', edit_admin_user_path(user) %>

@@ -17,11 +17,12 @@ class Admin::CohortsController < AdminController
 
   def create
     @cohort = Cohort.new(cohort_params)
+    @cohort.school = school
 
     respond_to do |format|
       if @cohort.save
-        format.html { redirect_to @cohort, notice: 'Cohort was successfully created.' }
-        format.json { render :show, status: :created, location: @cohort }
+        format.html { redirect_to admin_cohort_path(@cohort), notice: 'Cohort was successfully created.' }
+        format.json { render :show, status: :created, location: admin_cohort_path(@cohort) }
       else
         format.html { render :new }
         format.json { render json: @cohort.errors, status: :unprocessable_entity }
@@ -32,8 +33,8 @@ class Admin::CohortsController < AdminController
   def update
     respond_to do |format|
       if @cohort.update(cohort_params)
-        format.html { redirect_to @cohort, notice: 'Cohort was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cohort }
+        format.html { redirect_to admin_cohort_path(@cohort), notice: 'Cohort was successfully updated.' }
+        format.json { render :show, status: :ok, location: admin_cohort_path(@cohort) }
       else
         format.html { render :edit }
         format.json { render json: @cohort.errors, status: :unprocessable_entity }
@@ -44,7 +45,7 @@ class Admin::CohortsController < AdminController
   def destroy
     @cohort.destroy
     respond_to do |format|
-      format.html { redirect_to cohorts_url, notice: 'Cohort was successfully destroyed.' }
+      format.html { redirect_to admin_cohorts_url, notice: 'Cohort was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -17,4 +17,4 @@ gem 'bitters'
 gem 'refills'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 gem 'rails-erd', '~> 1.1.0'
-gem "paperclip", "~> 4.1"
+gem 'paperclip', github: 'thoughtbot/paperclip'

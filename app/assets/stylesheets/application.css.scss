@@ -44,8 +44,15 @@ table {
   padding: 10px;
   top: 10px;
   background-color: #eee;
-  @include span-columns(4);
-  @include shift(4);
+  @include span-columns(5);
+  @include shift(1);
+}
+.admin-users-all {
+  position: relative;
+  padding: 10px;
+  top: 10px;
+  background-color: #eee;
+  @include span-columns(5);
 }
 
 ///////////////// NAVBAR CSS

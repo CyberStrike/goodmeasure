@@ -43,6 +43,7 @@
 </nav>
 
 <div class="js-menu-screen menu-screen"></div>
+<p id="notice"><%= notice %></p>
 <%= yield %>
 
 <%= link_to 'Admin', admin_path if current_user && current_user.admin %>

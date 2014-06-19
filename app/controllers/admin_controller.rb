@@ -2,12 +2,16 @@ class AdminController < ApplicationController
 	before_action :check_if_admin
 
 	def index
+		windex(school.invites.new)
+	end
+
+	def windex(invite)
 		@cohorts = school.cohorts
 		@users = school.users
 		@enrollments = school.enrollments
 		@invites = school.invites
-		@invite = school.invites.new
-	end
+		@invite = invite
+	end	
 
 	private
 	def check_if_admin

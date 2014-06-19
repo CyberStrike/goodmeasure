@@ -22,7 +22,9 @@
     </div>
     <div class="navigation-tools">
 	     <ul id="navigation-tools">
-	   	 <li class="nav-link"><a href="javascript:void(0)">User Profile</a></li>
+       <% if current_user && current_user.admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
+	   	 <% if current_user %><li><%= link_to 'Logout', '/logout' if current_user %></li><% end %>
+       <li class="nav-link"><a href="javascript:void(0)">User Profile</a></li>
 	   	 <li class="nav-link"><a href="javascript:void(0)">Velocity Tracker</a></li>
 	     <li class="nav-link"><a href="javascript:void(0)">Sign Up</a></li>
 	     </ul>
@@ -43,6 +45,7 @@
 </nav>
 
 <div class="js-menu-screen menu-screen"></div>
+<% if notice %><p id="notice"><%= notice %></p><% end %>
 <%= yield %>
 
 <%= link_to 'Admin', admin_path if current_user && current_user.admin %>

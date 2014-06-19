@@ -56,8 +56,26 @@ article {
   padding: 10px;
   top: 10px;
   background-color: #eee;
-  @include span-columns(4);
-  @include shift(4);
+  @include span-columns(5);
+  @include shift(1);
+}
+.admin-users-all {
+  position: relative;
+  padding: 10px;
+  top: 10px;
+  background-color: #eee;
+  @include span-columns(5);
+}
+#notice {
+  @include span-columns(8);
+  @include shift(2);
+  text-align: center;
+  padding: 5px;
+  background-color: lighten(orange, 35);
+  color: orange;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: .75rem;
 }
 ///////////////// ADMIN CSS
 

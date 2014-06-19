@@ -1,5 +1,5 @@
 class Admin::InvitesController < AdminController
-  before_action :set_invite, only: [:edit, :update, :destroy]
+  before_action :set_invite, only: [:show, :edit, :update, :destroy]
 
   def index
     @invites = school.invites
@@ -12,7 +12,11 @@ class Admin::InvitesController < AdminController
   def edit
   end
 
+  def show
+  end
+
   def create
+
     @invite = Invite.new(invite_params)
     @invite.school_id = @school.id
 
@@ -20,9 +24,11 @@ class Admin::InvitesController < AdminController
       if @invite.save
         Admin::InviteMailer.new_user_invite(@invite, register_url).deliver
         # , new_admin_user_path(invite_token: @invite.token)
-        format.html { redirect_to admin_invites_path, notice: 'Invite was successfully created.' }
+        format.html { redirect_to admin_path, notice: "Invite sent to #{@invite.email}!" }
       else
-        format.html { render :new }
+        format.html {   
+          windex(@invite)
+         render 'admin/index' }
         format.json { render json: @invite.errors, status: :unprocessable_entity }
       end
     end

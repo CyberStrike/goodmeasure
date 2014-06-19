@@ -1,20 +1,13 @@
+<%= form_for [:admin, @invite] do |f| %>
   <% if @invite.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@invite.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
       <% @invite.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p><%= message %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.text_field :email, placeholder: 'email@example.com' %>
+  <%= f.submit %> 
 
+<% end %>

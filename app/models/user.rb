@@ -6,23 +6,31 @@ class User < ActiveRecord::Base
 	has_many :submissions
 	belongs_to :school
 
+	validates_associated :cohorts, :comments, :enrollments, :submissions
 
+	has_attached_file :avatar,
+	  styles: { medium: "300x300#", thumb: "100x100#" },
+	  default_url: "/images/:style/missing.png"
 
-has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+	validates_attachment_content_type :avatar,
+	  :content_type => /\Aimage\/.*\Z/
 
+	validates :username,
+	  uniqueness: { case_sensitive: false},
+	  presence: true
 
-validates_associated :cohorts, :comments, :enrollments, :submissions
+	validates :first_name,
+	  presence: true, 
+	  uniqueness: { case_sensitive: false }, 
+	  length: { minimum: 2 }
 
-validates :username, uniqueness: {case_sensitive: false},
-			presence: true
-validates :first_name, presence: true, 
-			uniqueness: { case_sensitive: false }, 
-			length: { minimum: 2 }
-validates :last_name, presence: true, 
-			uniqueness: { case_sensitive: false }, 
-			length: { minimum: 2 }
-validates :email, presence: true, 
-			uniqueness: { case_sensitive: false },
-			format: { with: /\A[^@]+@[^@]+\z/ }
+	validates :last_name,
+	  presence: true, 
+	  uniqueness: { case_sensitive: false }, 
+	  length: { minimum: 2 }
+
+	validates :email,
+	  presence: true, 
+	  uniqueness: { case_sensitive: false },
+	  format: { with: /\A[^@]+@[^@]+\z/ }
 end

@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.collection_select :user_id, @school.users, :id, :username, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :cohort_id %><br>
-    <%= f.text_field :cohort_id %>
+    <%= f.collection_select :cohort_id, @school.cohorts, :id, :name, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :role %><br>

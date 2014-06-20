@@ -30,13 +30,6 @@
     <% end %>
   </tbody>
 </table>
-
-
-
-
-	<% @cohorts.limit(6).each do |cohort| %>
-	<p><%= link_to cohort.name, admin_cohort_path(cohort) %> - <%= link_to 'Edit', edit_admin_cohort_path(cohort) %></p>
-	<% end %>
 </section>
 
 <section class="half">

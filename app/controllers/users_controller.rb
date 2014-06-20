@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_for_token
-  skip_before_action :redirect_to_login, only: [:new]
+  before_action :check_for_token, only: [:new]
+  skip_before_action :redirect_to_login
 
   # GET /users/new
   def new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to 'login', notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

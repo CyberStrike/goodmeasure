@@ -14,14 +14,18 @@ class School < ActiveRecord::Base
 		instructor + ta
 	end
 
+	def students
+		self.enrollments.where(role_id: (Role.find_by title: "Student"))
+	end
+
 
 	def instructor
-		self.enrollments.where(role_id:3)
+		self.enrollments.where(role_id: (Role.find_by title: "Instructor"))
 	end
 
 
 	def ta
-		self.enrollments.where(role_id:2)
+		self.enrollments.where(role_id: (Role.find_by title: "TA"))
 	end
 
 

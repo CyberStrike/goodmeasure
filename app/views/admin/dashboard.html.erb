@@ -13,7 +13,7 @@
       <th>Group</th>
       <th>Summary</th>
       <th>Students</th>
-      <th>Staff</th>
+      <th>Instructor/TA</th>
       <th>Settings</th>
     </tr>
   </thead>
@@ -47,9 +47,6 @@
   </tbody>
 </table>
 
-  <% @cohorts.limit(6).each do |cohort| %>
-  <p><%= link_to cohort.name, admin_cohort_path(cohort) %> - <%= link_to 'Edit', edit_admin_cohort_path(cohort) %></p>
-  <% end %>
 </section>
 
 <section class="half">

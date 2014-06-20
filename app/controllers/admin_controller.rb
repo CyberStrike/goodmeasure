@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
 	before_action :check_if_admin
 
-	def index
+	def dashboard
 		windex(school.invites.new)
 	end
 

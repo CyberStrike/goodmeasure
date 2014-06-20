@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "login", to: "session#login_attempt"
   get "logout", "signout", to: "session#logout" 
 
-  get "admin", to: "admin#index"
+  get "admin", to: "admin#dashboard"
   namespace :admin do
     resources :cohorts
     resources :enrollments

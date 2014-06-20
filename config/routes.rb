@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'session/login'
 
-  get 'session/login_attempt'
-
-  get 'session/logout'
-
-  get "login", to: "session#login"
-  
+  get "login", "signin", to: "session#login"
   post "login", to: "session#login_attempt"
-  
-  get "logout", to: "session#logout" 
+  get "logout", "signout", to: "session#logout" 
 
   get "admin", to: "admin#index"
   namespace :admin do
@@ -26,7 +19,7 @@ Rails.application.routes.draw do
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
   root to: "schools#index"
 
-  resources :schools, :tasks, :comments, :submissions, :users
+  resources :tasks, :comments, :submissions, :users
   
   # Limit the actions on public enrollments and cohort actions to 
   # only list all items (index) or just view a specific item (show).

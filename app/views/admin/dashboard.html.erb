@@ -5,59 +5,50 @@
 <%= render 'admin/invites/form' %>
 
 <section class="half">
+
   <h3>School Stats</h3>
 
   <table>
-  <thead>
-    <tr>
-      <th>Group</th>
-      <th>Summary</th>
-      <th>Students</th>
-      <th>Instructor/TA</th>
-      <th>Settings</th>
-    </tr>
-  </thead>
-
-  <tbody>
+    <thead>
+      <tr>
+        <th>Group</th>
+        <th>Summary</th>
+        <th>Students</th>
+        <th>Instructor/TA</th>
+        <th>Settings</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><%= @school.name %></td>
-        
-       <td><%= @school.description %></td>
-       
+        <td><%= @school.description %></td>
         <td><%= @school.users.size %></td>
-       
         <td><%= @school.staff.size %></td>
-
-       <td><%= link_to "Future link for school settings" %></td>
+        <td><%= link_to "Future link for school settings" %></td>
       </tr>
 
-    <% @school.cohorts.each do |cohort| %>
-      <tr>
-        <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
-        
-       <td><%= cohort.description.truncate(30) %></td>
-       
-      <td><%= cohort.students.size %></td>
-      
-      <td><%= cohort.staff.size %></td>
+      <% @school.cohorts.each do |cohort| %>
+        <tr>
+          <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
+          <td><%= cohort.description.truncate(30) %></td>
+          <td><%= cohort.students.size %></td>
+          <td><%= cohort.staff.size %></td>
+          <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
+        </tr>
+      <% end %>
 
-      <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </tbody>
+  </table>
 </section>
 
-<section class="half">
-  <h3>Users</h3>
-  <%= pluralize(@users.size, 'users') %> currently enrolled in <%= @school.name %>
-  <%= link_to 'Manage Users', admin_users_path %>
-</section>
 
 <section class="half">
+
   <h3>Enrollments</h3>
-  <span><%= form_for @enrollment, url: admin_enrollments_path do |f| %></span><span><%= render partial: 'admin/enrollments/form', locals: {f: f} %></span>
-<% end %>
+
+  <%= form_for @enrollment, url: admin_enrollments_path do |f| %>
+  <%= render partial: 'admin/enrollments/form', locals: {f: f} %>
+  <% end %>
+  
 </section>
 

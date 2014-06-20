@@ -1,10 +1,39 @@
 <h1><%= @school.name %> Admin Dashboard</h1>
 
 
+
 <%= render 'admin/invites/form' %>
 
 <section class="half">
-	<h3>Cohorts</h3>
+	<h3>School Stats</h3>
+
+	<table>
+  <thead>
+    <tr>
+      <th>Cohort</th>
+      <th>Summary</th>
+      <th>Students</th>
+      <th>Settings</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @school.cohorts.each do |cohort| %>
+      <tr>
+        <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
+        <td><%= cohort.description.truncate(30) %></td>
+       
+        <td><%= link_to 'Destroy', admin_cohort_path(cohort), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
 	<% @cohorts.limit(6).each do |cohort| %>
 	<p><%= link_to cohort.name, admin_cohort_path(cohort) %> - <%= link_to 'Edit', edit_admin_cohort_path(cohort) %></p>
 	<% end %>

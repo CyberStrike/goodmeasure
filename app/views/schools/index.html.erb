@@ -2,32 +2,29 @@
 
 <section> 
 
-<article> </article>
-<% @schools.each do |school| %>
-<div class="cards">
-  <div class="card">
-    <div class="card-image">
-      <img src="http://wyncode.co/wp-content/uploads/2014/02/logo-wyncode1.png" alt="">
-    </div>
-    <div class="card-header">
-      <td><%= school.name %></td>
-    </div>
-    <div class="card-copy">
-      <td><%= school.description %></td>
-    </div>
-    <div class="card-stats">
-      <ul>
-        <li><%= link_to 'Show', root_url(subdomain: school.subdomain) %></li>
-        <li><%= link_to 'Edit', edit_school_path(school) %></li>
-        <li><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-        <li><%= link_to 'New', new_school_path %></li>
-      </ul>
-      <%end%>
-      </div>
-    </div>
-  </div>    
-</div>
-</article>
+	<article> </article>
+		<div class="cards">
+			<% @schools.each do |school| %>
+				<div class="card">
+					<div class="card-image">
+						<img src="http://wyncode.co/wp-content/uploads/2014/02/logo-wyncode1.png" alt="">
+					</div>
+					<div class="card-header">
+						<%= school.name %>
+					</div>
+					<div class="card-copy">
+						<%= school.description %>
+					</div>
+					<div class="card-stats">		
+						<%= link_to 'Show', root_url(subdomain: school.subdomain) %> | 
+						<%= link_to 'Edit', edit_school_path(school) %> | 
+						<%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+						<%= link_to 'New', new_school_path %>
+					</div>
+				</div>
+			<%end%>
+		</div>  
+	<!-- </article> -->
 
 </section>
 

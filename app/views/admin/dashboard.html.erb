@@ -18,4 +18,7 @@
 
 <section class="half">
 	<h3>Enrollments</h3>
+	<span><%= form_for @enrollment, url: admin_enrollments_path do |f| %></span><span><%= render partial: 'admin/enrollments/form', locals: {f: f} %></span>
+<% end %>
 </section>
+

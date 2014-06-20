@@ -13,7 +13,7 @@
     <% @cohorts.each do |cohort| %>
       <tr>
         <td><%= cohort.name %></td>
-        <td><%= cohort.description %></td>
+        <td><%= cohort.description.truncate(30) %></td>
         <td><%= link_to 'Show', admin_cohort_path(cohort) %></td>
         <td><%= link_to 'Edit', edit_admin_cohort_path(cohort) %></td>
         <td><%= link_to 'Destroy', admin_cohort_path(cohort), method: :delete, data: { confirm: 'Are you sure?' } %></td>

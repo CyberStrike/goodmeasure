@@ -1,12 +1,14 @@
-<p>
-  <strong>Name:</strong>
-  <%= @cohort.name %>
-</p>
+<h1><%= @cohort.name %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @cohort.description %>
-</p>
+
+
+<p><%= @cohort.description %></p>
+
+<% @cohort.users.each do |student| %>
+
+<p><%= student.username %> - <%= link_to 'Remove from this course',  admin_user_path(student), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+<% end %>
 
 
 <%= link_to 'Edit', edit_admin_cohort_path(@cohort) %> |

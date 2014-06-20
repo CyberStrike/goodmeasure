@@ -5,6 +5,13 @@ class AdminController < ApplicationController
 		windex(school.invites.new)
 	end
 
+
+	private
+	def check_if_admin
+		return true if current_user.admin
+		raise ActionController::RoutingError.new("Not Found")
+	end
+
 	def windex(invite)
 		@cohorts = school.cohorts
 		@users = school.users
@@ -12,10 +19,4 @@ class AdminController < ApplicationController
 		@invites = school.invites
 		@invite = invite
 	end	
-
-	private
-	def check_if_admin
-		return true if current_user.admin
-		raise ActionController::RoutingError.new("Not Found")
-	end
 end

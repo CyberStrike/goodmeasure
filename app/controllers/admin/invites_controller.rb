@@ -3,9 +3,11 @@ class Admin::InvitesController < AdminController
 
   def index
     @invites = school.invites
+    redirect_to admin_path if @invites.size < 1
   end
 
   def new
+    @invites = school.invites
     @invite = Invite.new
   end
 

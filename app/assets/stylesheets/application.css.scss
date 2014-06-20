@@ -38,6 +38,7 @@ table {
   padding: 10px;
   @include span-columns(10);
   @include shift(1);
+  border-radius: 4px;
 }
 .admin-cohorts-all {
   position: relative;
@@ -46,6 +47,7 @@ table {
   background-color: #eee;
   @include span-columns(5);
   @include shift(1);
+  border-radius: 4px;
 }
 .admin-users-all {
   position: relative;
@@ -53,6 +55,7 @@ table {
   top: 10px;
   background-color: #eee;
   @include span-columns(5);
+  border-radius: 4px;
 }
 #notice {
   @include span-columns(8);
@@ -63,7 +66,21 @@ table {
   color: orange;
   border-radius: 4px;
   font-weight: bold;
+}
+#error_explanation p {
+  padding: 5px;
+  color: red;
+  background-color: lighten(red, 35);
+  border-radius: 4px;
+  font-weight: bold;
   font-size: .75rem;
+  text-align: center;
+  @include span-columns(8);
+  @include shift(2);
+}
+main {
+  position: relative;
+  top: 15px;
 }
 
 ///////////////// NAVBAR CSS

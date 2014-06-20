@@ -1,30 +1,18 @@
-<section class="admin-pending-invites">
-	<h2>Invite a New Student</h2>
-	<%= link_to_if(@invites.size > 0,
-		@invites.size.to_s + ' pending ' + 'invite'.pluralize(@invites.size) + '.',
-		admin_invites_path)
-		%>
 
 
 <%= render 'admin/invites/form' %>
 
-</section>
 
 
 <section class="admin-cohorts-all">
-	<h2>Manage Cohorts</h2>
+	<h2>Cohorts</h2>
 	<% @cohorts.limit(6).each do |cohort| %>
 	<p><%= link_to cohort.name, admin_cohort_path(cohort) %> - <%= link_to 'Edit', edit_admin_cohort_path(cohort) %></p>
 	<% end %>
 </section>
 
 <section class="admin-users-all">
-	<h2>Listing users</h2>
-
-	<% @users.each do |user| %>
-			<%= link_to user.username, user_path(user) %><%= " (Admin)" if user.admin %><br>
-			<%= user.first_name %> <%= user.last_name %><br>
-			<%= user.email %><br>
-			<%= link_to 'Edit', edit_admin_user_path(user) %>
-	<% end %>
+	<h2>Users</h2>
+	<%= pluralize(@users.size, 'users') %> currently enrolled in <%= @school.name %>
+	<%= link_to 'Manage Users', admin_users_path %>
 </section>

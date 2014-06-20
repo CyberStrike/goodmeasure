@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
 	belongs_to :school
 	belongs_to :role
 
-	validates_associated :cohorts, :comments, :enrollments, :submissions
-
 	has_attached_file :avatar,
 	  styles: { medium: "300x300#", thumb: "100x100#" },
 	  default_url: "/images/:style/missing.png"

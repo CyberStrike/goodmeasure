@@ -24,10 +24,12 @@
 	     <ul id="navigation-tools">
        <% if current_user && current_user.admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
 	   	 <% if current_user %><li><%= link_to 'Logout', '/logout' if current_user %></li><% end %>
-       <li class="nav-link"><a href="javascript:void(0)">User Profile</a></li>
-	   	 <li class="nav-link"><a href="javascript:void(0)">Velocity Tracker</a></li>
-	     <li class="nav-link"><a href="javascript:void(0)">Sign Up</a></li>
-	     </ul>
+      <li class="nav-link"><a href="javascript:void(0)">User Profile</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">Sign Up</a></li>
+       <!--  Progress Bar -->
+        <div class="progress-bar-indication"><span class="meter" style="width: 60%"><span>60%</span></span>
+       </div>
+        <!--  Progress Bar -->
       </div>
   </div>
 </header>
@@ -42,6 +44,17 @@
     <li><a href="javascript:void(0)">Item 2</a></li>
     <li><a href="javascript:void(0)">Item 3</a></li>
   </ul>
+  <footer>
+    <ul>
+      <li><a href="javascript:void(0)">About</a></li>
+      <li><a href="javascript:void(0)">Contact</a></li>
+      <li><a href="javascript:void(0)">Our Team</a></li>
+    </ul>
+      <ul>
+        <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+      </ul>
+</footer>
 </nav>
 
 <div class="js-menu-screen menu-screen"></div>
@@ -51,43 +64,6 @@
 <% if flash[:error] %><p id="error"><%= flash[:error] %></p><% end %>
 <%= yield %>
 </main>
-<!--<div class="wrapper-for-content-outside-of-footer">
-   Uncomment this whole section for a sticky footer. The content of the page should be inside of this .wrapper-for-content-outside-of-footer
-  <div class="push"></div>
-</div>-->
-
-
-<!-- FOOTER -->
-
-<footer class="footer-2">
-  <div class="footer-logo">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
-  </div>
-    <ul>
-      <li><a href="javascript:void(0)">About</a></li>
-      <li><a href="javascript:void(0)">Contact</a></li>
-      <li><a href="javascript:void(0)">Our Team</a></li>
-    </ul>
-
-    <div class="footer-secondary-links">
-      <ul>
-        <li><a href="javascript:void(0)">Terms and Conditions</a></li>
-        <li><a href="javascript:void(0)">Privacy Policy</a></li>
-      </ul>
-
-      <ul class="footer-social">
-        <li><a href="javascript:void(0)">
-        
-          </a></li>
-        <li><a href="javascript:void(0)">
-      
-        </a></li>
-        <li><a href="javascript:void(0)">
-          
-        </a></li>
-      </ul>
-    </div>
-</footer>
 
 </body>
 </html>

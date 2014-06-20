@@ -34,6 +34,7 @@ body {
 
 
 
+
 ///////////////// ADMIN CSS
 @mixin module($span) {
   @include span-columns($span);
@@ -581,120 +582,46 @@ $sliding-menu-color-hover: #fff;
 }
 ///////////////// CARDS CSS
 
-///////////////// FOOTER CSS
+///////////////// PROGRESS BAR CSS
 
-.wrapper-for-content-outside-of-footer {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -4em;
-}
+.progress-bar-indication {
+  $progress-border-color: $base-border-color;
+  $progress-border: 1px solid $progress-border-color;
+  $progress-meter-border-color: $base-accent-color;
+  $progress-meter-border: 1px solid darken($progress-meter-border-color, 15%);
+  $progress-meter-color: $progress-meter-border-color;
+  $progress-background: darken($base-border-color, 5);
+  $progress-animation-duration: 0.7s;
+  $progress-color: white;
 
-html, body {
- height: 100%;
-}
+  background-color: $progress-background;
+  border: $progress-border;
+  box-shadow: inset 0 0 3px 0 rgba(darken($progress-background, 50%), 0.15);
+  border-radius: $base-border-radius;
+  margin: 0 auto;
+  width: 50%;
+  display: block;
 
-.footer-2, .push {
-  height: 17em;
-
-  @include media($large-screen) {
-    height: 4em;
-  }
-}
-
-.footer-2 {
-  $footer-background: #FFFFFF;
-  $footer-color: $dark-gray;
-  $footer-link-color: transparentize($footer-color, .6);
-  $footer-disclaimer-color: transparentize($footer-color, .6);
-
-  background: $footer-background;
-  padding: $base-line-height;
-  width: 100%;
-  position: fixed;
-  bottom:0;
-  padding: 1.5em;
-
-  .footer-logo {
-    margin-right: 1em;
-    margin-bottom: 1em;
-
-    @include media($large-screen) {
-      float: left;
-      margin-bottom: 0;
-    }
+  > span.meter {
+    @include box-sizing(border-box);
+    background-color: $progress-meter-color;
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+    border: $progress-meter-border;
+    border-radius: $base-border-radius /1.5;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    display: inline;
+    height: 100%;
+    width: 60%;
   }
 
-  .footer-logo img {
-    height: 1.6em;
-  } 
-
-  ul {
-    margin-bottom: 1em;
-    @include media($large-screen) {
-      float: left;
-      margin-left: 1em;
-      margin-bottom: 0;
-    }
-  }
-
-  ul li {
-    padding-right: 1em;
+  span {
+    margin-bottom: 0;
+    padding: .1em .5em;
     font-weight: 800;
-
-    @include media($large-screen) {
-      display: inline;
-      text-align: left;
-    }
-  }
-
-  ul li a {
-    color: $footer-link-color;
-
-    &:hover {
-      color: transparentize($footer-color, 0);
-    }
-  }
-
-  .footer-secondary-links {
-    @include media($large-screen) {
-      float: right;
-    }
-
-    li {
-      font-size: .8em;
-      font-weight: 400;
-    }
-
-    ul.footer-social {
-      margin-top: 1em;
-
-      @include media($large-screen) {
-        float: right;
-        margin-top: 0;
-      }
-
-      li {
-        float: left;
-        font-size: 1em;
-        padding-right: .7em;
-
-        &:last-child {
-          padding-right: 0;
-        }
-      }
-
-      img {
-        opacity: .7;
-        height: 1.6em;
-        padding: 1px;
-
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
+    color: $progress-color;    
+    text-shadow: 0 0 1px black;
   }
 }
-
-///////////////// FOOTER CSS
+///////////////// PROGRESS BAR CSS

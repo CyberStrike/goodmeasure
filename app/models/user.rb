@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
 	  presence: true, 
 	  uniqueness: { case_sensitive: false },
 	  format: { with: /\A[^@]+@[^@]+\z/ }
+
+	def role(cohort)
+		Role.find(self.enrollments.find_by(cohort: cohort.id).role_id)
+	end
 end

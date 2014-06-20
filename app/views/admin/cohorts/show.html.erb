@@ -1,14 +1,22 @@
 <h1><%= @cohort.name %></h1>
 
 
-
-<p><%= @cohort.description %></p>
-
-<% @cohort.users.each do |student| %>
-
-<p><%= student.username %> - <%= link_to 'Remove from this course',  admin_user_path(student), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-
+<section>
+<% @cohort.users.each do |user| %>
+	<article class="quarter<%= ' admin' if user.role(@cohort).title != ("Student") %>">
+		<figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure>
+		<%= link_to user.username, admin_user_path(user) %><%= " (Admin)" if user.admin %><br>
+		<%= user.first_name %> <%= user.last_name %><br>
+		<%= user.role(@cohort).title %><br>
+		<%= user.email %><br>
+		<%= link_to "", edit_admin_user_path(user), class: "fa fa-cog" %> | 
+		<%= link_to "", admin_enrollment_path(user.enrollments.find_by(cohort_id: @cohort)), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %>
+	</article>
 <% end %>
+</section>
+
+
+
 
 
 <%= link_to 'Edit', edit_admin_cohort_path(@cohort) %> |

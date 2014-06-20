@@ -84,6 +84,9 @@ body {
 main {
   @include outer-container;
 }
+.admin {
+  background-color: lighten(red, 35);
+}
 // h1 {
 //   background-color: $blue;
 //   color: #fff;

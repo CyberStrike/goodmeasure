@@ -30,7 +30,7 @@ class Admin::InvitesController < AdminController
       else
         format.html {   
           windex(@invite)
-          render 'admin/index'
+          render 'admin/dashboard'
         }
         format.json { render json: @invite.errors, status: :unprocessable_entity }
       end

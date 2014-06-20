@@ -9,8 +9,7 @@
 		<%= user.first_name %> <%= user.last_name %><br>
 		<%= user.role(@cohort).title %><br>
 		<%= user.email %><br>
-		<%= link_to "", edit_admin_user_path(user), class: "fa fa-cog" %> | 
-		<%= link_to "", admin_enrollment_path(user.enrollments.find_by(cohort_id: @cohort)), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= link_to " Unenroll User", admin_enrollment_path(user.enrollments.find_by(cohort_id: @cohort)), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %>
 	</article>
 <% end %>
 </section>

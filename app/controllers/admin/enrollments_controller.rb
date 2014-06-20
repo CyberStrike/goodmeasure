@@ -57,7 +57,7 @@ class Admin::EnrollmentsController < AdminController
   def destroy
     @enrollment.destroy
     respond_to do |format|
-      format.html { redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Enrollment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

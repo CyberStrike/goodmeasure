@@ -1,3 +1,5 @@
+<figure class="avatar"><%= image_tag @user.avatar.url(:thumb) %></figure>
+
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
@@ -18,6 +20,19 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Enrolled In:</strong>
+
+   <% @user.cohorts.each do |cohort| %>
+  <%= cohort.name %> (
+  <%= @user.role(cohort).title %> )
+  <% end %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= time_ago_in_words @user.created_at %>
+</p>
 
 <%= link_to 'Edit', edit_admin_user_path(@user) %> |
 <%= link_to 'Back', admin_users_path %>

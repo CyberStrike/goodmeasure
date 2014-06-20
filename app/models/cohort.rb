@@ -12,5 +12,24 @@ class Cohort < ActiveRecord::Base
                        presence: true
 
 	validates :description, presence: true                       
-                       
+   
+	def students
+		self.enrollments.where(role_id:1)
+	end
+
+
+	def staff
+		instructor + ta
+	end
+
+
+	def instructor
+		self.enrollments.where(role_id:3)
+	end
+
+
+	def ta
+		self.enrollments.where(role_id:2)
+	end
+
 end

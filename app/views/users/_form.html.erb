@@ -35,6 +35,7 @@
     <%= f.label :school_id %><br>
     <%= f.text_field :school_id %>
   </div>
+    <%= f.hidden_field :token, value: @invite.token %>
   <div class="actions">
     <%= f.submit %>
   </div>

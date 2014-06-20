@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get "register", to: "users#new"
+  post "users", to: "users#create"
 
   match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]

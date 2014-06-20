@@ -10,3 +10,7 @@
 
 
 <p>This is your Dashboard</p>
+
+<% @current_user.cohorts.each do |cohort| %>
+<p><%= link_to cohort.name, cohort_path(cohort) %></p>
+<% end %>

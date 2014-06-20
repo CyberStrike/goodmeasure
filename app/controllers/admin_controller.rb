@@ -3,6 +3,7 @@ class AdminController < ApplicationController
 
 	def dashboard
 		windex(school.invites.new)
+		@enrollment = Enrollment.new
 	end
 
 

@@ -1,0 +1,50 @@
+<section class="half">
+
+<figure class="avatar"><%= image_tag users.avatar.url(:thumb) %></figure>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= users.username %>
+</p>
+
+
+<p>
+  <strong>First name:</strong>
+  <%= users.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= users.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= users.email %>
+</p>
+
+<p>
+  <strong>Enrolled In:</strong>
+
+   <% users.cohorts.each do |cohort| %>
+  <%= cohort.name %> (
+  <%= users.role(cohort).title %> )
+  <% end %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= users.school %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= time_ago_in_words @users.created_at %>
+</p>
+
+<%= link_to 'Edit', edit_users_path(users) %> |
+<%= link_to 'Back', userss_path %>
+
+</section>

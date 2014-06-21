@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 	has_secure_password
 	has_many :cohorts, through: :enrollments
 	has_many :comments
@@ -9,7 +10,7 @@ class User < ActiveRecord::Base
 
 	has_attached_file :avatar,
 	  styles: { medium: "300x300#", thumb: "100x100#" },
-	  default_url: "/images/:style/missing.png"
+	  default_url: "http://www.omse.umd.edu/images/missing.png"
 
 	validates_attachment_content_type :avatar,
 	  :content_type => /\Aimage\/.*\Z/

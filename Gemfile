@@ -22,7 +22,7 @@ gem 'font-awesome-rails'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
 # For attachments
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # To visualize models
 gem 'rails-erd', '~> 1.1.0'

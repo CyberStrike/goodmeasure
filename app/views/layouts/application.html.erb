@@ -5,7 +5,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -23,8 +22,9 @@
     </div>
     <div class="navigation-tools">
 	     <ul id="navigation-tools">
-       <% if current_user && current_user.admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
-	   	 <% if current_user %><li><%= link_to 'Logout', '/logout' if current_user %></li><% end %>
+        <% if current_user && current_user.admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
+        <% if current_user %><li><%= link_to @current_user.first_name.capitalize, '/logout' if current_user %></li><% end %>
+        <% if current_user %><li><%= link_to "Logout", '/logout' if current_user %></li><% end %>
       <li class="nav-link"><a href="javascript:void(0)">User Profile</a></li>
         <li class="nav-link"><a href="javascript:void(0)">Sign Up</a></li>
        <!--  Progress Bar -->

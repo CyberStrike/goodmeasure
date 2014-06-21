@@ -1,4 +1,5 @@
 <% if @enrollment.errors.any? %>
+<section class="half">
   <div id="error_explanation">
     <ul>
     <% @enrollment.errors.full_messages.each do |message| %>
@@ -8,9 +9,12 @@
   </div>
 <% end %>
 
+
   Add <%= f.collection_select :user_id, @school.users, :id, :username, include_blank: true %> to 
   <%= f.collection_select :cohort_id, @school.cohorts, :id, :name, include_blank: true %> as a(n)
   <%= f.collection_select :role_id, Role.all, :id, :title, include_blank: true %>
 <div class="actions">
   <%= f.submit %>
 </div>
+
+</section>

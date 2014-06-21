@@ -1,6 +1,8 @@
+<section class="half">
+
 <h1>Students</h1>
 <%= link_to 'Invite a New Student', new_admin_invite_path %>
-<section>
+
 <% @users.each do |user| %>
 	<article class="quarter">
 		<figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure>

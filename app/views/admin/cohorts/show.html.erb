@@ -1,7 +1,7 @@
+<section class="half">
+
 <h1><%= @cohort.name %></h1>
 
-
-<section>
 <% @cohort.users.each do |user| %>
 	<article class="quarter<%= ' admin' if user.role(@cohort).title != ("Student") %>">
 		<figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure>
@@ -12,11 +12,9 @@
 		<%= link_to " Unenroll User", admin_enrollment_path(user.enrollments.find_by(cohort_id: @cohort)), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %>
 	</article>
 <% end %>
-</section>
-
-
-
 
 
 <%= link_to 'Edit', edit_admin_cohort_path(@cohort) %> |
 <%= link_to 'Back', admin_path %>
+
+</section>

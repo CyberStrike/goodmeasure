@@ -4,9 +4,10 @@ $sliding-menu-color: #fff;
 $sliding-menu-border: 1px solid $sliding-menu-border-color;
 $sliding-menu-background-hover: $base-accent-color;
 $sliding-menu-color-hover: #fff;
+$base-body-color: white;
 
 .sliding-menu-button {
-  @include button(simple, $base-background-color);
+  @include button(simple, $base-body-color);
   @include inline-block;
   cursor: pointer;
   font-size: $base-font-size;
@@ -26,7 +27,7 @@ $sliding-menu-color-hover: #fff;
   @include transition(all .25s linear);
   background: $sliding-menu-background;
   z-index: 999999;
-  overflow-y: auto;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
   li a {
@@ -60,3 +61,5 @@ $sliding-menu-color-hover: #fff;
     visibility: visible;
   }
 }
+
+// Based on code by Diego Eis

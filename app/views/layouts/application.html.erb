@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <title>Goodmeasure</title>
@@ -11,7 +12,7 @@
 <header class="navigation">
   <div class="menu-wrapper">
     <a href="/" class="logo">
-      <img src="http://wyncode.co/wp-content/uploads/2014/02/logo-wyncode1.png" alt="">
+      <img src="http://wyncode.co/wp-content/uploads/2014/02/logo-wyncode1.png" alt="School Name">
     </a>
     <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
     <div class="nav">
@@ -25,46 +26,11 @@
         <% if current_user && current_user.admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
         <% if current_user %><li><%= link_to @current_user.first_name.capitalize, '/logout' if current_user %></li><% end %>
         <% if current_user %><li><%= link_to "Logout", '/logout' if current_user %></li><% end %>
-      <li class="nav-link"><a href="javascript:void(0)">User Profile</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">Sign Up</a></li>
-       <!--  Progress Bar -->
-       <!--  <div class="progress-bar-indication"><span class="meter" style="width: 60%"><span>60%</span></span>
-       </div> -->
-        <!--  Progress Bar -->
       </div>
   </div>
 </header>
 
-<button type="button" class="js-menu-trigger sliding-menu-button">
-  <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu.png" alt="">
-</button>
-
-<nav class="js-menu sliding-menu-content">
-  <ul>
-    <li><a href="javascript:void(0)">Item 1</a></li>
-    <li><a href="javascript:void(0)">Item 2</a></li>
-    <li><a href="javascript:void(0)">Item 3</a></li>
-  </ul>
-  <footer>
-    <ul>
-      <li><a href="javascript:void(0)">About</a></li>
-      <li><a href="javascript:void(0)">Contact</a></li>
-      <li><a href="javascript:void(0)">Our Team</a></li>
-    </ul>
-      <ul>
-        <li><a href="javascript:void(0)">Terms and Conditions</a></li>
-        <li><a href="javascript:void(0)">Privacy Policy</a></li>
-      </ul>
-</footer>
-</nav>
-
-<div class="js-menu-screen menu-screen"></div>
-<main>
-<% if notice %><p id="notice"><%= notice %></p><% end %>
-<% if flash[:success] %><p id="success"><%= flash[:success] %></p><% end %>
-<% if flash[:error] %><p id="error"><%= flash[:error] %></p><% end %>
 <%= yield %>
-</main>
 
 </body>
 </html>

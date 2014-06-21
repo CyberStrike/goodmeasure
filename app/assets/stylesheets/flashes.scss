@@ -1,0 +1,23 @@
+@mixin notification($color, $span) {
+  @include span-columns($span);
+  @include shift((12 - $span) / 2);
+  text-align: center;
+  padding: 5px;
+  background-color: lighten($color, 35);
+  color: $color;
+  font-size: .75rem;
+  border-radius: 4px;
+  font-weight: bold; 
+}
+#notice {
+  @include notification($blue, 12);
+}
+#success {
+  @include notification(green, 12);
+}
+#error {
+  @include notification(red, 12);
+}
+#error_explanation p {
+  @include notification(red, 12);
+}

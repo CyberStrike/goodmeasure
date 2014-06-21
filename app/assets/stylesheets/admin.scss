@@ -1,0 +1,28 @@
+@mixin module($span) {
+  @include span-columns($span);
+  background-color: #eee;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+.full {
+  @include module(12);
+}
+.half {
+  @include module(12);
+}
+.quarter {
+  @include module(3);
+  @include omega(4n);
+  text-align: center;
+}
+.avatar img {
+  border-radius: 50%;
+}
+main {
+  @include outer-container;
+}
+.admin {
+  background-color: lighten(red, 35);
+}

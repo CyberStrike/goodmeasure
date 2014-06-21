@@ -1,11 +1,11 @@
 <section class="half">
 
+<%= link_to 'Back', admin_path %>
+<br>
 <h1>New cohort</h1>
-
+<br>
 <%= form_for @cohort, url: admin_cohorts_path do |f| %>
 <%= render partial: 'form', locals: {f: f} %>
 <% end %>
-
-<%= link_to 'Back', admin_cohorts_path %>
 
 </section>

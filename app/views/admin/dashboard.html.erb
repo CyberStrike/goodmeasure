@@ -26,7 +26,7 @@
         <td><%= @school.description %></td>
         <td><%= @school.users.size %></td>
         <td><%= @school.staff.size %></td>
-        <td><%= link_to "Future link for school settings" %></td>
+        <td><%= link_to "School settings" %></td>
       </tr>
 
       <% @school.cohorts.each do |cohort| %>
@@ -38,9 +38,9 @@
           <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
         </tr>
       <% end %>
-
     </tbody>
   </table>
+   <%= link_to 'New Cohort', new_admin_cohort_path %>
 </section>
 
 <section class="half">

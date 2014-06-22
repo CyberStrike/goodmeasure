@@ -1,5 +1,5 @@
 <section class="half">
-
+<h1>Units/Show </h1>
 <p>
   <strong>Name:</strong>
   <%= @unit.name %>
@@ -16,7 +16,7 @@
 </p>
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %>
+<%= link_to 'Back', cohort_path(@unit.cohort) %>
 
 </section>
 
@@ -33,10 +33,9 @@
       <% @unit.tasks.each do |task| %>
         <tr>
           <td><%= task.description %></td>
-          <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
+ <%= link_to 'New Task', new_unit_task_path(@unit.id) %>
 </section>

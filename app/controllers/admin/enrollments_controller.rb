@@ -29,7 +29,8 @@ class Admin::EnrollmentsController < AdminController
 
     respond_to do |format|
       if @enrollment.save
-        format.html { redirect_to admin_enrollment_path(@enrollment), notice: 'Enrollment was successfully created.' }
+        format.html { redirect_to :back,
+          notice: "#{@enrollment.user.username.capitalize} successfully enrolled in #{@enrollment.cohort.name}." }
         format.json { render :show, status: :created, location: admin_enrollment_path(@enrollment) }
       else
         format.html { render :new }
@@ -43,7 +44,8 @@ class Admin::EnrollmentsController < AdminController
   def update
     respond_to do |format|
       if @enrollment.update(enrollment_params)
-        format.html { redirect_to admin_enrollment_path(@enrollment), notice: 'Enrollment was successfully updated.' }
+        format.html { redirect_to admin_enrollment_path(@enrollment),
+          notice: 'Enrollment was successfully updated.' }
         format.json { render :show, status: :ok, location: admin_enrollment_path(@enrollment) }
       else
         format.html { render :edit }
@@ -57,7 +59,8 @@ class Admin::EnrollmentsController < AdminController
   def destroy
     @enrollment.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Enrollment was successfully destroyed.' }
+      format.html { redirect_to :back,
+        notice: "#{@enrollment.user.username.capitalize} has been unenrolled from #{@enrollment.cohort.name}." }
       format.json { head :no_content }
     end
   end

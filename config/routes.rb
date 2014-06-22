@@ -37,6 +37,10 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
+  resources :cohorts do 
+    resources :units 
+  end
+
   #TESTING
 
   # assert_generates '/admin/users/1', { controller: 'admin::users', action: 'show', id: '1'}

@@ -1,16 +1,17 @@
-<p>
-  <strong>Name:</strong>
-  <%= @school.name %>
-</p>
+<section class="half">
 
-<p>
-  <strong>Description:</strong>
-  <%= @school.description %>
-</p>
+<h1> Welcome to your <%= @school.name %> dashboard </h1>
 
+<p> <%= @school.description %> </p>
 
-<p>This is your Dashboard</p>
+</section>
+
+<section class="half">
+
+<h2>You are currently enrolled in:</h2>
 
 <% @current_user.cohorts.each do |cohort| %>
 <p><%= link_to cohort.name, cohort_path(cohort) %></p>
 <% end %>
+
+</section>

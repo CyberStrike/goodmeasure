@@ -4,16 +4,12 @@
 
 
 <section class="half">
-<p>
-  <h1><%= @cohort.name %></h1>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @cohort.description %>
-</p>
 
 <%= link_to 'Back', root_path %>
+
+  <h1><%= @cohort.name %></h1>
+ <h5> <%= @cohort.description %> </h5>
+
 </section>
 
 
@@ -44,5 +40,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% if @current_user.role(@cohort).title == "Instructor" %>
+ <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) %>
+<%end%>
 </section>

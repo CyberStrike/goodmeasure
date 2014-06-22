@@ -14,10 +14,31 @@
 
 <p>
   <strong>Cohort:</strong>
-  <%= @unit.cohort %>
+  <%= @unit.cohort.name %>
 </p>
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', cohorts_path %>
+<%= link_to 'Back', units_path %>
+
+</section>
+
+<section class="half">
+
+<table>
+    <thead>
+      <tr>
+        <th>Tasks</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.description %></td>
+          <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 </section>

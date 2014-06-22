@@ -1,8 +1,5 @@
 class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
-
-
-
   # GET /units
   # GET /units.json
   def index
@@ -16,7 +13,7 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
-    @unit = @cohort.units.new
+    @unit = Unit.new
   end
 
   # GET /units/1/edit
@@ -66,7 +63,7 @@ class UnitsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_unit
-      @unit = @cohort.units.find(params[:id])
+      @unit = Unit.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

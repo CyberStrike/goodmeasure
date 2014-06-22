@@ -24,7 +24,7 @@
     <div class="navigation-tools">
 	     <ul id="navigation-tools">
         <% if current_user && current_user.admin %><li><%= link_to 'Home', admin_path %></li><% end %>
-        <% if current_user %><li><%= link_to @current_user.first_name.capitalize, '#' %></li><% end %>
+        <% if current_user %><li><%= link_to @current_user.first_name.capitalize, profile_path %></li><% end %>
         <% if current_user %><li><%= link_to "Logout", '/logout' if current_user %></li><% end %>
       </div>
   </div>
@@ -34,4 +34,3 @@
 
 </body>
 </html>
-

@@ -8,13 +8,8 @@
 </p>
 
 <p>
-  <strong>Visibility:</strong>
-  <%= @task.visibility %>
-</p>
-
-<p>
   <strong>Unit:</strong>
-  <%= @task.unit %>
+  <%= @task.unit.id %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

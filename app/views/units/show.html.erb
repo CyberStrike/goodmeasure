@@ -14,10 +14,44 @@
 
 <p>
   <strong>Cohort:</strong>
-  <%= @unit.cohort %>
+  <%= @unit.cohort.name %>
 </p>
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', cohorts_path %>
+<%= link_to 'Back', units_path %>
+
+</section>
+
+<section class="half">
+
+<table>
+    <thead>
+      <tr>
+        <th>Tasks</th>
+        <th>Difficulty Estimation</th>
+        <th>Answer</th>
+        <th>Actual Difficulty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @school.name %></td>
+        <td><%= @school.description %></td>
+        <td><%= @school.users.size %></td>
+        <td><%= @school.staff.size %></td>
+        <td><%= link_to "School settings" %></td>
+      </tr>
+
+      <% @school.cohorts.each do |cohort| %>
+        <tr>
+          <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
+          <td><%= cohort.description.truncate(30) %></td>
+          <td><%= cohort.students.size %></td>
+          <td><%= cohort.staff.size %></td>
+          <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 </section>

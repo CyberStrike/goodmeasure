@@ -1,4 +1,4 @@
-<%= form_for(@unit) do |f| %>
+<%= form_for [@cohort, @unit] do |f| %>
   <% if @unit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
@@ -20,7 +20,7 @@
     <%= f.text_area :description %>
   </div>
 
-<%= f.hidden_field :cohort_id, value: @unit.cohort_id %>
+<%= f.hidden_field :cohort_id, value: @cohort.id %>
 
   <div class="actions">
     <%= f.submit %>

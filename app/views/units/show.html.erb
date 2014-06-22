@@ -28,26 +28,13 @@
     <thead>
       <tr>
         <th>Tasks</th>
-        <th>Difficulty Estimation</th>
-        <th>Answer</th>
-        <th>Actual Difficulty</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><%= @school.name %></td>
-        <td><%= @school.description %></td>
-        <td><%= @school.users.size %></td>
-        <td><%= @school.staff.size %></td>
-        <td><%= link_to "School settings" %></td>
-      </tr>
 
-      <% @school.cohorts.each do |cohort| %>
+      <% @tasks.each do |task| %>
         <tr>
-          <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
-          <td><%= cohort.description.truncate(30) %></td>
-          <td><%= cohort.students.size %></td>
-          <td><%= cohort.staff.size %></td>
+          <td><%= task.description %></td>
           <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
         </tr>
       <% end %>

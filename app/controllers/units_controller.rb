@@ -3,7 +3,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = @cohort.units
+    @units = Unit.all
   end
 
   # GET /units/1

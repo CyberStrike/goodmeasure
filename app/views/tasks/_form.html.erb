@@ -19,10 +19,7 @@
     <%= f.label :visibility %><br>
     <%= f.check_box :visibility %>
   </div>
-  <div class="field">
-    <%= f.label :unit_id %><br>
-    <%= f.text_field :unit_id %>
-  </div>
+    <%= f.hidden_field :unit_id, value: @unit %>
   <div class="actions">
     <%= f.submit %>
   </div>

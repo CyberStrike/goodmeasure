@@ -9,6 +9,7 @@ class UnitsController < ApplicationController
   # GET /units/1
   # GET /units/1.json
   def show
+
   end
 
   # GET /units/new
@@ -27,7 +28,7 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to cohort_path(@unit.cohort), notice: 'Unit was successfully created.' }
+        format.html { redirect_to :back, notice: 'Unit was successfully created.' }
         format.json { render :show, status: :created, location: @unit }
       else
         format.html { render :new }

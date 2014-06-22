@@ -33,13 +33,14 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:index, :show]
   resources :cohorts, only: [:index, :show]
 
-  resources :units do
-    resources :tasks
+ 
+  resources :cohorts do
+    resources :units 
   end
 
-  resources :cohorts do
-    resources :units
-  end
+   resources :units do
+    resources :tasks
+    end
   
 
   get 'profile', to: 'users#show'

@@ -1,20 +1,10 @@
 <section class="half">
-<<<<<<< HEAD
+
 <h1> Cohort/Show</h1>
 </section>
 
 
 <section class="half">
-=======
-<p>
-  <h1><%= @cohort.name %></h1>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @cohort.description %>
-</p>
->>>>>>> 8181ecfb9e869bbc1cc75cd28a9a2c0fbac49228
 
 <%= link_to 'Back', root_path %>
 
@@ -36,15 +26,14 @@
       <th>Cohort</th>
       <th colspan="3"></th>
     </tr>
-   <% @units.each do |unit| %>
-      <% if unit.cohort.name == @cohort.name %>
+   <% @cohort.units.each do |unit| %>
       <tr>
-        <td><%= link_to unit.name, unit_path %></td>
+        <td><%= link_to unit.name, unit_path(unit) %></td>
         <td><%= unit.description %></td>
         <td><%= unit.cohort.name %></td>
         <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
       </tr>
-      <% end %>
+     
     <% end %>
   </tbody>
 </table>

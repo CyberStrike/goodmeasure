@@ -1,7 +1,5 @@
 <section class="half">
 
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @unit.name %>
@@ -32,7 +30,7 @@
     </thead>
     <tbody>
 
-      <% @tasks.each do |task| %>
+      <% @unit.tasks.each do |task| %>
         <tr>
           <td><%= task.description %></td>
           <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>

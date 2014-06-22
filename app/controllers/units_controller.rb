@@ -6,7 +6,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = @school.cohorts.units
+    @units = Unit.all
   end
 
   # GET /units/1
@@ -66,7 +66,7 @@ class UnitsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_unit
-      @unit = @school.cohorts.units.find(params[:id])
+      @unit = Unit.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

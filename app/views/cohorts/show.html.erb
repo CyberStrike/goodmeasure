@@ -14,7 +14,7 @@
 
 <section class="half">
 
-<h1>Units:</h1>
+<h1>Units</h1>
 
 <table>
   <thead>
@@ -29,17 +29,13 @@
   <tbody>
     <% @units.each do |unit| %>
       <tr>
-        <td><%= unit.name %></td>
+        <td><%= link_to unit.name, unit_path %></td>
         <td><%= unit.description %></td>
-        <td><%= unit.cohort %></td>
-        <td><%= link_to 'Show', unit %></td>
+        <td><%= unit.cohort.name %></td>
         <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to "Unit 1", cohort_units_path(@cohort) %>
 
 </section>

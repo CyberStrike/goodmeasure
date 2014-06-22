@@ -6,7 +6,9 @@
 
 <h5><%= @cohort.description %></h5>
 
+</section>
 
+<section class="half">
 
 <% @cohort.users.each do |user| %>
 	<article class="quarter<%= ' admin' if user.role(@cohort).title != ("Student") %>">

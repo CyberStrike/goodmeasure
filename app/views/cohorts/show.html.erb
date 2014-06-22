@@ -28,12 +28,14 @@
 
   <tbody>
     <% @units.each do |unit| %>
+      <% if unit.cohort.name == @cohort.name %>
       <tr>
         <td><%= link_to unit.name, unit_path %></td>
         <td><%= unit.description %></td>
         <td><%= unit.cohort.name %></td>
         <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

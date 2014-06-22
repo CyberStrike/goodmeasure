@@ -1,3 +1,7 @@
 class Task < ActiveRecord::Base
-  belongs_to :unit
+	belongs_to :unit
+
+	validates :description,
+		presence: true
 end
+

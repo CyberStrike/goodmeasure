@@ -37,9 +37,10 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  resources :cohorts do 
-    resources :units 
+  resources :cohorts do
+    resources :units, only: [:index, :show]
   end
+  
 
   get 'profile', to: 'users#show'
 

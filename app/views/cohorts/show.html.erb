@@ -5,8 +5,7 @@
 
 <section class="half">
 <p>
-  <strong>Name:</strong>
-  <%= @cohort.name %>
+  <h1><%= @cohort.name %></h1>
 </p>
 
 <p>
@@ -14,6 +13,34 @@
   <%= @cohort.description %>
 </p>
 
-
 <%= link_to 'Back', root_path %>
+</section>
+
+
+<section class="half">
+
+<h1>Units</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Cohort</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @units.each do |unit| %>
+      <tr>
+        <td><%= link_to unit.name, unit_path %></td>
+        <td><%= unit.description %></td>
+        <td><%= unit.cohort.name %></td>
+        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 </section>

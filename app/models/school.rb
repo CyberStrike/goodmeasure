@@ -1,5 +1,6 @@
 class School < ActiveRecord::Base
 	has_many :cohorts
+	has_many :units, through: :cohorts
 	has_many :users
 	has_many :invites
 	has_many :enrollments

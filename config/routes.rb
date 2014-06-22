@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   resources :cohorts do
-    resources :units, only: [:index, :show]
+    resources :units
   end
   
 

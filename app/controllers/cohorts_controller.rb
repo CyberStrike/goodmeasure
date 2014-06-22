@@ -10,6 +10,7 @@ class CohortsController < ApplicationController
   # GET /cohorts/1
   # GET /cohorts/1.json
   def show
+    @units = Unit.all
   end
 
   # GET /cohorts/new

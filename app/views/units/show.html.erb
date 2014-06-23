@@ -1,23 +1,14 @@
-<section class="half">
-
-<h1>Units/Show </h1>
-<p>
-  <strong>Name:</strong>
-  <%= @unit.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @unit.description %>
-</p>
-
-<p>
-  <strong>Cohort:</strong>
-  <%= @unit.cohort.name %>
-</p>
-
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
+<section class="full">
 <%= link_to 'Back', cohort_path(@unit.cohort) %>
+<%= link_to 'Edit', edit_unit_path(@unit) %> 
+<h1> <%= @school.name %> <%= @unit.cohort.name %> <%= @unit.name.capitalize %> </h1>
+
+</section>
+
+<section class="half">
+<h5> Unit Description </h5>
+ <p> <%= @unit.description %></p>
+</section>
 
 </section>
 

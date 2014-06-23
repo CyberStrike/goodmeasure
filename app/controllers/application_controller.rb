@@ -26,3 +26,6 @@ class ApplicationController < ActionController::Base
 
 	protect_from_forgery with: :exception
 end
+
+## any method you don't want called over the internet make private
+## public methods are publicly accessable actions

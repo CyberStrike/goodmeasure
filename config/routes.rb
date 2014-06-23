@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     end
   
 
-  get 'profile', to: 'users#show'
+  get '/profile', to: 'users#show'
 
   #TESTING
 

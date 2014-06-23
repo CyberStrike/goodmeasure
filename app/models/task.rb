@@ -5,3 +5,4 @@ class Task < ActiveRecord::Base
 		presence: true
 end
 
+## if we wanted to time up to the milisecond it would go in the task model

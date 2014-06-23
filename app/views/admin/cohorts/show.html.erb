@@ -1,16 +1,22 @@
-<section class="half">
+<section class="full">
 
 <%= link_to 'Back', admin_path %>
 
-<h1>Admin/Cohorts/Show</h1>
-
-<h1><%= @cohort.name %></h1>
-
-<h5><%= @cohort.description %></h5>
+<h1><%= @school.name %> <%= @cohort.name %> </h1>
 
 </section>
 
 <section class="half">
+
+<h5> About This Cohort </h5>
+
+<p><%= @cohort.description %></p>
+
+</section>
+
+<section class="half">
+
+<h5>Currently Enrolled Users</h5>
 
 <% @cohort.users.each do |user| %>
 	<article class="quarter<%= ' admin' if user.role(@cohort).title != ("Student") %>">

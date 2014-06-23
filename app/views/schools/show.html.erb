@@ -6,14 +6,14 @@
 
 
 <section class="half">
-<h2> School Description </h2>
+<h3> School Description </h3>
 <p> <%= @school.description %> </p>
 </section>
 
 
 <section class="half">
 
-<h2>You are currently enrolled in:</h2>
+<h3>Currently enrolled in: </h3>
 
 <% @current_user.cohorts.each do |cohort| %>
 <p><%= link_to cohort.name, cohort_path(cohort) %></p>

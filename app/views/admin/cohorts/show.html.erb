@@ -8,7 +8,7 @@
 
 <section class="half">
 
-<h5> About This Cohort </h5>
+<h3> About This Cohort </h3>
 
 <p><%= @cohort.description %></p>
 
@@ -16,7 +16,7 @@
 
 <section class="half">
 
-<h5>Currently Enrolled Users</h5>
+<h3>Currently Enrolled Users</h3>
 
 <% @cohort.users.each do |user| %>
 	<article class="quarter<%= ' admin' if user.role(@cohort).title != ("Student") %>">

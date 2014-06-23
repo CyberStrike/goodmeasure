@@ -32,7 +32,8 @@
         <td><%= link_to unit.name, unit_path(unit) %></td>
         <td><%= unit.description %></td>
         <td><%= unit.cohort.name %></td>
-        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+        <td><%= link_to 'Edit', edit_unit_path(unit.id) %></td>
+
       </tr>
      
     <% end %>

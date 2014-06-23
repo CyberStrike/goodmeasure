@@ -1,12 +1,14 @@
 <section class="full">
 
-<h1> User Profile (User/Show) </h1>
+<h1> <%= @current_user.first_name %>'s Profile</h1>
 
 </section>
 
 
 
 <section class="half">
+
+<h5> This should render a partial profile </h5>
 
 <%= render partial: 'user', collection: @users %>
 

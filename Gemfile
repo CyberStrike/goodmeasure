@@ -29,14 +29,14 @@ gem 'rails-erd', '~> 1.1.0'
 
 # For testing
 group :development, :test do
-	gem 'rspec-rails'
-	gem 'factory_girl_rails'
-	gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'sqlite3'
 end
 
 group :test do
-	gem 'faker'
-	gem 'capybara'
-	gem 'guard-rspec'
-	gem 'launchy'
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end

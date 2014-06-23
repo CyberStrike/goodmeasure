@@ -8,6 +8,7 @@
 @import 'card';
 @import 'progress-bar';
 @import 'neat-helpers';
+$base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
 
 @mixin module($span) {
@@ -25,6 +26,21 @@
   font-family: $base-font-family;
   font-size: 12px;
 }
+
+body {
+  background-color: #F0FAFF;
+  font-family: $base-font-family;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h5 { 
+  text-align: center
+  }
 .full {
   @include module(12);
 }
@@ -46,17 +62,5 @@ main {
   background-color: lighten(red, 35);
 }
 
-body {
-  background-color: #F0FAFF;
-}
 
-h1 {
-	text-align: center;
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-
-h5 { 
-	text-align: center
-	}
 

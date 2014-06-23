@@ -42,7 +42,6 @@ Rails.application.routes.draw do
     resources :tasks
     end
   
-
   get '/profile', to: 'users#show'
 
   #TESTING

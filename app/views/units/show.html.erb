@@ -1,12 +1,12 @@
 <section class="full">
 <%= link_to 'Back', @cohort %>
-<%= link_to 'Edit', edit_unit_path(@unit) %> 
 
 </section>
 
 <section class="half">
 <h3> Unit Description </h3>
  <p> <%= @unit.description %></p>
+ <%= link_to 'Edit', edit_unit_path(@unit) %> 
 </section>
 
 </section>

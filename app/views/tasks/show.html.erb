@@ -1,18 +1,13 @@
-<section class="half">
+<section class="full">
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
-
-<p>
-  <strong>Unit:</strong>
-  <%= @task.unit.id %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Edit', edit_task_path(@task) %> 
 <%= link_to 'Back', unit_path(@task.unit) %>
 
+<h1> <%= @school.name %> <%= @unit.cohort.name %> <%= @unit.name.capitalize %> <%= @task.description %> %> </h1>
+
+</section>
+
+<section class="full">
+ <h3> Task Description:</h3>
+ <p> <%= @task.description %> </p>
 </section>

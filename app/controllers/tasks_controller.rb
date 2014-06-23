@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_unit, only: [:new]
 
   # GET /tasks
   # GET /tasks.json
@@ -64,6 +65,10 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_unit
+      @unit = Unit.find(params[:unit_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

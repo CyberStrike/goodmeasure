@@ -20,7 +20,7 @@
     <%= f.text_area :description %>
   </div>
 
-<%= f.hidden_field :cohort_id, value: @cohort %>
+<%= f.hidden_field :cohort_id, value: @cohort.id %>
 
   <div class="actions">
     <%= f.submit %>

@@ -31,6 +31,7 @@ gem 'rails-erd', '~> 1.1.0'
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
+	gem 'sqlite3'
 end
 
 group :test do

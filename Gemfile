@@ -26,3 +26,16 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # To visualize models
 gem 'rails-erd', '~> 1.1.0'
+
+# For testing
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+end
+
+group :test do
+	gem 'faker'
+	gem 'capybara'
+	gem 'guard-rspec'
+	gem 'launchy'
+end

@@ -11,6 +11,10 @@
 $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
 
+html, body {
+  margin: 0;
+}
+
 @mixin module($span) {
   @include span-columns($span);
   border-radius: 6px;

@@ -32,7 +32,7 @@ html, body {
 }
 
 body {
-  background-color: #F0FAFF;
+  background-color: #CCE0CC;
   font-family: $base-font-family;
 }
 
@@ -72,5 +72,21 @@ main {
   text-align: center;
 }
 
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+}
+.breadcrumb > li {
+  display: inline-block;
+}
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";
+}
+.breadcrumb > .active {
+  color: #999;
+}
 
 

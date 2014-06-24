@@ -6,7 +6,7 @@
   <li><a href="#">Unit</a></li>
   <li class="active">Tasks</li>
 </ol>
-<%= link_to 'Back', unit_path %>
+<%= link_to 'Back', unit_path(@task.unit.id) %>
  <h1> <%= @task.title%> </h1>
 
 </section>
@@ -14,5 +14,5 @@
 <section class="full">
  <h3> Task Description:</h3>
  <p> <%= @task.description %> </p>
- <%= link_to 'Edit', edit_task_path(@task.id) %> 
+ <%= link_to 'Edit', edit_task_path(@task) %> 
 </section>

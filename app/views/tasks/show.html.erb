@@ -1,8 +1,12 @@
 <section class="full">
- <h1> <%= @task.title%> </h1>
 <%= link_to 'Back', unit_path %>
-
-
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Cohort</a></li>
+  <li><a href="#">Unit</a></li>
+  <li class="active">Tasks</li>
+</ol>
+ <h1> <%= @task.title%> </h1>
 </section>
 
 <section class="full">

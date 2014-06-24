@@ -29,6 +29,7 @@ gem 'rails-erd', '~> 1.1.0'
 
 # For testing
 group :development, :test do
+
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
 	gem 'better_errors'
@@ -36,8 +37,8 @@ group :development, :test do
 end
 
 group :test do
-	gem 'faker'
-	gem 'capybara'
-	gem 'guard-rspec'
-	gem 'launchy'
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end

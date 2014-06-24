@@ -1,7 +1,5 @@
 <section class="full">
-<ol class="breadcrumb">
-   <li class="active">Home</li>
-</ol>
+
 <h1> <%= @school.name %> User Dashboard </h1>
 
 </section>
@@ -15,10 +13,9 @@
 
 <section class="half">
 
-<h3>Currently enrolled in: </h3>
-
+<h3>You Are Currently Enrolled In: </h3>
+<br>
 <% @current_user.cohorts.each do |cohort| %>
 <p><%= link_to cohort.name, cohort_path(cohort) %></p>
 <% end %>
-
 </section>

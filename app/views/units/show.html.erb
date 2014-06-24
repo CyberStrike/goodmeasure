@@ -11,7 +11,7 @@
 <section class="half">
 <h3> Unit Description </h3>
  <p> <%= @unit.description %></p>
- <%= link_to 'Edit', edit_unit_path(@unit) %> 
+ <%= link_to '', edit_unit_path(@unit), class: "fa fa-cog" %> 
 </section>
 
 </section>
@@ -23,6 +23,7 @@
       <tr>
         <th>Task</th>
         <th>Task Description</th>
+        <th>Edit Task </th>
       </tr>
     </thead>
     <tbody>
@@ -30,8 +31,8 @@
       <% @unit.tasks.each do |task| %>
         <tr>
           <td><%= link_to task.title, task %></td>
-        
           <td><%= task.description %></td>
+          <td> <%= link_to '', edit_task_path(task.id), class: "fa fa-cog" %></td>
         </tr>
       <% end %>
     </tbody>

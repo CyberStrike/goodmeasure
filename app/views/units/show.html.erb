@@ -25,6 +25,7 @@
       <% @unit.tasks.each do |task| %>
         <tr>
           <td><%= link_to task.title, task %></td>
+        
           <td><%= task.description %></td>
         </tr>
       <% end %>

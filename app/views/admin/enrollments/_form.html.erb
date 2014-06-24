@@ -1,5 +1,4 @@
 <% if @enrollment.errors.any? %>
-<section class="half">
   <div id="error_explanation">
     <ul>
     <% @enrollment.errors.full_messages.each do |message| %>
@@ -9,12 +8,32 @@
   </div>
 <% end %>
 
+Add
 
-  Add <%= f.collection_select :user_id, @school.users, :id, :username, include_blank: true %> to 
-  <%= f.collection_select :cohort_id, @school.cohorts, :id, :name, include_blank: true %> as a(n)
-  <%= f.collection_select :role_id, Role.all, :id, :title, include_blank: true %>
-<div class="actions">
-  <%= f.submit %>
-</div>
+<% # If page has a user, use that.  If it has a cohort, don't show currently enrolled users. %>
+<% if @user %>
+  <%= @user.username %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+<% elsif @cohort %>
+  <%= f.collection_select :user_id, (@school.users - @cohort.users), :id, :username, include_blank: true %>
+<% else %>
+  <%= f.collection_select :user_id, @school.users, :id, :username, include_blank: true %> 
+<% end %>
 
-</section>
+to 
+
+<% # If page has a cohort, use that.  If it has a user, don't show any cohorts user is already in. %>
+<% if @cohort %>
+  <%= @cohort.name %>
+  <%= f.hidden_field :cohort_id, value: @cohort.id %>
+<% elsif @user %>
+  <%= f.collection_select :cohort_id, (@school.cohorts - @user.users), :id, :name, include_blank: true %>
+<% else %>
+  <%= f.collection_select :cohort_id, @school.cohorts, :id, :name, include_blank: true %> 
+<% end %>
+
+as a(n)
+
+<%= f.collection_select :role_id, Role.all, :id, :title, include_blank: true %>
+
+<%= f.submit %>

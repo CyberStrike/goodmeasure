@@ -20,7 +20,8 @@
 
 <section class="full">
 <% if @current_user.has_submitted?(@task) %>
-
+	<p><%= @current_user.submission_for(@task).submission %><br>
+	Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
 <% else %>
 	<%= render partial: 'submissions/form' %>
 <% end %>

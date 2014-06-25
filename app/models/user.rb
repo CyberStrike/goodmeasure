@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 	def has_submitted?(task)
 		!self.submissions.find_by(task_id: task.id).nil?
 	end
+
+	def submission_for(task)
+		self.submissions.find_by(task_id: task.id)
+	end
 end
 
 

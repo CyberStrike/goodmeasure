@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   resources :units do
     resources :tasks
   end
+
+  resources :tasks do
+    resources :submissions
+  end
   
   get '/profile', to: 'users#show'
 

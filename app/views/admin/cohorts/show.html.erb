@@ -7,30 +7,31 @@
 
 <h1><%= @school.name %> <%= @cohort.name %> </h1>
 
-</section>
-
-<section class="half">
-
-<h3> About This Cohort </h3>
-
 <p><%= @cohort.description %></p>
 
 </section>
 
-<section class="half">
+
+
+
+
+<%= render partial: 'admin/enrollments/form' if @school.has_users_not_in? @cohort %>
+
+<section class="full">
 
 <h3>Currently Enrolled Users</h3>
-
+<div>
 <% @cohort.users.each do |user| %>
 	<article class="quarter<%= ' admin' if user.role(@cohort).title != ("Student") %>">
 		<figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure>
-		<%= link_to user.username, admin_user_path(user) %><%= " (Admin)" if user.admin %>
-		<%= user.first_name %> <%= user.last_name %>
-		<%= user.role(@cohort).title %>
-		<%= user.email %>
+		<%= link_to user.username, admin_user_path(user) %><%= " (Admin)" if user.admin %><br>
+		<%= user.first_name %> <%= user.last_name %><br>
+		<%= user.role(@cohort).title %><br>
+		<%= user.email %><br>
 		<%= link_to " Unenroll User", admin_enrollment_path(user.enrollments.find_by(cohort_id: @cohort)), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %>
 	</article>
 <% end %>
+</div>
 </section>
 
 

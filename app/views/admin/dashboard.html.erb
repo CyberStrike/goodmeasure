@@ -29,7 +29,7 @@
         <td><%= @school.name %></td>
         <td><%= @school.description %></td>
         <td><%= @school.users.size %></td>
-        <td><%= @school.staff.size %></td>
+        <td></td>
         <td><%= link_to "School settings" %></td>
       </tr>
 
@@ -47,13 +47,6 @@
    <%= link_to 'New Cohort', new_admin_cohort_path %>
 </section>
 
-<section class="half">
 
-  <h3>Enrollments</h3>
-
-  <%= form_for @enrollment, url: admin_enrollments_path do |f| %>
-  <%= render partial: 'admin/enrollments/form', locals: {f: f} %>
-  <% end %>
   
-</section>
-
+<%= render partial: 'admin/enrollments/form' if @school.has_users? and @school.has_cohorts? %>

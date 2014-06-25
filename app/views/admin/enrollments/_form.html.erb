@@ -1,39 +1,47 @@
-<% if @enrollment.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @enrollment.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<section class="full">
+
+  <%= form_for @enrollment, url: admin_enrollments_path do |f| %>
+
+    <% if @enrollment.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @enrollment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-    </ul>
-  </div>
-<% end %>
 
-Add
+    Add
 
-<% # If page has a user, use that.  If it has a cohort, don't show currently enrolled users. %>
-<% if @user %>
-  <%= @user.username %>
-  <%= f.hidden_field :user_id, value: @user.id %>
-<% elsif @cohort %>
-  <%= f.collection_select :user_id, (@school.users - @cohort.users), :id, :username, include_blank: true %>
-<% else %>
-  <%= f.collection_select :user_id, @school.users, :id, :username, include_blank: true %> 
-<% end %>
+    <% # If page has a user, use that.  If it has a cohort, don't show currently enrolled users. %>
+    <% if @user %>
+      <%= @user.username %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+    <% elsif @cohort %>
+      <%= f.collection_select :user_id, (@school.users - @cohort.users), :id, :username %>
+    <% else %>
+      <%= f.collection_select :user_id, @school.users, :id, :username %> 
+    <% end %>
 
-to 
+    to 
 
-<% # If page has a cohort, use that.  If it has a user, don't show any cohorts user is already in. %>
-<% if @cohort %>
-  <%= @cohort.name %>
-  <%= f.hidden_field :cohort_id, value: @cohort.id %>
-<% elsif @user %>
-  <%= f.collection_select :cohort_id, (@school.cohorts - @user.users), :id, :name, include_blank: true %>
-<% else %>
-  <%= f.collection_select :cohort_id, @school.cohorts, :id, :name, include_blank: true %> 
-<% end %>
+    <% # If page has a cohort, use that.  If it has a user, don't show any cohorts user is already in. %>
+    <% if @cohort %>
+      <%= @cohort.name %>
+      <%= f.hidden_field :cohort_id, value: @cohort.id %>
+    <% elsif @user %>
+      <%= f.collection_select :cohort_id, (@school.cohorts - @user.cohorts), :id, :name %>
+    <% else %>
+      <%= f.collection_select :cohort_id, @school.cohorts, :id, :name %> 
+    <% end %>
 
-as a(n)
+    as a(n)
 
-<%= f.collection_select :role_id, Role.all, :id, :title, include_blank: true %>
+    <%= f.collection_select :role_id, Role.all, :id, :title %>
 
-<%= f.submit %>
+    <%= f.submit %>
+
+  <% end %>
+
+</section>

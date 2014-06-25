@@ -6,6 +6,7 @@ class Admin::CohortsController < AdminController
   end
 
   def show
+    @enrollment = Enrollment.new
   end
 
   def new

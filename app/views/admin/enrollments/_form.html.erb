@@ -1,4 +1,4 @@
-<section class="full">
+ <section class="full">
 
   <%= form_for @enrollment, url: admin_enrollments_path do |f| %>
 
@@ -14,10 +14,8 @@
     <% if @user %>
       <%= @user.username %>
       <%= f.hidden_field :user_id, value: @user.id %>
-    <% elsif @cohort %>
-      <%= f.collection_select :user_id, @school.users_not_in(@cohort), :id, :username %>
     <% else %>
-      <%= f.collection_select :user_id, @school.users, :id, :username %> 
+      <%= f.collection_select :user_id, @school.available_users(@cohort), :id, :username %>
     <% end %>
 
     to 
@@ -26,10 +24,8 @@
     <% if @cohort %>
       <%= @cohort.name %>
       <%= f.hidden_field :cohort_id, value: @cohort.id %>
-    <% elsif @user %>
-      <%= f.collection_select :cohort_id, @school.cohorts_not_in(@user), :id, :name %>
     <% else %>
-      <%= f.collection_select :cohort_id, @school.cohorts, :id, :name %> 
+      <%= f.collection_select :cohort_id, @school.available_cohorts(@user), :id, :name %>
     <% end %>
 
     as a(n)

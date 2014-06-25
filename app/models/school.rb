@@ -27,28 +27,34 @@ class School < ActiveRecord::Base
 		self.enrollments.where(role_id: (Role.find_by title: "TA"))
 	end
 
+	# Checks for created students
 	def has_users?
 		self.users.size > 0
 	end
 
+	# Checks for created cohorts
 	def has_cohorts?
 		self.cohorts.size > 0
 	end
 
+	# Checks to see if there are any available users who are not enrolled in a cohort
 	def has_users_not_in?(cohort)
 		self.users.size - cohort.users.size > 0
 	end
 
-	def users_not_in(cohort)
-		self.users - cohort.users
-	end
-
+	# Checks to see if there are any available cohorts for a user to enroll in.
 	def has_cohorts_not_in?(user)
 		self.cohorts.size - user.cohorts.size > 0
 	end
 
-	def cohorts_not_in(user)
-		self.cohorts - user.cohorts
+	# Returns all cohorts a user is not enrolled in.  Accepts an empty user.
+	def available_cohorts(user)
+		user.nil? ? self.cohorts : self.cohorts - user.cohorts
+	end
+
+	# Returns all users not enrolled in a particular cohort.  Accepts an empty cohort.
+	def available_users(cohort)
+		cohort.nil? ? self.users : self.users - cohort.users
 	end
 
 

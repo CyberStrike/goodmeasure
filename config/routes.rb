@@ -36,6 +36,7 @@ Rails.application.routes.draw do
  
   resources :cohorts do
     resources :units 
+    resources :submissions
   end
 
   resources :units do

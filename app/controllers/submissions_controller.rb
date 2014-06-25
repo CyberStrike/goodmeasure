@@ -1,10 +1,11 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_cohort, only: [:index]
 
   # GET /submissions
   # GET /submissions.json
   def index
-    @submissions = Submission.all
+    @submissions = Submission.where(task_id: (@cohort.tasks))
   end
 
   # GET /submissions/1
@@ -62,6 +63,10 @@ class SubmissionsController < ApplicationController
   end
 
   private
+    def set_cohort
+      @cohort = Cohort.find(params[:cohort_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @submission = Submission.find(params[:id])

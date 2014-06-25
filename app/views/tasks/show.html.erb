@@ -20,6 +20,8 @@
 
 <section class="full">
 <% if @current_user.has_submitted?(@task) %>
+
+<% else %>
 	<%= render partial: 'submissions/form' %>
 <% end %>
 </section>

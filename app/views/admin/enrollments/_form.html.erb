@@ -3,13 +3,9 @@
   <%= form_for @enrollment, url: admin_enrollments_path do |f| %>
 
     <% if @enrollment.errors.any? %>
-      <div id="error_explanation">
-        <ul>
         <% @enrollment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <p class="form-error"><%= message %></p>
         <% end %>
-        </ul>
-      </div>
     <% end %>
 
     Add
@@ -19,7 +15,7 @@
       <%= @user.username %>
       <%= f.hidden_field :user_id, value: @user.id %>
     <% elsif @cohort %>
-      <%= f.collection_select :user_id, (@school.users - @cohort.users), :id, :username %>
+      <%= f.collection_select :user_id, @school.users_not_in(@cohort), :id, :username %>
     <% else %>
       <%= f.collection_select :user_id, @school.users, :id, :username %> 
     <% end %>
@@ -31,7 +27,7 @@
       <%= @cohort.name %>
       <%= f.hidden_field :cohort_id, value: @cohort.id %>
     <% elsif @user %>
-      <%= f.collection_select :cohort_id, (@school.cohorts - @user.cohorts), :id, :name %>
+      <%= f.collection_select :cohort_id, @school.cohorts_not_in(@user), :id, :name %>
     <% else %>
       <%= f.collection_select :cohort_id, @school.cohorts, :id, :name %> 
     <% end %>

@@ -15,7 +15,7 @@
   <tbody>
     <% @enrollments.each do |enrollment| %>
       <tr>
-        <td><%= enrollment.user.username %></td>
+        <td><%= enrollment.user.first_name %></td>
         <td><%= enrollment.cohort.name %></td>
         <td><%= enrollment.role.title %></td>
         <td><%= link_to 'Show', admin_enrollment_path(enrollment) %></td>

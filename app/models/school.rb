@@ -39,5 +39,17 @@ class School < ActiveRecord::Base
 		self.users.size - cohort.users.size > 0
 	end
 
+	def users_not_in(cohort)
+		self.users - cohort.users
+	end
+
+	def has_cohorts_not_in?(user)
+		self.cohorts.size - user.cohorts.size > 0
+	end
+
+	def cohorts_not_in(user)
+		self.cohorts - user.cohorts
+	end
+
 
 end

@@ -1,5 +1,5 @@
 
-<%= render partial: 'form' %>
+<%= render partial: 'form' if @school.has_users? and @school.has_cohorts? %>
 
 
 <%= link_to 'Back', admin_path %>

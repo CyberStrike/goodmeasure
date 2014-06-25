@@ -1,6 +1,8 @@
 class Admin::CohortsController < AdminController
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
 
+
+  # Currently not in use
   def index
     @cohorts = school.cohorts
   end
@@ -46,7 +48,7 @@ class Admin::CohortsController < AdminController
   def destroy
     @cohort.destroy
     respond_to do |format|
-      format.html { redirect_to admin_cohorts_url, notice: 'Cohort was successfully destroyed.' }
+      format.html { redirect_to admin_path, notice: 'Cohort was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

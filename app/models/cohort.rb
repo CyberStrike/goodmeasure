@@ -18,19 +18,20 @@ class Cohort < ActiveRecord::Base
 		self.enrollments.where(role_id:1)
 	end
 
-
 	def staff
 		instructor + ta
 	end
-
 
 	def instructor
 		self.enrollments.where(role_id:3)
 	end
 
-
 	def ta
 		self.enrollments.where(role_id:2)
+	end
+
+	def has_users?
+		self.users.size > 0
 	end
 
 end

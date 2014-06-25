@@ -37,4 +37,21 @@ class User < ActiveRecord::Base
 	def role(cohort)
 		Role.find(self.enrollments.find_by(cohort: cohort.id).role_id)
 	end
+
+	def has_submitted?(task)
+		self.submissions.find_by(task_id: task.id).blank?
+	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,16 +5,15 @@
 
 <section class="full">
 
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>User:</strong>
-  <%= @submission.user %>
+  <%= @submission.user.username %>
 </p>
 
 <p>
   <strong>Task:</strong>
-  <%= @submission.task %>
+  <%= @submission.task.title %>
 </p>
 
 <p>
@@ -25,6 +24,11 @@
 <p>
   <strong>Correctness:</strong>
   <%= @submission.correctness %>
+</p>
+
+<p>
+  <strong>Reviewed:</strong>
+  <%= @submission.reviewed %>
 </p>
 
 <p>

@@ -28,7 +28,7 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
+        format.html { redirect_to :back, notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:user_id, :task_id, :submission, :correctness, :percieved_points, :actual_points)
+      params.require(:submission).permit(:user_id, :task_id, :submission, :correctness, :reviewed, :percieved_points, :actual_points)
     end
 end

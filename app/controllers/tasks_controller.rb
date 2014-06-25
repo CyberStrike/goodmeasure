@@ -11,6 +11,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @submission = Submission.new
   end
 
   # GET /tasks/new

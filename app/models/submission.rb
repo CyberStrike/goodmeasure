@@ -1,4 +1,9 @@
 class Submission < ActiveRecord::Base
   belongs_to :user
   belongs_to :task
+
+  validates :submission, presence: true
+  validates :correctness, inclusion: [true, false]
+  validates :reviewed, inclusion: [true, false]
+
 end

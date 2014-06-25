@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :tasks
   resources :comments
-  resources :submissions
+  resources :submissions, only: [:update, :destroy, :edit, :show]
   resources :users
   
   # Limit the actions on public enrollments and cohort actions to 
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
  
   resources :cohorts do
     resources :units 
-    resources :submissions
+    resources :submissions, only: [:index]
   end
 
   resources :units do
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   end
 
   resources :tasks do
-    resources :submissions
+    resources :submissions, only: [:new, :create]
   end
   
   get '/profile', to: 'users#show'

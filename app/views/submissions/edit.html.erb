@@ -1,8 +1,62 @@
 <section class="full">
-<%= link_to 'Back', submissions_path %>
 <h1>Editing submission</h1>
 </section>
 
 <section class="half">
-<%= render 'form' %>
+
+
+
+
+
+
+<%= form_for [@task, @submission] do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+      <% @submission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<p><%= @submission.submission %></p>
+
+	<div>
+		<%= f.label :correctness %>
+	    <%= f.check_box :correctness %>
+	</div>
+	<div>
+		<%= f.label :reviewed %>
+	    <%= f.check_box :reviewed %>
+	</div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </section>

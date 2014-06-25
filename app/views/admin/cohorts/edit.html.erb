@@ -6,7 +6,9 @@
 
 <%= form_for @cohort, url: admin_cohort_path(@cohort) do |f| %>
 <%= render partial: 'form', locals: {f: f} %>
-
 <% end %>
+
+
+<%= link_to " Delete this Cohort", admin_cohort_path(@cohort), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %>
 
 </section>

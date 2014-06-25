@@ -1,6 +1,5 @@
 <% if @cohort.errors.any? %>
 
-<section class="half">
   <div id="error_explanation">
     <ul>
     <% @cohort.errors.full_messages.each do |message| %>
@@ -21,4 +20,3 @@
 <div class="actions">
   <%= f.submit %>
 </div>
-</section>

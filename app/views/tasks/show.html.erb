@@ -4,9 +4,9 @@
 </section>
 
 <section class="full">
- <h3> Task Description:</h3>
- <p> <%= @task.description %> </p>
- <%= link_to '', edit_task_path(@task), class: "fa fa-cog" %> 
+	 <h3> Task Description:</h3>
+	 <p> <%= @task.description %> </p>
+	 <%= link_to '', edit_task_path(@task), class: "fa fa-cog" %> 
 </section>
 
 
@@ -21,7 +21,7 @@
 		Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
 
 		<% # If the submission has already been reviewed %>
-		<% if @current_user.submission_for(@task).reviewed %>
+		<% if @current_user.submission_for(@task).has_been_reviewed? %>
 
 			<% # And if the submission is correct %>
 			<% if @current_user.submission_for(@task).is_correct? %>

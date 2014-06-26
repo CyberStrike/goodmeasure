@@ -9,7 +9,6 @@
     <tr>
       <th>User</th>
       <th>Task</th>
-      <th>Submission</th>
       <th>Correctness</th>
       <th>Reviewed?</th>
       <th colspan="1"></th>
@@ -21,7 +20,6 @@
       <tr>
         <td><%= submission.user.username %></td>
         <td><%= submission.task.title %></td>
-        <td><%= submission.submission %></td>
         <td><%= submission.correctness %></td>
         <td><%= submission.reviewed %></td>
         <td><%= link_to 'Review', edit_submission_path(submission) %></td>

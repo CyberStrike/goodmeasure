@@ -32,17 +32,13 @@
 </header>
 
 
-<main>
+
 <% if flash[:success] %><p id="success"><%= flash[:success] %></p><% end %>
 <% if flash[:error] %><p id="error"><%= flash[:error] %></p><% end %>
 <% if notice %><p id="notice"><%= notice %></p><% end %>
-<%= yield %>
-</main>
 
-<!-- <footer id="footer">
-<p>GoodMeasure Labs</p>
-<p><small>Copyright 2014</small></p>
-</footer> -->
+<%= yield %>
+
 
 </body>
 </html>

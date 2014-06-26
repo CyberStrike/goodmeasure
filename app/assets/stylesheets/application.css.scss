@@ -85,15 +85,6 @@ p {
 
 }
 
-.full {
-  @include module(12);
-  background-color: #3b414e;
-}
-.half {
-  @include module(6);
-  background-color: #3b414e;
-}
-
 .quarter {
   @include module(3);
   @include omega(4n);

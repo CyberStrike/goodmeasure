@@ -1,0 +1,22 @@
+<section id="left-pane">
+<h1> <%= @cohort.name %> </h1>
+<p> <%= @cohort.description %> </p>
+</section>
+
+
+<section id="right-pane">
+<h3>Units</h3>
+
+<table>
+   <% @cohort.units.each do |unit| %>
+      <tr>
+        <td><%= link_to unit.name, unit_path(unit) %><br />
+        	<%= unit.description %></td>
+      </tr>
+     
+    <% end %>
+</table>
+<% if @current_user.role(@cohort).title == "Instructor" %>
+ <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) %>
+<%end%>
+</section>

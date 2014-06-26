@@ -13,7 +13,9 @@ $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Ver
 
 html, body {
   margin: 0;
+  height: 100%;
 }
+
 
 @mixin module($span) {
   @include span-columns($span);
@@ -32,7 +34,6 @@ html, body {
 }
 
 body {
-  background-color: #CCE0CC;
   font-family: $base-font-family;
 }
 
@@ -48,6 +49,7 @@ h3 {
 
 p {
   padding-left: 10px;
+  color: $base-font-color;
 }
 
 .full {
@@ -91,6 +93,33 @@ main {
 }
 .breadcrumb > .active {
   color: #999;
+}
+
+#left-pane {
+  @include span-columns(6);
+  position: fixed;
+  padding: 50px;
+  height: 100%;
+  display: inline-block;
+  float: left;
+  color: white;
+  background-color: $left-panel-color;
+  line-height: 1.5;
+  text-align: justify;
+  p {
+    color: white;
+  }
+}
+
+#right-pane {
+  @include span-columns(6);
+  height: 100%;
+  display: inline-block;
+  float: right;
+  color: white;
+  background-color: white;
+  line-height: 1.5;
+  text-align: justify;
 }
 
 

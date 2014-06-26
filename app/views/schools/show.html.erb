@@ -1,21 +1,18 @@
-<section class="full">
-
-<h1> <%= @school.name %> User Dashboard </h1>
-
-</section>
-
-
-<section class="half">
-<h3> School Description </h3>
+<section id="left-pane">
+<h1> <%= @school.name %> Dashboard </h1>
 <p> <%= @school.description %> </p>
 </section>
 
 
-<section class="half">
 
+<section id="right-pane">
 <h3>You Are Currently Enrolled In: </h3>
 <br>
 <% @current_user.cohorts.each do |cohort| %>
+<article class="topic-list-item">
 <p><%= link_to cohort.name, cohort_path(cohort) %></p>
+<p><small><%= cohort.description %></small></p>
+<hr />
+</article>
 <% end %>
 </section>

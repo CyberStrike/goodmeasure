@@ -12,7 +12,7 @@
 <header class="navigation">
   <div class="menu-wrapper">
     <a href="/" class="logo">
-      <img src="http://wyncode.co/wp-content/uploads/2014/02/logo-wyncode1.png" alt="Wyncode">
+      <img src="http://www.webphenoms.com/wp-content/uploads/2014/06/wyncode.png" alt="Wyncode">
     </a>
     <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
     <div class="nav">
@@ -31,12 +31,18 @@
   </div>
 </header>
 
+
 <main>
 <% if flash[:success] %><p id="success"><%= flash[:success] %></p><% end %>
 <% if flash[:error] %><p id="error"><%= flash[:error] %></p><% end %>
 <% if notice %><p id="notice"><%= notice %></p><% end %>
 <%= yield %>
 </main>
+
+<!-- <footer id="footer">
+<p>GoodMeasure Labs</p>
+<p><small>Copyright 2014</small></p>
+</footer> -->
 
 </body>
 </html>

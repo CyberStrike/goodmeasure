@@ -1,26 +1,23 @@
-<section class="full">
-<%= link_to 'Back', root_path %>
-<h1> <%= @school.name %> <%= @cohort.name %> </h1>
-
-</section>
-
-
-<section class="half">
-	<h3> Cohort Description </h3>
-	<p> <%= @cohort.description %> </p>
+<section id="left-pane">
+<h1> <%= @cohort.name %> </h1>
+<p> <%= @cohort.description %> </p>
 	<%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %>
 	<%= link_to 'Show all submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff?(@cohort) %>
 </section>
 
 
-<section class="half">
+<section id="right-pane">
+<h3>Units</h3>
 
-	<h3>Units</h3>
-
-	<% @cohort.units.each do |unit| %>
-		<article>
-			<p><%= link_to unit.name, unit_path(unit) %> (<%= pluralize(unit.tasks.count, "Task") %>)</p>
-		</article>
-	<% end %>
+<table>
+   <% @cohort.units.each do |unit| %>
+      <tr>
+        <td><%= link_to unit.name, unit_path(unit) %> (<%= pluralize(unit.tasks.count, "Task") %>)<br />
+        	<%= unit.description %></td>
+      </tr>
+     
+    <% end %>
+</table>
 
 </section>
+

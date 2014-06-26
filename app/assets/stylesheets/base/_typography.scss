@@ -1,6 +1,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $base-background-color;
+  left-panel-color: $left-panel-color;
   color: $base-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
@@ -50,6 +51,8 @@ a {
   &:hover {
     color: $hover-link-color;
   }
+
+
 
   &:active, &:focus {
     color: $hover-link-color;

@@ -13,7 +13,9 @@ $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Ver
 
 html, body {
   margin: 0;
+  height: 100%;
 }
+
 
 @mixin module($span) {
   @include span-columns($span);
@@ -32,7 +34,6 @@ html, body {
 }
 
 body {
-  background-color: #CCE0CC;
   font-family: $base-font-family;
 }
 
@@ -48,6 +49,7 @@ h3 {
 
 p {
   padding-left: 10px;
+  color: $base-font-color;
 }
 
 .full {
@@ -67,6 +69,7 @@ p {
 }
 main {
   @include outer-container;
+  @include span-columns(12);
 }
 .admin {
   background-color: lighten(red, 35);
@@ -91,6 +94,54 @@ main {
 }
 .breadcrumb > .active {
   color: #999;
+}
+
+#left-pane {
+  @include span-columns(6);
+  padding: 10%;
+  position: fixed;
+  height: 100%;
+  display: inline-block;
+  float: left;
+  color: white;
+  background-color: $left-panel-color;
+  line-height: 1.5;
+  text-align: justify;
+  p {
+    color: white;
+  }
+}
+
+#right-pane {
+  @include span-columns(6);
+  padding-top: 10%;
+  padding-left: 20%;
+  height: 100%;
+  display: inline-block;
+  float: right;
+  background-color: white;
+  line-height: 1.5;
+  text-align: justify;
+  h1, h2, h3, h4, h5, h6 {
+  color: $left-panel-color;
+  }
+ }
+
+.topic-list-item:hover {
+  background: #eee;
+}
+
+#footer {
+  background-color: #fdfdfd;
+  border-top: 1px solid #ddd;
+  clear: both;
+  color: #999;
+  font-size: 12px;
+  height: auto;
+  line-height: 20px;
+  min-width: 970px;
+  position: relative;
+  z-index: 10;
 }
 
 

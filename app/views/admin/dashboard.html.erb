@@ -1,51 +1,33 @@
-<section id="left-pane">
-
+<aside>
+  <header>
     <h1><%= @school.name %> Admin Dashboard</h1>
+    <p></p>
+    <ul>
+      <li> <%= link_to 'New Cohort', new_admin_cohort_path %></li>
+      <li>  <%= link_to "School settings" %> </li>
+    </ul>
+  </header>
+</aside>
 
-  <article>
-  <%= render partial: 'admin/enrollments/form' if @school.has_users? and @school.has_cohorts? %>
-  </article>
+<section id="main">
 
-  <article>
-  <%= render 'admin/invites/form' %>
-  </article>
+  <h2>Cohorts</h2>
 
-</section>
+  <section class="module">
+    <% @school.cohorts.each do |cohort| %>
+    <article class="admin-cohort">
+     <h3> <%= link_to cohort.name, admin_cohort_path(cohort) %></h3>
+      <p> <%= cohort.description %></p>
+      <p class="footer-text"> Number Of Students: <%= cohort.students.size %> | Number Of Staff: <%= cohort.staff.size %> |  <%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></p>
+      </article>
+        <% end %>
+  </section> 
+ 
 
-<section id="right-pane">
+  <% #render partial: 'admin/enrollments/form' if @school.has_users? and @school.has_cohorts? %>
 
-  <h2>School Stats</h2>
+  <% #render 'admin/invites/form' %>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Group</th>
-     <!--    <th>Summary</th> -->
-        <th>Students</th>
-        <th>Staff</th>
-        <th>Settings</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @school.name %></td>
-      <!--   <td><%= @school.description %></td> -->
-        <td><%= @school.users.size %></td>
-        <td></td>
-        <td><%= link_to "School settings" %></td>
-      </tr>
-
-      <% @school.cohorts.each do |cohort| %>
-        <tr>
-          <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
-       <!--    <td><%= cohort.description.truncate(30) %></td> -->
-          <td><%= cohort.students.size %></td>
-          <td><%= cohort.staff.size %></td>
-          <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>  
-   <%= link_to 'New Cohort', new_admin_cohort_path %>
 
 </section>
+

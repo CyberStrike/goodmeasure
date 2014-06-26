@@ -1,13 +1,13 @@
-<section id="left-pane">
+<aside>
 	<%= link_to 'Back', unit_path(@task.unit.id) %>
 	<h1> <%= @task.title%> </h1>
 
 	 <h3> Task Description:</h3>
 	 <p> <%= @task.description %> </p>
 	 <%= link_to '', edit_task_path(@task), class: "fa fa-cog" %> 
-</section>
+</aside>
 
-<section id="right-pane">
+<section id="main">
 
 <% if @current_user.is_student?(@task.unit.cohort) %>
 

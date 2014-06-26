@@ -10,12 +10,14 @@
 @import 'neat-helpers';
 $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
+body {
+  font-family: $base-font-family;
+}
 
 html, body {
   margin: 0;
   height: 100%;
 }
-
 
 @mixin module($span) {
   @include span-columns($span);
@@ -30,26 +32,31 @@ html, body {
   font-size: 12px;
 }
 
-body {
-  font-family: $base-font-family;
-}
+a { 
+    &:link, &:visited {
+      color: $left-panel-color;
+    }
+    &:hover {
+      color: darken($left-panel-color, 25)
+    }
+    &:active {
+    }
+  }
 
 h1 {
-  text-align: center;
   margin-bottom: 20px;
-  font-size: 40px;
+  font-size: 3rem;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 30px;
+  font-size: 2.5rem;
 }
 
 h3 {
-  text-align: center;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 p {
@@ -57,13 +64,25 @@ p {
   color: $base-font-color;
 }
 
-table {
-  margin-top: 40px;
-  width: 120%;
-  text-align: center;
+.module {
+  @include shift(1);
+  @include span-columns(10);
 }
 
-th {  text-align: center;
+.admin-cohort {
+   padding: 10px 0;
+   border-bottom: 1px solid #ccc;
+   &:last-child {
+    border-bottom: none;
+   }
+}
+
+.footer-text {
+
+ font-size: .8rem;
+ font-style: italic;
+ color: lighten($base-font-color, 20)
+
 }
 
 .full {
@@ -83,10 +102,7 @@ th {  text-align: center;
 .avatar img {
   border-radius: 50%;
 }
-main {
-  @include outer-container;
-  @include span-columns(12);
-}
+
 .admin {
   background-color: lighten(red, 35);
 }
@@ -95,23 +111,37 @@ main {
   text-align: center;
 }
 
-#left-pane {
-  @include span-columns(6);
-  padding: 10%;
+aside {
+  @include span-columns(4);
+  padding-top: 120px;
+  padding-left: 20px;
   position: fixed;
   height: 100%;
   display: inline-block;
   color: white;
   background-color: $left-panel-color;
   line-height: 1.5;
+
   p {
     color: white;
   }
+
+ul a {
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      color: darken($left-panel-color, 25)
+    }
+    &:active {
+    }
+  }
 }
 
-#right-pane {
-  @include span-columns(6);
-  padding: 10%;
+#main {
+  @include span-columns(8);
+  margin-top: 100px;
   height: 100%;
   display: inline-block;
   float: right;

@@ -1,18 +1,12 @@
-<section class="full">
-<%= link_to 'Back', cohort_path(@unit.cohort.id) %>
+<section id="left-pane">
 <h1> <%= @unit.name %> </h1>
+<p> <%= @unit.description %> </p>
 </section>
 
-<section class="half">
-<h3> Unit Description </h3>
- <p> <%= @unit.description %></p>
- <%= link_to '', edit_unit_path(@unit), class: "fa fa-cog" %> 
-</section>
 
-</section>
+<section id="right-pane">
 
-<section class="half">
-
+<h2>All Tasks in <%= @unit.name %></h2>
 <table>
     <thead>
       <tr>
@@ -33,4 +27,9 @@
     </tbody>
   </table>
  <%= link_to 'New Task', new_unit_task_path(@unit.id) %>
+
 </section>
+
+<%#= link_to 'Back', cohort_path(@unit.cohort.id) %>
+
+<%#= link_to '', edit_unit_path(@unit), class: "fa fa-cog" %> 

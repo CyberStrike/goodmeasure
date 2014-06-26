@@ -2,61 +2,14 @@
 <h1>Editing submission</h1>
 </section>
 
+<%# Amateurs.... you did this in 15 lines. I did it in 2. MUAHAHAHA %>
+
 <section class="half">
 
+  <%= button_to "Correct", submission_path(:submission => {
+    reviewed: true, correctness: true}), method: :patch %>
 
-
-
-
-
-<%= form_for [@task, @submission] do |f| %>
-  <% if @submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-
-      <ul>
-      <% @submission.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-
-<p><%= @submission.submission %></p>
-
-	<div>
-		<%= f.label :correctness %>
-	    <%= f.check_box :correctness %>
-	</div>
-	<div>
-		<%= f.label :reviewed %>
-	    <%= f.check_box :reviewed %>
-	</div>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <%= button_to "Incorrect", submission_path(:submission => {
+    reviewed: true, correctness: false}), method: :patch %>
 
 </section>

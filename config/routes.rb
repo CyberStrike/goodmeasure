@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :tasks
   resources :comments
-  resources :submissions, only: [:update, :destroy, :edit, :show]
+  resources :submissions#, only: [:update, :destroy, :edit, :show]
   resources :users
   
   # Limit the actions on public enrollments and cohort actions to 

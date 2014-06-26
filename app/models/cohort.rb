@@ -1,33 +1,32 @@
 class Cohort < ActiveRecord::Base
 
 	belongs_to :school
-	has_many :enrollments
-	has_many :submissions, through: :tasks
-	has_many :tasks, through: :units
-	has_many :users
-	has_many :units
-	has_many :users, through: :enrollments
+	has_many :enrollments,  dependent: :destroy
+	has_many :submissions,  through: :tasks
+	has_many :tasks,        through: :units
+	has_many :units,        dependent: :destroy
+	has_many :users,        through: :enrollments
 
+	validates :school,      presence: true
 
-	validates :school, presence: true
-	validates :name, uniqueness: { case_sensitive: false },
-                       presence: true
+	validates :description, presence: true 
 
-	validates :description, presence: true                       
+	validates :name,        uniqueness: { case_sensitive: false },
+                            presence: true                      
    
 	def students
 		self.enrollments.where(role_id:1)
 	end
 
 	def staff
-		instructor + ta
+		instructors + tas
 	end
 
-	def instructor
+	def instructors
 		self.enrollments.where(role_id:3)
 	end
 
-	def ta
+	def tas
 		self.enrollments.where(role_id:2)
 	end
 

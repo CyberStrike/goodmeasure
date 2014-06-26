@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
 	belongs_to :unit
+	has_many :submissions, dependent: :destroy
 
 	validates :description,
 		presence: true

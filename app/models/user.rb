@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 	has_many :cohorts, through: :enrollments
-	has_many :comments
-	has_many :enrollments
-	has_many :submissions
+	has_many :comments, dependent: :destroy
+	has_many :enrollments, dependent: :destroy
+	has_many :submissions, dependent: :destroy
 	belongs_to :school
 	belongs_to :role
 

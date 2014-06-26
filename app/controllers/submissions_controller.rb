@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :set_cohort, only: [:index]
+  before_action :set_task, only: [:create]
 
   # GET /submissions
   # GET /submissions.json
@@ -29,7 +30,7 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to :back, notice: 'Submission was successfully created.' }
+        format.html { redirect_to task_path(@submission.task), notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else
         format.html { render :new }
@@ -63,6 +64,11 @@ class SubmissionsController < ApplicationController
   end
 
   private
+
+    def set_task
+      @task = Task.find(params[:task_id])
+    end
+
     def set_cohort
       @cohort = Cohort.find(params[:cohort_id])
     end

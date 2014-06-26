@@ -1,8 +1,8 @@
 class School < ActiveRecord::Base
-	has_many :cohorts
+	has_many :cohorts, dependent: :destroy
 	has_many :units, through: :cohorts
-	has_many :users
-	has_many :invites
+	has_many :users, dependent: :destroy
+	has_many :invites, dependent: :destroy
 	has_many :enrollments
 	validates :name, presence: true
 	validates :subdomain, uniqueness: { case_sensitive: false },

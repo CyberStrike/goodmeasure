@@ -35,4 +35,7 @@
 <% if @current_user.role(@cohort).title == "Instructor" %>
  <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) %>
 <%end%>
+<% if @current_user.role(@cohort).title == "Instructor" || @current_user.role(@cohort).title == "TA"  %>
+ <%= link_to 'Show all submissions', cohort_submissions_path(@cohort.id) %>
+<%end%>
 </section>

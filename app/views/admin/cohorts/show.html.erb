@@ -1,4 +1,4 @@
-<section class="full">
+<aside>
 
 	<%= link_to 'Back', admin_path %>
 
@@ -7,17 +7,17 @@
 
 	<%= link_to "", edit_admin_cohort_path(@cohort), class: "fa fa-cog" %>
 
-</section>
+</aside>
 
 
 
 
-
+<section id="main">
 <%= render partial: 'admin/enrollments/form' if @school.has_users_not_in? @cohort %>
 
 
 <% if @cohort.has_users? %>
-	<section class="full">
+	 <section class="module">
 		<h3>Currently Enrolled Users</h3>
 		<div>
 			<% @cohort.users.each do |user| %>

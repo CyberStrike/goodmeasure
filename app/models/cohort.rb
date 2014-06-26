@@ -19,14 +19,14 @@ class Cohort < ActiveRecord::Base
 	end
 
 	def staff
-		instructor + ta
+		instructors + tas
 	end
 
-	def instructor
+	def instructors
 		self.enrollments.where(role_id:3)
 	end
 
-	def ta
+	def tas
 		self.enrollments.where(role_id:2)
 	end
 

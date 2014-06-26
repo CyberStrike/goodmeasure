@@ -41,6 +41,14 @@ class User < ActiveRecord::Base
 	def submission_for(task)
 		self.submissions.find_by(task_id: task.id)
 	end
+
+	def is_instructor?(cohort)
+		self.role(cohort).title == "Instructor"
+	end
+	
+	def is_staff?(cohort)
+		self.is_instructor?(cohort) || self.role(cohort).title == "TA"
+	end	
 end
 
 

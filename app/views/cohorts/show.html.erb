@@ -1,8 +1,4 @@
 <section class="full">
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-   <li class="active">Cohort</li>
-</ol>
 <%= link_to 'Back', root_path %>
 <h1> <%= @school.name %> <%= @cohort.name %> </h1>
 
@@ -32,10 +28,8 @@
      
     <% end %>
 </table>
-<% if @current_user.role(@cohort).title == "Instructor" %>
- <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) %>
-<%end%>
-<% if @current_user.role(@cohort).title == "Instructor" || @current_user.role(@cohort).title == "TA"  %>
- <%= link_to 'Show all submissions', cohort_submissions_path(@cohort.id) %>
-<%end%>
+
+ <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %>
+ <%= link_to 'Show all submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff?(@cohort) %>
+
 </section>

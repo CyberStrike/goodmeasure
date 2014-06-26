@@ -1,33 +1,35 @@
-<section class="full">
+<section id="left-pane">
 
-<h1><%= @school.name %> Admin Dashboard</h1>
+    <h1><%= @school.name %> Admin Dashboard</h1>
+
+  <article>
+  <%= render partial: 'admin/enrollments/form' if @school.has_users? and @school.has_cohorts? %>
+  </article>
+
+  <article>
+  <%= render 'admin/invites/form' %>
+  </article>
 
 </section>
 
-<section class="half">
+<section id="right-pane">
 
-<%= render 'admin/invites/form' %>
-
-</section>
-
-<section class="half">
-
-  <h3>School Stats</h3>
+  <h2>School Stats</h2>
 
   <table>
     <thead>
       <tr>
         <th>Group</th>
-        <th>Summary</th>
+     <!--    <th>Summary</th> -->
         <th>Students</th>
-        <th>Instructor/TA</th>
+        <th>Staff</th>
         <th>Settings</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><%= @school.name %></td>
-        <td><%= @school.description %></td>
+      <!--   <td><%= @school.description %></td> -->
         <td><%= @school.users.size %></td>
         <td></td>
         <td><%= link_to "School settings" %></td>
@@ -36,17 +38,14 @@
       <% @school.cohorts.each do |cohort| %>
         <tr>
           <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
-          <td><%= cohort.description.truncate(30) %></td>
+       <!--    <td><%= cohort.description.truncate(30) %></td> -->
           <td><%= cohort.students.size %></td>
           <td><%= cohort.staff.size %></td>
           <td><%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></td>
         </tr>
       <% end %>
     </tbody>
-  </table>
+  </table>  
    <%= link_to 'New Cohort', new_admin_cohort_path %>
+
 </section>
-
-
-  
-<%= render partial: 'admin/enrollments/form' if @school.has_users? and @school.has_cohorts? %>

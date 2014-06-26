@@ -1,26 +1,10 @@
-<section class="full">
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-   <li class="active">Cohort</li>
-</ol>
-<%= link_to 'Back', root_path %>
-<h1> <%= @school.name %> <%= @cohort.name %> </h1>
-
+<section id="left-pane">
+<h1> <%= @cohort.name %> </h1>
+<p> <%= @cohort.description %> </p>
 </section>
 
 
-<section class="half">
-
-<h3> Cohort Description </h3>
-
-  
- <p> <%= @cohort.description %> </p>
-
-</section>
-
-
-<section class="half">
-
+<section id="right-pane">
 <h3>Units</h3>
 
 <table>
@@ -35,4 +19,16 @@
 <% if @current_user.role(@cohort).title == "Instructor" %>
  <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) %>
 <%end%>
+</section>
+
+
+
+<section class="full">
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+   <li class="active">Cohort</li>
+</ol>
+<%= link_to 'Back', root_path %>
+<h1> <%= @school.name %> <%= @cohort.name %> </h1>
+
 </section>

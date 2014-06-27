@@ -1,26 +1,45 @@
 <aside>
 
-<h1>Listing submissions</h1>
+<h1><%= @cohort.name %> Submissions</h1>
+<small><i>Submissions are user-blind for unbiased reviews.</i></small>
+
 </aside>
 
 <section id="main">
 
-<h2> Submissions </h2>
-
 <section class="module">
+ 
+ 	<article class="admin-cohort">
 
+    <h2>Pending For Review</h2>
+    
     <% @submissions.each do |submission| %>
 
-    <article class="admin-cohort">
+    	<% unless submission.has_been_reviewed? %>
+    	
+		<p><strong>Question:</strong> <%= submission.task.title %></p>
 
-        <td><%= submission.user.username %></td>
-        <td><%= submission.task.title %></td>
-        <td><%= submission.correctness %></td>
-        <td><%= submission.reviewed %></td>
-        <td><%= link_to 'Review', edit_submission_path(submission) %></td>
+		<p><strong>Answer:</strong> <%= submission.answer %></p>
+		<p><%= link_to 'Review', edit_submission_path(submission) %></p>
 
-</article>
+		<hr />
+
+    	<% else %>
+    	
+    	All submissions have been reviewed.
+
+    	<% end %>
+
+    	<h2>Reviewed</h2>
+		<p><strong>Question:</strong> <%= submission.task.title %></p>
+		<p><strong>Answer:</strong> <%= submission.answer %></p>
+
+        <p><%= link_to 'Review', edit_submission_path(submission) %></p>
+
+	
 
     <% end %>
+
+	</article>
 
 </section>

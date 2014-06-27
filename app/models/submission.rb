@@ -16,7 +16,7 @@ class Submission < ActiveRecord::Base
 		self.reviewed == true
 	end
 
-	def answer
+	def answer 
 		self.submission
 	end
 

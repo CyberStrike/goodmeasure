@@ -1,24 +1,28 @@
 <figure class="avatar"><%= image_tag @user.avatar.url(:thumb) %></figure>
 
-<p> <strong>Username:</strong> <%= @user.username %> </p>
+<ul>
 
-<p> <strong>First name:</strong> <%= @user.first_name %> </p>
+<li> <strong>Username:</strong> <%= @user.username %> </li>
 
-<p> <strong>Last name:</strong> <%= @user.last_name %> </p>
+<li> <strong>First name:</strong> <%= @user.first_name %> </li>
 
-<p> <strong>Email:</strong> <%= @user.email %> </p>
+<li> <strong>Last name:</strong> <%= @user.last_name %> </li>
 
-<p> <strong>Enrolled In:</strong>
+<li> <strong>Email:</strong> <%= @user.email %> </li>
+
+<li> <strong>Enrolled In:</strong>
 
    <% @user.cohorts.each do |cohort| %>
   <%= cohort.name %> (
   <%= @user.role(cohort).title %> )
   <% end %>
 
-</p>
+</li>
 
-<p> <strong> School: </strong> <%= @user.school.name %> </p>
+<li> <strong> School: </strong> <%= @user.school.name %> </li>
 
-<p> <strong>Created:</strong> <%= time_ago_in_words @user.created_at %> ago <p>
+<li> <strong>Created:</strong> <%= time_ago_in_words @user.created_at %> ago </li>
 
-<p> <%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Back', users_path %> </p>
+<p class="footer-text"> <%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Back', users_path %>  </p>
+
+</ul>

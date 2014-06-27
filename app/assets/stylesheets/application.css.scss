@@ -12,6 +12,9 @@ $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Ver
 
 body {
   font-family: $base-font-family;
+  font-family: $base-font-family;
+  @include span-columns(12);
+  @include row(table);
 }
 
 html, body {
@@ -68,6 +71,17 @@ p {
 .module {
   @include shift(1);
   @include span-columns(10);
+  padding: 10px;
+  display: inline-block;
+}
+
+.cover-photo {
+  height: 250px;
+  overflow: hidden;
+  
+}
+
+.cohort-unit {
 }
 
 .admin-cohort {
@@ -105,6 +119,7 @@ p {
 
 aside {
   @include span-columns(4);
+  @include pad();
   padding: 4%;
   position: fixed;
   height: 100%;
@@ -132,9 +147,10 @@ ul a {
 
 #main {
   @include span-columns(8);
-  margin-top: 100px;
+  @include reset-display;
+  // @include pad();
   height: 100%;
-  display: inline-block;
+  // display: inline-block;
   float: right;
   background-color: white;
   line-height: 1.5;

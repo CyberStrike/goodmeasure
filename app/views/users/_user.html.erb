@@ -1,14 +1,12 @@
-<section class="half">
+<aside>
 
 <figure class="avatar"><%= image_tag @user.avatar.url(:thumb) %></figure>
 
-<p id="notice"><%= notice %></p>
+</aside>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.@username %>
-</p>
+<section id="main">
 
+  <h2>  <%= @user.@username %> </h2>
 
 <p>
   <strong>First name:</strong>
@@ -32,11 +30,6 @@
   <%= cohort.name %> (
   <%= @user.role(cohort).title %> )
   <% end %>
-</p>
-
-<p>
-  <strong>School:</strong>
-  <%= @user.school %>
 </p>
 
 <p>

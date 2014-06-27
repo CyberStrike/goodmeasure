@@ -22,11 +22,13 @@
 		<% @cohort.users.each do |user| %>
 		<article class="quarter<%= ' admin' if user.role(@cohort).title != ("Student") %>">
 			<figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure>
-			<%= link_to user.username, admin_user_path(user) %><%= " (Admin)" if user.admin %><br>
-			<%= user.first_name %> <%= user.last_name %><br>
-			<%= user.role(@cohort).title %><br>
-			<%= user.email %><br>
-			<%= link_to " Unenroll User", admin_enrollment_path(user.enrollments.find_by(cohort_id: @cohort)), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %>
+			<ul> 
+			<li> <%= link_to user.username, admin_user_path(user) %><%= " (Admin)" if user.admin %> </li> 
+			<li> <%= user.first_name %> <%= user.last_name %> </li> 
+			<li> <%= user.role(@cohort).title %> </li> 
+			<li> <%= user.email %> </li> 
+			</ul>
+			<p class="footer-text"> <%= link_to " Unenroll User", admin_enrollment_path(user.enrollments.find_by(cohort_id: @cohort)), class: "fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' } %> </p>
 		</article>
 		<% end %>
 		

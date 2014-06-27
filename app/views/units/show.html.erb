@@ -1,35 +1,26 @@
-<section id="left-pane">
+<aside>
+<%= link_to 'Back', cohort_path(@unit.cohort.id) %>
 <h1> <%= @unit.name %> </h1>
 <p> <%= @unit.description %> </p>
-</section>
+<ul>
+<li> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></li>
+<li><%= link_to '', edit_unit_path(@unit), class: "fa fa-cog" %> </li>
+</ul>
+</aside>
 
 
-<section id="right-pane">
+<section id="main">
 
 <h2>All Tasks in <%= @unit.name %></h2>
-<table>
-    <thead>
-      <tr>
-        <th>Task</th>
-        <th>Task Description</th>
-        <th>Edit Task </th>
-      </tr>
-    </thead>
-    <tbody>
 
-      <% @unit.tasks.each do |task| %>
-        <tr>
-          <td><%= link_to task.title, task %></td>
-          <td><%= task.description %></td>
-          <td> <%= link_to '', edit_task_path(task.id), class: "fa fa-cog" %></td>
-        </tr>
+
+<section class="module">
+   <% @unit.tasks.each do |task| %>
+  <article class="admin-cohort">
+      <h3><%= link_to task.title, task %></h3>
+      <p><%= task.description %></p>
+      <p> <%= link_to '', edit_task_path(task.id), class: "fa fa-cog" %></p>
+      </article>
       <% end %>
-    </tbody>
-  </table>
- <%= link_to 'New Task', new_unit_task_path(@unit.id) %>
-
-</section>
-
-<%#= link_to 'Back', cohort_path(@unit.cohort.id) %>
-
-<%#= link_to '', edit_unit_path(@unit), class: "fa fa-cog" %> 
+  
+ </section>

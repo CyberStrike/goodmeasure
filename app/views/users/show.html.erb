@@ -1,16 +1,20 @@
-<section class="full">
+<aside>
 
-<h1> User Profile </h1>
+<h1> <%= @current_user.first_name %> <%= @current_user.last_name %></h1>
+<p>  Username: <%= @current_user.username %> </p>
 
-</section>
+</aside>
 
 
+<section id="main">
 
-<section class="half">
+	<h2> This should render a partial profile </h2>
 
-<h3> This should render a partial profile </h3>
+	<section class="module">
 
-<%= render partial: 'user', collection: @users %>
+	<%= render partial: 'user', collection: @users %>
+
+	</section>
 
 </section>
 

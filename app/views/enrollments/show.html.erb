@@ -1,23 +1,18 @@
-<section class="half">
+<aside>
 
-<p id="notice"><%= notice %></p>
+<h1></h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @enrollment.user %>
-</p>
+<p> <%= link_to 'Edit', edit_enrollment_path(@enrollment) %> | <%= link_to 'Back', enrollments_path %> </p>
 
-<p>
-  <strong>Cohort:</strong>
-  <%= @enrollment.cohort %>
-</p>
+</aside>
 
-<p>
-  <strong>Role:</strong>
-  <%= @enrollment.role %>
-</p>
 
-<%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
-<%= link_to 'Back', enrollments_path %>
+<section id="main">
+
+<p> <strong>User:</strong> <%= @enrollment.user %> </p>
+
+<p> <strong>Cohort:</strong> <%= @enrollment.cohort %> </p>
+
+<p> <strong>Role:</strong> <%= @enrollment.role %> </p>
 
 </section>

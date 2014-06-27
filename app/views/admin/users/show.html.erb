@@ -1,11 +1,19 @@
-<section class="full">
-<ol class="breadcrumb">
-  <li><a href="#">Admin Dashboard</a></li>
-   <li><a href="#">Cohorts</a></li>
-  <li class="active">User Profile</li>
-</ol>
-<%= render partial: 'user' %>
+<aside>
+<h1></h1>
 
-</section>
 
 <%= render partial: 'admin/enrollments/form' if @school.has_cohorts_not_in? @user %>
+</aside>
+
+
+
+<section id="main">
+<h2></h2>
+<section class="module">
+ <article class="admin-cohort">
+
+<%= render partial: 'user' %>
+
+</article>
+</section>
+</section>

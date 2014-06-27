@@ -73,12 +73,15 @@ p {
   @include span-columns(10);
   padding: 10px;
   display: inline-block;
+  margin-top: 60px;
 }
 
 .cover-photo {
   height: 250px;
   overflow: hidden;
-  
+  img {
+    margin-top: -200px;
+  }
 }
 
 .cohort-unit {

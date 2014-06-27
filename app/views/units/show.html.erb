@@ -1,6 +1,8 @@
 <aside>
+<header>
 <%= link_to 'Back', cohort_path(@unit.cohort.id) %>
 <h1> <%= @unit.name %> </h1>
+</header>
 <p> <%= @unit.description %> </p>
 <ul>
 <li> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></li>

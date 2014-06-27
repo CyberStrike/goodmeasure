@@ -1,8 +1,9 @@
-<section class="half">
+<aside>
 <h1>Listing enrollments</h1>
+</aside>
 
-<table>
-  <thead>
+<section id="main">
+
     <tr>
       <th>User</th>
       <th>Cohort</th>
@@ -22,6 +23,6 @@
         <td><%= link_to 'Destroy', admin_enrollment_path(enrollment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+
+
 </section>

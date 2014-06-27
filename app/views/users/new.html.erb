@@ -1,11 +1,17 @@
-<section class="full">
-<%= link_to 'Back', users_path %>
-<h1>New User</h1>
+<aside> 
+	<header>
+		<h1></h1>
+		<ul>
+		<li><%= link_to 'Back', users_path %></li>
+		</ul>
+	</header>
+</aside>
 
-</section>
+<section id="main">
 
-<section class="half">
+<h2>New User</h2>
 
 <%= render 'form' %>
 
 </section>
+

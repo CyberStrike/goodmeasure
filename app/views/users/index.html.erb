@@ -1,11 +1,14 @@
-<section class="full">
+<aside> 
+  <header>
+   <h1>Listing Users</h1>
+    <ul>
+    <li><%= link_to 'Back', users_path %></li>
+    </ul>
+  </header>
+</aside>
 
-<h1>Listing Users</h1>
-</section>
+<section id="main">
 
-<section class="half">
-<table>
-  <thead>
     <tr>
       <th>Username</th>
       <th>First name</th>
@@ -29,6 +32,5 @@
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+
 </section>

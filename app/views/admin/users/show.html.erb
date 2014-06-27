@@ -1,19 +1,10 @@
 <aside>
-<h1></h1>
-
-
-<%= render partial: 'admin/enrollments/form' if @school.has_cohorts_not_in? @user %>
+	<h1></h1>
+	<%= render partial: 'admin/enrollments/form' if @school.has_cohorts_not_in? @user %>
 </aside>
 
-
-
 <section id="main">
-<h2></h2>
-<section class="module">
- <article class="admin-cohort">
-
-<%= render partial: 'user' %>
-
-</article>
-</section>
+	<section class="module">
+		<%= render partial: 'user' %>
+	</section>
 </section>

@@ -1,10 +1,9 @@
 <aside>
 
-<h1> <%= @current_user.first_name %> <%= @current_user.last_name %></h1>
-<p>  Username: <%= @current_user.username %> </p>
+	<h1> <%= @current_user.first_name %> <%= @current_user.last_name %></h1>
+	<p>  Username: <%= @current_user.username %> </p>
 
 </aside>
-
 
 <section id="main">
 
@@ -12,7 +11,7 @@
 
 	<section class="module">
 
-	<%= render partial: 'user', collection: @users %>
+		<%= render partial: 'user', collection: @users %>
 
 	</section>
 

@@ -17,6 +17,15 @@ user_list = [
   [ "johanna", "Jo", "Mikkola", "jo@wyncode.co", false ],
   [ "chris", "Chris", "Scott", "chris@wyncode.co", false ],
   [ "bryce", "Bryce", "Lastname", "bryce@lastname.co.uk", false ],
+  [ "frank", "Frank", "Ortiz", "frank@wyncode.co", false ]
+]
+
+cohorts_list = [
+  ["Cohort 1", "This is Wyncode's first ever Cohort, running from May 5 to July 2, 2014.", 1],
+  ["Cohort 2", "This is Wyncode's second Cohort, running from July 30th to October 2, 2014.", 1],
+  ["Cohort 3", "The third Cohort with over 20 students.", 1],
+  ["Cohort 4", "Wyncode's fourth cohort and first cohort of 2015.", 1],
+  ["Cohort 5", "The largest ever Cohort for Wyncode, with 25 students.", 1],
 ]
 
 user_list.each do |username, first, last, email, admin|

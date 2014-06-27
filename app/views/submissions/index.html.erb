@@ -22,22 +22,32 @@
 		<p><strong>Answer:</strong> <%= submission.answer %></p>
 		<p><%= link_to 'Review', edit_submission_path(submission) %></p>
 
-		<hr />
-
     	<% else %>
     	
     	All submissions have been reviewed.
-
+    	
+    	<hr />
+    	
     	<% end %>
+    	
+    <% end %>
+    
+    <h2>Reviewed</h2>
 
-    	<h2>Reviewed</h2>
+    <% @submissions.each do |submission| %>
+
+    	<% if submission.has_been_reviewed? %>
+
 		<p><strong>Question:</strong> <%= submission.task.title %></p>
+
 		<p><strong>Answer:</strong> <%= submission.answer %></p>
 
         <p><%= link_to 'Review', edit_submission_path(submission) %></p>
 
+        <hr />
 	
-
+        <% end %>
+        
     <% end %>
 
 	</article>

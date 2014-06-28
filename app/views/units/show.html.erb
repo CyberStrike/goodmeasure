@@ -5,10 +5,9 @@
 </header>
 <p> <%= @unit.description %> </p>
 
+<% if @current_user.is_instructor?(@unit.cohort) %>
 <br />
 <hr />
-
-<% if @current_user.is_instructor?(@unit.cohort) %>
  <h3>Instructor Options</h3>
 	<ul>
 		<li> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></li>

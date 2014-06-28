@@ -2,9 +2,12 @@
 <header>
 <h1> <%= @cohort.name %> </h1>
 <p> <%= @cohort.description %> </p>
+ 
+ <% if @current_user.is_instructor?(@cohort) %>
+ 
  <br />
  <hr />
- <% if @current_user.is_instructor?(@cohort) %>
+ 
  <h3>Instructor Options</h3>
  <ul>
  	<li> <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %></li>

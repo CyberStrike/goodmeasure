@@ -4,14 +4,25 @@
 		<h1> <%= @task.title%> </h1>
 	</header>
 	<p> <%= @task.description %> </p>
+
+	<%# Show options to edit task ONLY if current user is an instructor %>
+	<% if @current_user.is_instructor?(@task.unit.cohort) %>
+	<br />
+	<hr />
+	<h3>Instructor Options</h3>
 	<ul> 
-		<li> <%= link_to '', edit_task_path(@task), class: "fa fa-cog" %> </li>
+		<li> <%= link_to 'Edit this task', edit_task_path(@task) %> </li>
 	</ul>
+	<% end %>
 </aside>
 
 <section id="main">
 
 	<h2> Current Submission </h2>
+
+	<% if @current_user.is_staff?(@task.unit.cohort) %>
+	hey
+	<% end %>
 
 	<% if @current_user.is_student?(@task.unit.cohort) %>
 

@@ -4,10 +4,18 @@
 <h1> <%= @unit.name %> </h1>
 </header>
 <p> <%= @unit.description %> </p>
-<ul>
-<li> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></li>
-<li><%= link_to '', edit_unit_path(@unit), class: "fa fa-cog" %> </li>
-</ul>
+
+<br />
+<hr />
+
+<% if @current_user.is_instructor?(@unit.cohort) %>
+ <h3>Instructor Options</h3>
+	<ul>
+		<li> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></li>
+		<li><%= link_to 'Edit Unit', edit_unit_path(@unit) %> </li>
+	</ul>
+<% end %>
+
 </aside>
 
 
@@ -21,7 +29,10 @@
   <article class="admin-cohort">
       <h3><%= link_to task.title, task %></h3>
       <p><%= task.description %></p>
+
+      <% if @current_user.is_instructor?(@unit.cohort) %>
       <p> <%= link_to '', edit_task_path(task.id), class: "fa fa-cog" %></p>
+      <% end %>
       </article>
       <% end %>
   

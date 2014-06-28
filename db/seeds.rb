@@ -21,11 +21,24 @@ user_list = [
 ]
 
 cohorts_list = [
-  ["Cohort 1", "This is Wyncode's first ever Cohort, running from May 5 to July 2, 2014.", 1],
-  ["Cohort 2", "This is Wyncode's second Cohort, running from July 30th to October 2, 2014.", 1],
-  ["Cohort 3", "The third Cohort with over 20 students.", 1],
-  ["Cohort 4", "Wyncode's fourth cohort and first cohort of 2015.", 1],
-  ["Cohort 5", "The largest ever Cohort for Wyncode, with 25 students.", 1],
+  ["Cohort 1", "This is Wyncode's first ever Cohort, running from May 5 to July 2, 2014."],
+  ["Cohort 2", "This is Wyncode's second Cohort, running from July 30th to October 2, 2014."],
+  ["Cohort 3", "The third Cohort with over 20 students."],
+  ["Cohort 4", "Wyncode's fourth cohort and first cohort of 2015."],
+  ["Cohort 5", "The largest ever Cohort for Wyncode, with 25 students."],
+]
+
+unit_list = [
+  [ "walter", "Walter", "Latimer", "walter@walterlatimer.com", true ],
+  [ "julie", "Julie", "Kramer", "thejuliekramer@gmail.com", true ],
+  [ "bryan", "Bryan", "Perez", "bryan@webphenoms.com", true ],
+  [ "eddroid", "Ed", "Toro", "ed@toro.net", false ],
+  [ "hector", "Hector", "Garcia", "hector@garcia.net", false ],
+  [ "juha", "Juha", "Mikkola", "juha@wyncode.co", false ],
+  [ "johanna", "Jo", "Mikkola", "jo@wyncode.co", false ],
+  [ "chris", "Chris", "Scott", "chris@wyncode.co", false ],
+  [ "bryce", "Bryce", "Lastname", "bryce@lastname.co.uk", false ],
+  [ "frank", "Frank", "Ortiz", "frank@wyncode.co", false ]
 ]
 
 user_list.each do |username, first, last, email, admin|
@@ -36,6 +49,12 @@ user_list.each do |username, first, last, email, admin|
 	password:'password',
 	admin: admin,
 	school_id:1)
+end
+
+cohorts_list.each do |name, description|
+  Cohort.create(name: name,
+  description: description,
+  school_id: 1)
 end
 
 School.create(name:'Wyncode', subdomain:'wyncode', description:'Lorem Ipsum')

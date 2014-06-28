@@ -2,10 +2,15 @@
 <header>
 <h1> <%= @cohort.name %> </h1>
 <p> <%= @cohort.description %> </p>
+ <br />
+ <hr />
+ <% if @current_user.is_instructor?(@cohort) %>
+ <h3>Instructor Options</h3>
  <ul>
  	<li> <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %></li>
  	<li> <%= link_to 'Show all submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff?(@cohort) %></li>
 </ul>
+<% end %>
 </header>
 </aside>
 
@@ -19,7 +24,10 @@
      	 <article class="admin-cohort">
        <h3> <%= link_to unit.name, unit_path(unit) %> (<%= pluralize(unit.tasks.count, "Task") %>)</h3>
        <p> <%= unit.description %> </p>
+
+       <% if @current_user.is_instructor?(@cohort) %>
        <p class="footer-text"> <%= link_to 'Edit', edit_unit_path(unit.id), class: "fa fa-cog" %> </p> 
+       <% end %>
        <article class="admin-cohort">
 
     <% end %>

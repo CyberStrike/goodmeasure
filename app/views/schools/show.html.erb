@@ -15,6 +15,7 @@
 
 		<h3><%= link_to cohort.name, cohort_path(cohort) %></h3>
 		<p><%= cohort.description %></p>
+		<p><small>You're a<%= "n" if @current_user.is_instructor?(cohort) %> <%= @current_user.role(cohort).title %></small></p>
 
 	</article>
 	<% end %>

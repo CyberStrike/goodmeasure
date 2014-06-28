@@ -28,7 +28,6 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(submission_params)
 
-
     respond_to do |format|
       if @submission.save
         format.html { redirect_to task_path(@submission.task), notice: 'Submission was successfully created.' }
@@ -44,6 +43,7 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1.json
   def update
     respond_to do |format|
+      params[:commit] == "Correct" ? @submission.correctness = true : @submission.correctness = false
       if @submission.update(submission_params)
         @comment = Comment.create(comment_params[:comment])
 

@@ -11,15 +11,19 @@
 
 
 <%= form_for @submission do |form| %>
+
+	<% # Fields for optional administrator comment %>
 	<%= form.fields_for :comment do |f| %>
 		<%= f.hidden_field :submission_id, value: @submission.id %>
 		<%= f.hidden_field :user_id, value: @current_user.id %>
 		<%= f.label :content %>
 		<%= f.text_field :content %>
 	<% end %>
+
 	<%= form.hidden_field :reviewed, value: true %>
-	<%= form.submit "Correct", name: :correctness, value: true %>
-	<%= form.submit "Incorrect", name: :correctness, value: false %>
+
+	<%= form.submit "Correct" %>
+	<%= form.submit "Incorrect" %>
 <% end %>
 
 </section>

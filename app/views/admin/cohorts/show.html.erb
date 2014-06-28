@@ -14,7 +14,11 @@
 
 <section id="main">
 
+<section id="enrollment">
+
 	<%= render partial: 'admin/enrollments/form' if @school.has_users_not_in? @cohort %>
+
+</section>
 
 <section class="module">
 

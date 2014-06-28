@@ -1,7 +1,12 @@
 <aside>
+<header> 
+<section id="back"> <%= link_to 'Back', submissions_path %> </section>
 
 <h1>Submissions</h1>
 
+</header>
+
+ <hr />
 </aside>
 
 <section id="main">
@@ -43,6 +48,6 @@
 </p>
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+
 
 </section>

@@ -1,6 +1,6 @@
 <aside>
 	<header>
-		 <p><%= link_to 'Back', unit_path(@task.unit.id) %></p>
+	<section id="back"> <%= link_to 'Back', unit_path(@task.unit.id) %></p>
 		<h1> <%= @task.title%> </h1>
 	</header>
 	<p> <%= @task.description %> </p>
@@ -10,7 +10,6 @@
 
 	<%# Show options to edit task ONLY if current user is an instructor %>
 	<% if @current_user.is_instructor?(@task.unit.cohort) %>
-	<br />
 	<hr />
 	<h3>Instructor Options</h3>
 	<ul> 

@@ -1,8 +1,17 @@
+<aside>
+	<header>
+
+		<section id="back"> <%= link_to 'Back', comments_path %> </section>
+
+	</header>	
+
+</aside>
+
 <section id="main">
 
-<h1>New comment</h1>
+	<h2>New Comment</h2>
+	<section class="module">
+		<%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', comments_path %>
+	</section>
 </section>

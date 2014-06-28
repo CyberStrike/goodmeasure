@@ -1,11 +1,12 @@
 <aside>
   <header>
+  <section id="back"> <%= link_to 'Back', root_path %></section>
     <h1> <%= @cohort.name %> </h1>
     <p> <%= @cohort.description %> </p>
 
     <% if @current_user.is_instructor?(@cohort) %>
 
-    <br />
+
     <hr />
 
     <h3>Instructor Options</h3>

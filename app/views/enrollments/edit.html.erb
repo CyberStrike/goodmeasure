@@ -1,11 +1,14 @@
 <aside> 
-<%= link_to 'Back', enrollments_path %>
+	<header> 
+		<section id="back"> <%= link_to 'Back', enrollments_path %> </section>
+	</header>
 </aside>
 
 <section id="main">
 
-<h1>Editing enrollment</h1>
-
-<%= render 'form' %>
+<h1>Edit Enrollment</h1>
+	<section class="module">
+		<%= render 'form' %>
+	</section>
 
 </section>

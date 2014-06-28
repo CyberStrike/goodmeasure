@@ -1,15 +1,16 @@
 <aside> 
 <header> 
-<%= link_to 'Back', admin_path %> 
+  <section id="back"> <%= link_to 'Back', admin_path %> </section>
 </header>
 </aside>
 
 <section id="main">
 
 <h2>New cohort</h2>
-
+<section class="module">
+	
 <%= form_for @cohort, url: admin_cohorts_path do |f| %>
 <%= render partial: 'form', locals: {f: f} %>
 <% end %>
-
+</section>
 </section>

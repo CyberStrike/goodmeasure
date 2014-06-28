@@ -1,11 +1,15 @@
-<aside></aside>
+<aside>
+	<header>
+		<section id="back"> <%= link_to 'Back', cohorts_path %> </section>
+	</header>	
+</aside>
 
 <section id="main">
-<h1>Editing cohort</h1>
+	<h2>Edit Cohort</h2>
+	<section class="module">
 
-<%= render 'form' %>
+		<%= render 'form' %>
+	</section>
 
-<%= link_to 'Show', @cohort %> |
-<%= link_to 'Back', cohorts_path %>
 </section>
 

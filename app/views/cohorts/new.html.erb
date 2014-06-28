@@ -1,10 +1,15 @@
-<section class="full">
-<%= link_to 'Back', cohorts_path %>
-<h1>New cohort</h1>
-</section>
+<aside>
+	<header>
+		<section id="back"> <%= link_to 'Back', cohorts_path %> </section>
+	</header>
+</aside>
 
-<section class="half">
 
-<%= render 'form' %>
+<section id="main">
 
+	<h1>New cohort</h1>
+	<section class="module">
+
+		<%= render 'form' %>
+	</section>
 </section>

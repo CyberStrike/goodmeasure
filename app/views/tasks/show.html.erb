@@ -31,39 +31,47 @@
 	<p> <%= @current_user.submission_for(@task).submission %> <br>
 		Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
 
+	<% @current_user.submission_for(@task).comments.each do |comment| %>
+		<p><%= comment.user.username %>: <%= comment.content %></p>
+	<% end %>
+
+
+
+
 		<% # If the submission has already been reviewed %>
 		<% if @current_user.submission_for(@task).has_been_reviewed? %>
 
-		<% # And if the submission is correct %>
-		<% if @current_user.submission_for(@task).is_correct? %>
-		<p>Correct!</p>
+			<% # And if the submission is correct %>
+			<% if @current_user.submission_for(@task).is_correct? %>
+				<p>Correct!</p>
 
-		<% # And if the submission is incorrect %>
-		<% else %>
+			<% # And if the submission is incorrect %>
+			<% else %>
 
-		<% # Display submission form prepopulated with user's last submission %>
-		<%= form_for @current_user.submission_for(@task) do |f| %>
-		<% if @submission.errors.any? %>
-		<div id="error_explanation">
+				<% # Display submission form prepopulated with user's last submission %>
+				<%= form_for @current_user.submission_for(@task) do |f| %>
+				<% if @submission.errors.any? %>
+					<div id="error_explanation">
 
-			<h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-			<ul>
-				<% @submission.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
+						<h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+						<ul>
+							<% @submission.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+							<% end %>
+						</ul>
+					</div>
 				<% end %>
-			</ul>
-		</div>
-		<% end %>
-		<div class="field">
-			<%= f.label :submission %><br>
-			<%= f.text_area :submission, value: @current_user.submission_for(@task).submission %>
-		</div>
-		<%= f.hidden_field :correctness, value: false %>
-		<%= f.hidden_field :reviewed, value: false %>
-		<div class="actions">
-			<%= f.submit %>
-		</div>
-		<% end %>
+
+				<div class="field">
+					<%= f.label :submission %><br>
+					<%= f.text_area :submission, value: @current_user.submission_for(@task).submission %>
+				</div>
+				<%= f.hidden_field :correctness, value: false %>
+				<%= f.hidden_field :reviewed, value: false %>
+				<div class="actions">
+					<%= f.submit %>
+				</div>
+			<% end %>
 		<% end %>
 
 		<% # If the submission is pending evaluation %>

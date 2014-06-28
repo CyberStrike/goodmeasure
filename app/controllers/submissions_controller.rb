@@ -43,7 +43,10 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1.json
   def update
     respond_to do |format|
+      params[:commit] == "Correct" ? @submission.correctness = true : @submission.correctness = false
       if @submission.update(submission_params)
+        @comment = Comment.create(comment_params[:comment])
+
         format.html { redirect_to cohort_submissions_path(@submission.task.unit.cohort), notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else
@@ -81,5 +84,9 @@ class SubmissionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
       params.require(:submission).permit(:user_id, :task_id, :submission, :correctness, :reviewed, :percieved_points, :actual_points)
+    end
+
+    def comment_params
+      params.require(:submission).permit(comment: [:submission_id, :user_id, :content])
     end
 end

@@ -54,16 +54,3 @@ class User < ActiveRecord::Base
 		self.role(cohort).title == "Student"
 	end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-

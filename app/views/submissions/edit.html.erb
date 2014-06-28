@@ -9,15 +9,22 @@
 
 <section class="module">
 
-	<section class="review-buttons">
 
-  <%= button_to "Correct", submission_path(:submission => {
-    reviewed: true, correctness: true}), method: :patch %>
+<%= form_for @submission do |form| %>
 
-  <%= button_to "Incorrect", submission_path(:submission => {
-    reviewed: true, correctness: false}), method: :patch %>
+	<% # Fields for optional administrator comment %>
+	<%= form.fields_for :comment do |f| %>
+		<%= f.hidden_field :submission_id, value: @submission.id %>
+		<%= f.hidden_field :user_id, value: @current_user.id %>
+		<%= f.label :content %>
+		<%= f.text_field :content %>
+	<% end %>
 
-    </section>
+	<%= form.hidden_field :reviewed, value: true %>
+
+	<%= form.submit "Correct" %>
+	<%= form.submit "Incorrect" %>
+<% end %>
 
 </section>
 

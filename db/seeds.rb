@@ -29,16 +29,17 @@ cohorts_list = [
 ]
 
 unit_list = [
-  [ "walter", "Walter", "Latimer", "walter@walterlatimer.com", true ],
-  [ "julie", "Julie", "Kramer", "thejuliekramer@gmail.com", true ],
-  [ "bryan", "Bryan", "Perez", "bryan@webphenoms.com", true ],
-  [ "eddroid", "Ed", "Toro", "ed@toro.net", false ],
-  [ "hector", "Hector", "Garcia", "hector@garcia.net", false ],
-  [ "juha", "Juha", "Mikkola", "juha@wyncode.co", false ],
-  [ "johanna", "Jo", "Mikkola", "jo@wyncode.co", false ],
-  [ "chris", "Chris", "Scott", "chris@wyncode.co", false ],
-  [ "bryce", "Bryce", "Lastname", "bryce@lastname.co.uk", false ],
-  [ "frank", "Frank", "Ortiz", "frank@wyncode.co", false ]
+  ["Ruby Syntax", "Ruby is a Turing complete programming language. It was created in the mid-90s
+    by Japanese computer scientist and software programmer Yukihiro 'Matz' Matsumoto." ],
+  ["Ruby Data Types", "Recall the Ruby syntax from the previous lecture. Like an English sentence, it has a 
+    subject. The subject has a list of allowed methods, which we can view by using the 
+    “methods” method. Each method is applied to a list of arguments." ],
+  ["Intro to Boolean Objects", "Boolean Algebra is a part of algebra that was introduced in 1854 by George Boole. 
+    It helped to bridge the gap between the philosophical logic of Aristotle and math by introducing mathematical 
+    quations to represent Aristotle’s arguments." ],
+  ["Flow Control", "The reason why statements using if/else are called flow control is because it allows 
+    you to change the way Ruby flows through a program. Instead of reading every line 
+    from top to bottom, Ruby will skip over lines based on a boolean value." ],
 ]
 
 user_list.each do |username, first, last, email, admin|
@@ -57,8 +58,27 @@ cohorts_list.each do |name, description|
   school_id: 1)
 end
 
-School.create(name:'Wyncode', subdomain:'wyncode', description:'Lorem Ipsum')
+unit_list.each do |name, description|
+  Unit.create(name: name, 
+  description: description, 
+  cohort_id: 1)
+end
+
+unit_list.each do |name, description|
+  Unit.create(name: name, 
+  description: description, 
+  cohort_id: 2)
+end
+
+unit_list.each do |name, description|
+  Unit.create(name: name, 
+  description: description, 
+  cohort_id: 3)
+end
+
+School.create(name:'Wyncode', subdomain:'wyncode', description:'A development boot camp immersing students in a demanding and inspiring learning environment engineered to develop successful coders with business acumen.')
 
 Role.create(title:'Student')
 Role.create(title:'TA')
 Role.create(title:'Instructor')
+

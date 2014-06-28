@@ -42,6 +42,14 @@ unit_list = [
     from top to bottom, Ruby will skip over lines based on a boolean value." ],
 ]
 
+task_list = [
+  ["Ruby Data Types - Fixnum","Write a number large enough such that calling the “class” method returns Bignum rather than Fixnum. How many digits long was it?"],
+  ["Ruby Data Types - Float","If you round -1.5, is the answer -1 or -2?"],
+  ["Ruby Data Types - String","Which is “greater”, “A” or “a”?"],
+  ["Ruby Data Types - Array","Using a combination of Array’s join method and String’s split method, write a line of code that converts [1,2,3] into ['1', '2', '3']."],
+]
+
+
 user_list.each do |username, first, last, email, admin|
   User.create(username: username,
 	first_name: first,
@@ -64,17 +72,13 @@ unit_list.each do |name, description|
   cohort_id: 1)
 end
 
-unit_list.each do |name, description|
-  Unit.create(name: name, 
-  description: description, 
-  cohort_id: 2)
+task_list.each do |title, description|
+  Task.create(title: title,
+  description: description,
+  unit_id: 1)
 end
 
-unit_list.each do |name, description|
-  Unit.create(name: name, 
-  description: description, 
-  cohort_id: 3)
-end
+
 
 School.create(name:'Wyncode', subdomain:'wyncode', description:'A development boot camp immersing students in a demanding and inspiring learning environment engineered to develop successful coders with business acumen.')
 

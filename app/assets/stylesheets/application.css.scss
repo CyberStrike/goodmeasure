@@ -229,3 +229,41 @@ ul a {
   margin-top: 60px;
   margin-left: 260px;
 }
+
+.submitted-answer {
+  border-color: $left-panel-color;
+  padding: 20px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.next-previous {
+    margin-top: 50px;
+    color: white;
+    font-size: 1rem;
+
+  a {
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      color: darken($left-panel-color, 25)
+    }
+    &:active {
+    }
+    }
+
+ul a {
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      color: darken($left-panel-color, 25)
+    }
+    &:active {
+    }
+  }
+}
+

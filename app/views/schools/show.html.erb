@@ -1,22 +1,28 @@
 <aside>
-<h1> <%= @school.name %> Dashboard </h1>
-<p> <%= @school.description %> </p>
+	<header>
+		<h1> <%= @school.name %> Dashboard </h1>
+		<p> <%= @school.description %> </p>
+		<hr />
+	</header>
 </aside>
 
-<section id="main">
-
+<section id="main">`
 
 	<h2>Cohorts</h2>
 
-<section class="module">
-	<% @current_user.cohorts.each do |cohort| %>
+	<section class="module">
 
-	<article class="admin-cohort">
+		<% @current_user.cohorts.each do |cohort| %>
 
-		<h3><%= link_to cohort.name, cohort_path(cohort) %></h3>
-		<p><%= cohort.description %></p>
-		<p><small>You're a<%= "n" if @current_user.is_instructor?(cohort) %> <%= @current_user.role(cohort).title %></small></p>
+		<article class="admin-cohort">
 
-	</article>
-	<% end %>
-</section>
+			<h3><%= link_to cohort.name, cohort_path(cohort) %></h3>
+
+			<p><%= cohort.description %></p>
+
+			<p><small>You're a<%= "n" if @current_user.is_instructor?(cohort) %> <%= @current_user.role(cohort).title %></small></p>
+
+		</article>
+		<% end %>
+	</section>
+	</section>

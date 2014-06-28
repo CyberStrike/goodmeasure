@@ -1,8 +1,10 @@
 <aside>
 	<header> 
-		<%= link_to 'Back', admin_path %>
+	
+		<section id="back"> <%= link_to 'Back', admin_path %> </section>
 
-		<h1><%= @school.name %> <%= @cohort.name %> </h1>
+		<h1> <%= @cohort.name %> </h1>
+
 	</header>
 	<p><%= @cohort.description %></p>
 

@@ -1,23 +1,27 @@
-<section class="half">
+<aside>
+	<header> 
+		<h1> </h1>
+		<p> <%= link_to 'Back', comments_path %> </p>
+	</header>
+</aside>
 
-<p id="notice"><%= notice %></p>
+<section id="main">
 
-<p>
-  <strong>User:</strong>
-  <%= @comment.user %>
-</p>
+	<section class="module">
 
-<p>
-  <strong>Submission:</strong>
-  <%= @comment.submission %>
-</p>
+		<article class="admin-cohort">
+		
+		 <ul>
+			<li>  <strong>User:</strong> <%= @comment.user %> </li>
 
-<p>
-  <strong>Content:</strong>
-  <%= @comment.content %>
-</p>
+			<li> <strong>Submission:</strong> <%= @comment.submission %> </li>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+			<li> <strong>Content:</strong> <%= @comment.content %> </li>
+		 </ul>
+			<p class="footer-text"> <%= link_to 'Edit', edit_comment_path(@comment) %> </p>
+
+		</article>
+
+	</section>
 
 </section>

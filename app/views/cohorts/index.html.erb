@@ -1,29 +1,22 @@
+<aside>
+<header>
+<h1>
+<p></p>
+</h1>
+</header>
+</aside>
 
-<section class="full">
-<h1>Listing cohorts</h1>
-</section>
-
-<section class="half">
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>School</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<section id="main">
+<h2>Listing cohorts</h2>
+<section class="module">
     <% @cohorts.each do |cohort| %>
-      <tr>
-        <td><%= cohort.name %></td>
-        <td><%= cohort.description %></td>
-        <td><%= cohort.school %></td>
-        <td><%= link_to 'Show', cohort %></td>
-        <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <article> 
+        <%= cohort.name %>
+        <%= cohort.description %>
+        <%= cohort.school %>
+        <%= link_to 'Show', cohort %>
+        <%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </article> 
     <% end %>
-  </tbody>
-</table>
+</section>
 </section>

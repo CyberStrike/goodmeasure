@@ -1,9 +1,13 @@
-<section class="half">
+<aside> 
+<header> 
+<%= link_to 'Back', admin_path %> 
+</header>
+</aside>
 
-<%= link_to 'Back', admin_path %>
-<br>
-<h1>New cohort</h1>
-<br>
+<section id="main">
+
+<h2>New cohort</h2>
+
 <%= form_for @cohort, url: admin_cohorts_path do |f| %>
 <%= render partial: 'form', locals: {f: f} %>
 <% end %>

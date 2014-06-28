@@ -1,6 +1,4 @@
- <section class="module">
-
- <h3>Create A New Enrollment</h3>
+ <h2>Enroll User</h2>
 
   <%= form_for @enrollment, url: admin_enrollments_path do |f| %>
 
@@ -10,17 +8,17 @@
         <% end %>
     <% end %>
 
-    Add
+Add
 
     <% # If page has a user, use that.  If it has a cohort, don't show currently enrolled users. %>
     <% if @user %>
-      <%= @user.username %>
+      <%= @user.first_name %>
       <%= f.hidden_field :user_id, value: @user.id %>
     <% else %>
       <%= f.collection_select :user_id, @school.available_users(@cohort), :id, :username %>
     <% end %>
 
-    to 
+to 
 
     <% # If page has a cohort, use that.  If it has a user, don't show any cohorts user is already in. %>
     <% if @cohort %>
@@ -30,12 +28,10 @@
       <%= f.collection_select :cohort_id, @school.available_cohorts(@user), :id, :name %>
     <% end %>
 
-    as a(n)
+as a(n)
 
     <%= f.collection_select :role_id, Role.all, :id, :title %>
 
     <%= f.submit %>
 
   <% end %>
-
-</section>

@@ -1,10 +1,12 @@
 <aside>
   <header>
     <h1><%= @school.name %> Admin Dashboard</h1>
-    <p> </p>
+    <p> <%= @school.description %> </p>
+<hr />
+ <h3>Admin Options</h3>
     <ul>
       <li> <%= link_to 'New Cohort', new_admin_cohort_path %></li>
-      <li>  <%= link_to "School settings" %> </li>
+      <li>  <%= link_to "School Settings" %> </li>
     </ul>
   </header>
 </aside>
@@ -14,20 +16,26 @@
   <h2>Cohorts</h2>
 
   <section class="module">
+
     <% @school.cohorts.each do |cohort| %>
+
     <article class="admin-cohort">
+
      <h3> <%= link_to cohort.name, admin_cohort_path(cohort) %></h3>
       <p> <%= cohort.description %></p>
       <p class="footer-text"> Number Of Students: <%= cohort.students.size %> | Number Of Staff: <%= cohort.staff.size %> |  <%= link_to "", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></p>
+
       </article>
         <% end %>
+
   </section> 
  
+</section>
 
   <% #render partial: 'admin/enrollments/form' if @school.has_users? and @school.has_cohorts? %>
 
   <% #render 'admin/invites/form' %>
 
 
-</section>
+
 

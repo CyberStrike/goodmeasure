@@ -10,6 +10,10 @@ class Admin::UsersController < AdminController
     @enrollment = Enrollment.new
   end
 
+  def new
+    @user = User.new
+  end
+
 
   # GET /users/1/edit
   def edit

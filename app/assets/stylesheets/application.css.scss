@@ -135,6 +135,18 @@ aside {
       font-size: .9rem;
   }
 
+  a {
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      color: darken($left-panel-color, 25)
+    }
+    &:active {
+    }
+    }
+
 ul a {
     
     &:link, &:visited {

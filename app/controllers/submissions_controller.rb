@@ -28,6 +28,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(submission_params)
 
+
     respond_to do |format|
       if @submission.save
         format.html { redirect_to task_path(@submission.task), notice: 'Submission was successfully created.' }
@@ -44,6 +45,8 @@ class SubmissionsController < ApplicationController
   def update
     respond_to do |format|
       if @submission.update(submission_params)
+        @comment = Comment.create(comment_params[:comment])
+
         format.html { redirect_to cohort_submissions_path(@submission.task.unit.cohort), notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else
@@ -81,5 +84,9 @@ class SubmissionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
       params.require(:submission).permit(:user_id, :task_id, :submission, :correctness, :reviewed, :percieved_points, :actual_points)
+    end
+
+    def comment_params
+      params.require(:submission).permit(comment: [:submission_id, :user_id, :content])
     end
 end

@@ -1,6 +1,7 @@
 class Submission < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :task
+	has_many :comments
 
 	validates :submission,  presence: true
 	validates :correctness, inclusion: [true, false]

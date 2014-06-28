@@ -9,15 +9,18 @@
 
 <section class="module">
 
-	<section class="review-buttons">
 
-  <%= button_to "Correct", submission_path(:submission => {
-    reviewed: true, correctness: true}), method: :patch %>
-
-  <%= button_to "Incorrect", submission_path(:submission => {
-    reviewed: true, correctness: false}), method: :patch %>
-
-    </section>
+<%= form_for @submission do |form| %>
+	<%= form.fields_for :comment do |f| %>
+		<%= f.hidden_field :submission_id, value: @submission.id %>
+		<%= f.hidden_field :user_id, value: @current_user.id %>
+		<%= f.label :content %>
+		<%= f.text_field :content %>
+	<% end %>
+	<%= form.hidden_field :reviewed, value: true %>
+	<%= form.submit "Correct", name: :correctness, value: true %>
+	<%= form.submit "Incorrect", name: :correctness, value: false %>
+<% end %>
 
 </section>
 

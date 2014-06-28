@@ -6,7 +6,7 @@
 	<p> <%= @task.description %> </p>
 
 	<% # Link to previous and next task within the unit %>
-	<p><%= link_to "Previous Task", @task %> <%= link_to "Next Task", @task %></p>
+	<p><%= link_to "Previous Task", task_path(@task.previous) %> <%= link_to "Next Task", task_path(@task.next) %></p>
 
 	<%# Show options to edit task ONLY if current user is an instructor %>
 	<% if @current_user.is_instructor?(@task.unit.cohort) %>

@@ -54,7 +54,7 @@ h1 {
 
 h2 {
   margin-top: 70px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -108,11 +108,6 @@ p {
 
 }
 
-.quarter {
-  @include module(3);
-  @include omega(4n);
-  text-align: center;
-}
 .avatar img {
   border-radius: 50%;
 }
@@ -168,9 +163,8 @@ ul a {
 #main {
   @include span-columns(8);
   @include reset-display;
-  // @include pad();
   height: 100%;
-  // display: inline-block;
+  display: inline-block;
   float: right;
   background-color: white;
   line-height: 1.5;
@@ -199,10 +193,21 @@ ul a {
 #enrollment {
   margin-top: 100px;
   text-align: center;
-
   h2 { margin-bottom: 20px;
-
   }
+}
+
+#enrolled-users {
+   width: 90%;
+   text-align: center;
+   margin-left: 20px;
+   margin-top: 20px;
+}
+
+#users {
+  @include span-columns(3);
+  @include omega(4n);
+  text-align: center;
 
 }
 

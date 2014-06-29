@@ -8,9 +8,7 @@
 		<% if @current_user.is_staff?(@task.unit.cohort) %>
 		<hr />
 		<h3>Instructor Options</h3>
-		<ul> 
-			<li> <%= link_to 'Edit Task', edit_task_path(@task) %> </li>
-		</ul>
+			<p class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
 		<% end %>
 		<% # Link to previous and next task within the unit %>
 		<p class="next-previous"> <hr /> <strong>  <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %> | <%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong> </p>

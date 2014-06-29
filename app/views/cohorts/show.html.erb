@@ -6,10 +6,10 @@
     <% if @current_user.is_staff?(@cohort) %>
     <hr />
     <h3>Instructor Options</h3>
-    <ul>
-      <li> <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %></li>
-      <li> <%= link_to 'Show All Submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff?(@cohort) %></li>
-    </ul>
+    
+      <p class="aside-buttons"> <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %></p>
+      <p class="aside-buttons"> <%= link_to 'Show All Submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff?(@cohort) %></p>
+
     <% end %>
   </header>
 </aside>

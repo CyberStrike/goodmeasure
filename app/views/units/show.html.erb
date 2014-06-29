@@ -8,10 +8,10 @@
   <% if @current_user.is_instructor?(@unit.cohort) %>
   <hr />
   <h3>Instructor Options</h3>
-  <ul>
-    <li> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></li>
-    <li><%= link_to 'Edit Unit', edit_unit_path(@unit) %> </li>
-  </ul>
+ 
+   <p class="aside-buttons"> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></p>
+   <p class="aside-buttons"><%= link_to 'Edit Unit', edit_unit_path(@unit) %> </p>
+
   <% end %>
 
 </aside>

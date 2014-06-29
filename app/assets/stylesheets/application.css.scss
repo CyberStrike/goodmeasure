@@ -70,7 +70,7 @@ p {
 
 .module {
   @include shift(1);
-  @include span-columns(10);
+  @include span-columns(11);
   padding: 10px;
   display: inline-block;
   margin-top: 40px;
@@ -93,6 +93,19 @@ p {
    &:last-child {
     border-bottom: none;
    }
+}
+
+.cohort-unit {
+  @include span-columns(5);
+  @include omega(2n);
+  display: inline-block;
+   padding: 20px;
+   height: 300px;
+   vertical-align: top;
+   // border-bottom: 1px solid #ccc;
+   // &:last-child {
+   //  border-bottom: none;
+   // }
 }
 
 .review-buttons {

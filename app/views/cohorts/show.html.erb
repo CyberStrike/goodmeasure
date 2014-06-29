@@ -26,14 +26,14 @@
   <section class="module">
 
    <% @cohort.units.each do |unit| %>
-   <article class="admin-cohort">
+   <article class="cohort-unit">
      <h3> <%= link_to unit.name, unit_path(unit) %> (<%= pluralize(unit.tasks.count, "Task") %>)</h3>
-     <p> <%= unit.description %> </p>
+     <p> <%= unit.description.truncate(250) %> </p>
 
      <% if @current_user.is_instructor?(@cohort) %>
      <p class="footer-text"> <%= link_to 'Edit', edit_unit_path(unit.id), class: "fa fa-cog" %> </p> 
      <% end %>
-     <article class="admin-cohort">
+   </article>
 
       <% end %>
 

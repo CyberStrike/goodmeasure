@@ -42,5 +42,3 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
 end
-
-gem 'unicorn'

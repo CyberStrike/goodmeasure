@@ -19,10 +19,12 @@
 
 <section id="main">
 
-<h2>Tasks in <%= @unit.name %></h2>
-
-
 <section class="module">
+
+  <br />
+  <p class="small-header">Tasks in <%= @unit.name %></p>
+  <hr />
+
    <% @unit.tasks.each do |task| %>
   <article class="admin-cohort">
       <h3><%= link_to task.title, task %></h3>

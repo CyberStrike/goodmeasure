@@ -1,14 +1,10 @@
 <aside>
   <header>
-  <section id="back"> <%= link_to 'Back', root_path %></section>
+    <section id="back"> <%= link_to 'Back', root_path %> </section>
     <h1> <%= @cohort.name %> </h1>
     <p> <%= @cohort.description %> </p>
-
     <% if @current_user.is_staff?(@cohort) %>
-
-
     <hr />
-
     <h3>Instructor Options</h3>
     <ul>
       <li> <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %></li>
@@ -18,9 +14,14 @@
   </header>
 </aside>
 
-
 <section id="main">
+<<<<<<< HEAD
   <!-- <figure class="cover-photo"><img src="https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg" style="width:100%;"></figure> -->
+=======
+
+  <h2> Units </h2>
+
+>>>>>>> 10527a2639e387141502dd9a9cf92b09894dc9dd
   <section class="module">
 
   <br />
@@ -28,14 +29,19 @@
   <hr />
 
    <% @cohort.units.each do |unit| %>
-   <article class="admin-cohort">
+   
+   <article class="main-article">
+
      <h3> <%= link_to unit.name, unit_path(unit) %> (<%= pluralize(unit.tasks.count, "Task") %>)</h3>
      <p> <%= unit.description %> </p>
 
      <% if @current_user.is_instructor?(@cohort) %>
-     <p class="footer-text"> <%= link_to 'Edit', edit_unit_path(unit.id), class: "fa fa-cog" %> </p> 
+     <p class="footer-text"> <%= link_to ' Edit Unit', edit_unit_path(unit.id), class: "fa fa-cog" %> </p> 
+    
+    </article>
+
      <% end %>
-     <article class="admin-cohort">
+     
 
       <% end %>
 

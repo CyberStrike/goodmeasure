@@ -32,6 +32,7 @@
 				<p class="footer-text">	Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
 
 				<% @current_user.submission_for(@task).comments.each do |comment| %>
+				<figure class="avatar small-avatar"><%= image_tag comment.user.avatar.url(:thumb) %></figure>
 				<p><%= comment.user.username %>: <%= comment.content %></p>
 				<% end %>
 

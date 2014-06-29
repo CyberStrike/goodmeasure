@@ -1,7 +1,8 @@
 class Submission < ActiveRecord::Base
+
 	belongs_to :user
 	belongs_to :task
-	has_many :comments
+	has_many :comments, as: :commentable
 
 	validates :submission,  presence: true
 	validates :correctness, inclusion: [true, false]

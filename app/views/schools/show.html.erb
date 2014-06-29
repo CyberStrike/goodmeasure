@@ -8,13 +8,13 @@
 
 <section id="main">`
 
-	<h2>Cohorts</h2>
+	<h2> Cohorts </h2>
 
 	<section class="module">
 
 		<% @current_user.cohorts.each do |cohort| %>
 
-		<article class="admin-cohort">
+		<article class="main-article">
 
 			<h3><%= link_to cohort.name, cohort_path(cohort) %></h3>
 
@@ -25,4 +25,4 @@
 		</article>
 		<% end %>
 	</section>
-	</section>
+</section>

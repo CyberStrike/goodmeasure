@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_action :school, :current_user, :redirect_to_login
-	helper_method :current_user
+	helper_method :current_user 
 
 	private
 

@@ -8,19 +8,19 @@
 	</header>
 	<p><%= @cohort.description %></p>
 	<hr />
-	<p> <%= link_to " Edit Cohort", edit_admin_cohort_path(@cohort), class: "fa fa-cog" %> </p>
+<p class="aside-buttons"> <%= link_to " Edit Cohort", edit_admin_cohort_path(@cohort), class: "fa fa-cog" %> </p>
 
 </aside>
 
 <section id="main">
+
+   <p class="small-header"> Enrolled Users <p>
 
 	<section id="enrollment">
 
 		<%= render partial: 'admin/enrollments/form' if @school.has_users_not_in? @cohort %>
 
 	</section>
-
-	<h2>Currently Enrolled Users</h2>
 
 	<section id="enrolled-users">
 

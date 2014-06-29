@@ -53,7 +53,7 @@ h1 {
 }
 
 h2 {
-  margin-top: 70px;
+  margin-top: 30px;
   font-size: 2rem;
   text-align: center;
 }
@@ -73,7 +73,7 @@ p {
   @include span-columns(10);
   padding: 10px;
   display: inline-block;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .cover-photo {
@@ -130,6 +130,12 @@ p {
 .small-avatar {
   width: 100px;
   height: 100px;
+}
+
+.avatar-large {
+  height: 200px;
+  width: 200px;
+  margin: -100px auto 0;
 }
 
 .admin {
@@ -193,6 +199,19 @@ ul a {
   }
  }
 
+ #profile {
+  @include span-columns(12);
+  margin: auto;
+  @include reset-display;
+  height: 100%;
+  display: inline-block;
+  background-color: white;
+  line-height: 1.5;
+  h1, h2, h3, h4, h5, h6 {
+  color: $left-panel-color;
+  }
+ }
+
 .topic-list-item:hover {
   background: #eee;
 }
@@ -211,17 +230,14 @@ ul a {
 }
 
 #enrollment {
-  margin-top: 100px;
+  margin-top: 20px;
   text-align: center;
-  h2 { margin-bottom: 20px;
-  }
 }
 
 #enrolled-users {
    width: 90%;
    text-align: center;
    margin-left: 20px;
-   margin-top: 20px;
 }
 
 #users {
@@ -233,11 +249,26 @@ ul a {
 
 #user-partial {
   text-align: center;
-  margin-top: 60px;
 }
 
 #back {
   margin-top: 20px;
+
+  a { 
+
+    padding: 10px; 
+    border: 1px solid transparent;
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      background-color: lighten ($left-panel-color, 10);
+      border: 1px solid white;
+    }
+    &:active {
+    }
+    }
 }
 
 .invite {
@@ -266,6 +297,10 @@ ul a {
     margin-top: 100px;
     color: white;
     font-size: 1rem;
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+    background: lighten($left-panel-color,5);
 
   a {
     
@@ -293,12 +328,112 @@ ul a {
 }
 
 .small-header {
+  margin-top: 80px;
   color: #999;
   text-transform: uppercase;
   font: 10px, 'Proxima Nova',sans-serif;
-  padding: 5px;
+  border-bottom: 1px solid #999;
+  @include shift(1)
 }
 
+.aside-buttons {
+  padding: 5px;
+
+  a { 
+
+    padding: 10px; 
+     border: 1px solid transparent;
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      background-color: lighten ($left-panel-color, 10);
+      border: 1px solid white;
+    }
+    &:active {
+    }
+    }
+
+ul a {
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      background-color: lighten ($left-panel-color, 10);
+      border: 1px solid white;
+
+    }
+    &:active {
+    }
+  }
+
+}
+
+// Full-width image for profile pages
+.profile-cover-photo {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.image-gradient {
+  $image-gradient-color-top: teal; 
+  $transparency-top: .6;
+  $image-gradient-color-bottom: green; 
+  $transparency-bottom: .6;
+  $vertical-angle: 180deg;
+
+  $image-gradient-color-left: red; 
+  $transparency-left: .9;
+  $image-gradient-color-right: yellow; 
+  $transparency-right: .8;
+  $horizontal-angle: 90deg;
+
+  background: url(https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg);
+  background-size: 100% 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  padding: 12em 0 12em 0;
+  position: relative;
+  width: 100%;
+  display: table;
+  margin-bottom: $base-line-height;
+
+  .copy {
+    position: absolute;
+    left: 50%;
+    margin: auto;
+    z-index: 999;
+    top: 40%;
+    text-align: center;
+
+    p {
+      padding: 1em 2em;
+      position: relative;
+      left: -50%;
+      color: white;
+      font-weight: 800;
+      background-color: transparentize(black, .6);
+    }
+  }
+
+  .overlay {
+    @include linear-gradient($vertical-angle, transparentize($image-gradient-color-top, $transparency-top), 
+      transparentize($image-gradient-color-bottom, $transparency-bottom));
+    display: block;
+    @include position(absolute, 0px 0px 0px 0px);
+
+    &:after {
+      content: '';
+      @include linear-gradient($horizontal-angle, transparentize($image-gradient-color-left, $transparency-left), 
+        transparentize($image-gradient-color-right, $transparency-right));
+      display: block;
+      @include position(absolute, 0px 0px 0px 0px);
+    }
+  }
+}
 
 
 

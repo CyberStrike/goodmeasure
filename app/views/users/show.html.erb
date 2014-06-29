@@ -7,6 +7,39 @@
   <section id="profile">
 
   	<h1><%= @current_user.name %></h1>
+  	<table>
+  		<h2>Personal Info</h2>
+  		<tr>
+  			<td>Username: </td>
+  			<td><%= @current_user.username %></td>
+  		</tr>
+
+  		<tr>
+  			<td>First Name: </td>
+  			<td><%= @current_user.first_name %></td>
+  		</tr>
+  	
+  		<tr>
+  			<td>Last Name: </td>
+  			<td><%= @current_user.last_name %></td>
+  		</tr>
+
+  		<tr>
+  			<td>Email: </td>
+  			<td><%= @current_user.email %></td>
+  		</tr>
+  	</table>
+  	<br />
+  	<table>
+  		<h2>Cohorts and Roles</h2>
+  		<tr>
+  			<td>Cohorts: </td>
+  			<% @current_user.cohorts.each do |cohort| %>
+  			<td><%= cohort.name %></td>
+  			<% end %>
+  		</tr>
+
+  	</table>
 
   </section>
 

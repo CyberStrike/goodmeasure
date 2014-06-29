@@ -197,7 +197,7 @@ ul a {
 
  #profile {
   @include span-columns(12);
-  @include shift(3);
+  margin: auto;
   @include reset-display;
   height: 100%;
   display: inline-block;

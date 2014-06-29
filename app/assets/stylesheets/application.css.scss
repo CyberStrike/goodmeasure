@@ -54,7 +54,7 @@ h1 {
 
 h2 {
   margin-top: 70px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -94,7 +94,6 @@ p {
     border-bottom: none;
    }
 }
-
 .cohort-unit {
   @include span-columns(5);
   @include omega(2n);
@@ -106,6 +105,13 @@ p {
    // &:last-child {
    //  border-bottom: none;
    // }
+
+.main-article {
+   padding: 10px 0;
+   border-bottom: 1px solid #ccc;
+   &:last-child {
+    border-bottom: none;
+   }
 }
 
 .review-buttons {
@@ -121,11 +127,6 @@ p {
 
 }
 
-.quarter {
-  @include module(3);
-  @include omega(4n);
-  text-align: center;
-}
 .avatar img {
   border-radius: 50%;
 }
@@ -181,9 +182,8 @@ ul a {
 #main {
   @include span-columns(8);
   @include reset-display;
-  // @include pad();
   height: 100%;
-  // display: inline-block;
+  display: inline-block;
   float: right;
   background-color: white;
   line-height: 1.5;
@@ -212,10 +212,21 @@ ul a {
 #enrollment {
   margin-top: 100px;
   text-align: center;
-
   h2 { margin-bottom: 20px;
-
   }
+}
+
+#enrolled-users {
+   width: 90%;
+   text-align: center;
+   margin-left: 20px;
+   margin-top: 20px;
+}
+
+#users {
+  @include span-columns(3);
+  @include omega(4n);
+  text-align: center;
 
 }
 
@@ -242,3 +253,63 @@ ul a {
   margin-top: 60px;
   margin-left: 260px;
 }
+
+.submitted-answer {
+  border-color: $left-panel-color;
+  padding: 20px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.next-previous {
+    margin-top: 100px;
+    color: white;
+    font-size: 1rem;
+
+  a {
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      color: darken($left-panel-color, 25)
+    }
+    &:active {
+    }
+    }
+
+ul a {
+    
+    &:link, &:visited {
+      color: white;
+    }
+    &:hover {
+      color: darken($left-panel-color, 25)
+    }
+    &:active {
+    }
+  }
+}
+
+.small-header {
+  color: #999;
+  text-transform: uppercase;
+  font: 10px, 'Proxima Nova',sans-serif;
+  padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

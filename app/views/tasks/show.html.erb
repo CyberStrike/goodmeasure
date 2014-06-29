@@ -8,22 +8,19 @@
 		<% if @current_user.is_staff?(@task.unit.cohort) %>
 		<hr />
 		<h3>Instructor Options</h3>
-		<ul> 
-			<li> <%= link_to 'Edit Task', edit_task_path(@task) %> </li>
-		</ul>
+			<p class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
 		<% end %>
 		<% # Link to previous and next task within the unit %>
-		<p class="next-previous"> <hr /> <strong>  <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %> | <%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong> </p>
+		<p class="next-previous"> <strong>  <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %> | <%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong> </p>
 
 	</aside>
 
 	<section id="main">
 
+		<p class="small-header">Current Submission</p>
+
 		<section class="module">
 
-			<br />
- 			<p class="small-header">Current Submission</p>
-  			<hr />
 
 			<% if @current_user.is_student?(@task.unit.cohort) %>
 
@@ -31,8 +28,7 @@
 			<% if @current_user.has_submitted?(@task) %>
 
 			<% # Display the user's submission %>
-			<p class="submitted-answer"> <%= @current_user.submission_for(@task).submission %> <p>
-				<br>
+			<article class="submitted-answer"> <p><%= @current_user.submission_for(@task).submission %></p>
 				<p class="footer-text">	Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
 
 				<% @current_user.submission_for(@task).comments.each do |comment| %>
@@ -42,37 +38,36 @@
 				<% # If the submission has already been reviewed %>
 				<% if @current_user.submission_for(@task).has_been_reviewed? %>
 
-				<% # And if the submission is correct %>
-				<% if @current_user.submission_for(@task).is_correct? %>
-				<p>Correct!</p>
+					<% # And if the submission is correct %>
+					<% if @current_user.submission_for(@task).is_correct? %>
+						<p>Correct!</p>
 
-				<% # And if the submission is incorrect %>
-				<% else %>
+					<% # And if the submission is incorrect %>
+					<% else %>
 
-				<% # Display submission form prepopulated with user's last submission %>
-				<%= form_for @current_user.submission_for(@task) do |f| %>
-				<% if @submission.errors.any? %>
-				<div id="error_explanation">
+						<% # Display submission form prepopulated with user's last submission %>
+						<%= form_for @current_user.submission_for(@task) do |f| %>
+						<% if @submission.errors.any? %>
+							<div id="error_explanation">
 
-					<h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-					<ul>
-						<% @submission.errors.full_messages.each do |message| %>
-						<li><%= message %></li>
+							<h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+							<ul>
+								<% @submission.errors.full_messages.each do |message| %>
+								<li><%= message %></li>
+								<% end %>
+							</ul>
+							</div>
 						<% end %>
-					</ul>
-				</div>
-				<% end %>
-
-				<div class="field">
-					<%= f.label :submission %><br>
-					<%= f.text_area :submission, value: @current_user.submission_for(@task).submission %>
-				</div>
-				<%= f.hidden_field :correctness, value: false %>
-				<%= f.hidden_field :reviewed, value: false %>
-				<div class="actions">
-					<%= f.submit %>
-				</div>
-				<% end %>
+						<div class="field">
+						<%= f.label :submission %><br>
+						<%= f.text_area :submission, value: @current_user.submission_for(@task).submission %>
+						</div>
+						<%= f.hidden_field :correctness, value: false %>
+						<%= f.hidden_field :reviewed, value: false %>
+						<div class="actions">
+							<%= f.submit %>
+						</div>
+					<% end %>
 				<% end %>
 
 				<% # If the submission is pending evaluation %>

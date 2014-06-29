@@ -87,6 +87,6 @@ class SubmissionsController < ApplicationController
     end
 
     def comment_params
-      params.require(:submission).permit(comment: [:submission_id, :user_id, :content])
+      params.require(:submission).permit(comment: [:commentable_id, :commentable_type, :user_id, :content])
     end
 end

@@ -11,9 +11,9 @@
 		<article class="main-article">
 		
 		 <ul>
-			<li>  <strong>User:</strong> <%= @comment.user %> </li>
+			<li>  <strong>User:</strong> <%= @comment.user.username %> </li>
 
-			<li> <strong>Submission:</strong> <%= @comment.submission %> </li>
+			<li> <strong>Submission:</strong> <%= @comment.commentable.submission %> </li>
 
 			<li> <strong>Content:</strong> <%= @comment.content %> </li>
 		 </ul>

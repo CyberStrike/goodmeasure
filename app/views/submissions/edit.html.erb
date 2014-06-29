@@ -14,7 +14,8 @@
 
 	<% # Fields for optional administrator comment %>
 	<%= form.fields_for :comment do |f| %>
-		<%= f.hidden_field :submission_id, value: @submission.id %>
+		<%= f.hidden_field :commentable_id, value: @submission.id %>
+		<%= f.hidden_field :commentable_type, value: @submission.class %>
 		<%= f.hidden_field :user_id, value: @current_user.id %>
 		<%= f.label :content %>
 		<%= f.text_field :content %>

@@ -127,6 +127,10 @@ p {
 .avatar img {
   border-radius: 50%;
 }
+.small-avatar {
+  width: 100px;
+  height: 100px;
+}
 
 .admin {
   background-color: lighten(red, 35);

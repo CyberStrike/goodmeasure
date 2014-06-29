@@ -1,26 +1,28 @@
 <aside>
 	<header> 
+	<h1> <%= link_to 'Invite a New Student', new_admin_invite_path %> </h1>
 	</header>
 </aside>
 
 <section id="main">
 
+
+	
 	<h2>Currently Enrolled Students</h2>
 
-	<section class="module">
+	<section id="enrolled-users">
 
 		<% @users.each do |user| %>
 
-		<article class="quarter">
-			<figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure>
-			<%= link_to user.username, user_path(user) %><%= " (Admin)" if user.admin %><br>
-			<%= user.first_name %> <%= user.last_name %><br>
-			<%= user.email %><br>
-			<%= link_to 'Edit', edit_admin_user_path(user) %>
-		</article>
-		<% end %>
-	</section>
-	<section class="module">
-		<p> <%= link_to 'Invite a New Student', new_admin_invite_path %> </p>
+		<section id="users">
+			<ul> 
+				<li> <figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure> </li>
+				<li> <%= link_to user.username, user_path(user) %><%= " (Admin)" if user.admin %> </li>
+				<li> <%= user.first_name %> <%= user.last_name %> </li>
+				<li> <%= user.email %> </li>
+				<li> <%= link_to 'Edit', edit_admin_user_path(user) %> </li>
+			</section>
+			<% end %>
+		</section>s
 	</section>
 </section>

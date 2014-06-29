@@ -53,4 +53,9 @@ class User < ActiveRecord::Base
 	def is_student?(cohort)
 		self.role(cohort).title == "Student"
 	end
+
+	def name
+		self.first_name + " " + self.last_name
+	end
+
 end

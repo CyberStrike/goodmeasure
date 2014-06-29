@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+  end
 
   # POST /users
   # POST /users.json

@@ -1,16 +1,32 @@
-<aside>
-<header> 
-	<h1> </h1>
-	<p> </p>
-</header>
-</aside>
+  <div class="profile-cover-photo">
+	<img src="https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg" style="width:100%;">
+  </div>
+
+  <figure class="avatar-large avatar"><img src='https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/117/s300/wyncode-logo.jpeg?1395235576'></figure>
+
+  <section id="profile">
+
+  	<h1><%= @current_user.name %></h1>
+
+  </section>
+
+
+ <!--  <div class="image-gradient">
+    <div class="copy"><figure class="cover-photo img-circular"><img src="https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg" style="width:100%;"></figure>
+    </div>
+    <div class="overlay"></div>
+  </div>
+
+	
+	<p><figure class="cover-photo"><img src="https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg" style="width:100%;"></figure></p>
 
 <section id="main">
 	<h2></h2>
 	<section class="module">
 	<article class="main-article">
+		<h1><%= @current_user.first_name %> <%= @current_user.last_name %></h1>
 		<%= render partial: 'user', collection: @users %>
 	</article>
 	</section>
 </section>
-
+ -->

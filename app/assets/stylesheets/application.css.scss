@@ -131,7 +131,7 @@ p {
 
 .avatar img {
   border-radius: 50%;
-  border-bottom: 2px solid #1f3f56;
+  border-bottom: 2px solid $left-panel-color;
 }
 .small-avatar {
   width: 50px;
@@ -215,7 +215,7 @@ ul a {
   background-color: white;
   line-height: 1.5;
   h2 {
-    color: #1f3f56;
+    color: $left-panel-color;
   }
 
   h3 {
@@ -226,7 +226,7 @@ ul a {
  #profile-block {
     @include span-columns(6);
     margin-top: 25px;
-    border: 2px solid #1f3f56;
+    border: 2px solid $left-panel-color;
     padding: 10px;
     height: 200px;
 

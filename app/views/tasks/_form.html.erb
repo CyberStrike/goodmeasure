@@ -19,7 +19,7 @@
     <%= f.text_area :description %>
   </div>
 
-    <%= f.hidden_field :unit_id, value: params[:unit_id] %>
+  <%= f.hidden_field :unit_id, value: params[:unit_id] unless @task.unit %>
 
 
   <div class="actions">

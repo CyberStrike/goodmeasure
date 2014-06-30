@@ -4,7 +4,6 @@
     <h1> <%= @cohort.name %> </h1>
     <p> <%= @cohort.description %> </p>
     <% if @current_user.is_staff?(@cohort) %>
-    <hr />
     <h3>Instructor Options</h3>
     
       <p class="aside-buttons"> <%= link_to 'New Unit', new_cohort_unit_path(@cohort.id) if @current_user.is_instructor?(@cohort) %></p>

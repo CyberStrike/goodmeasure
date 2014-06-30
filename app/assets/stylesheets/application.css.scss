@@ -131,7 +131,7 @@ p {
 
 .avatar img {
   border-radius: 50%;
-  border-bottom: 2px solid $left-panel-color;
+  border-bottom: 2px solid #1f3f56;
 }
 .small-avatar {
   width: 50px;
@@ -215,7 +215,7 @@ ul a {
   background-color: white;
   line-height: 1.5;
   h2 {
-    color: $left-panel-color;
+    color: #1f3f56;
   }
 
   h3 {
@@ -226,7 +226,7 @@ ul a {
  #profile-block {
     @include span-columns(6);
     margin-top: 25px;
-    border: 2px solid $left-panel-color;
+    border: 2px solid #1f3f56;
     padding: 10px;
     height: 200px;
 
@@ -468,10 +468,7 @@ article {
 }
 
 .Sign_Form {
-  // width: 30%;
-  // background-color: $dark-gray;
-  // padding: 1px;
-
+  margin-left: 30px;
   h1,h2,h3,h4,h5,h6,p {
     color: #3b414e;
   }

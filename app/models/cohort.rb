@@ -12,7 +12,7 @@ class Cohort < ActiveRecord::Base
 	validates :description, presence: true 
 
 	validates :name,        uniqueness: { case_sensitive: false },
-                            presence: true                      
+                            presence: true   
    
 	def students
 		self.enrollments.where(role_id:1)

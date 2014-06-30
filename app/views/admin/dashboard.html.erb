@@ -17,7 +17,7 @@
 
   <section class="module">
 
-    <% @school.cohorts.each do |cohort| %>
+    <% @school.cohorts.order(:id).each do |cohort| %>
 
     <article class="admin-cohort">
 

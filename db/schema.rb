@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20140629231617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "cohorts", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -61,6 +67,19 @@ ActiveRecord::Schema.define(version: 20140629231617) do
   end
 
   add_index "invites", ["school_id"], name: "index_invites_on_school_id", using: :btree
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.integer  "price_in_cents"
+    t.integer  "quantity"
+    t.text     "description"
+    t.integer  "category_id"
+    t.boolean  "featured"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "title"

@@ -6,7 +6,7 @@
   <p> <%= @unit.description %> </p>
 
   <% if @current_user.is_instructor?(@unit.cohort) %>
-  <hr />
+
   <h3>Instructor Options</h3>
  
    <p class="aside-buttons"> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></p>
@@ -19,14 +19,14 @@
 
 <section id="main">
 
-    <p class="small-header">Tasks in <%= @unit.name %></p> 
+    <p class="small-header module">Tasks in <%= @unit.name %></p> 
 
 
 
   <section class="module">
 
-   <% @unit.tasks.each do |task| %>
-    <article class="main-article">
+   <% @unit.tasks.order(:created_at).each do |task| %>
+    <article class="main-article cf">
     <h3><%= link_to task.title, task %></h3>
     <p><%= task.description %></p>
 

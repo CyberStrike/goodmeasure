@@ -34,7 +34,7 @@ html, body {
   background-color: white;
   border-radius: 2px;
   font-family: $base-font-family;
-  font-size: 12px;
+  font-size: 1rem;
 }
 
 a { 
@@ -51,7 +51,7 @@ a {
 h1 {
   margin-top: 40px;
   margin-bottom: 20px;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 h2 {
@@ -86,9 +86,6 @@ p {
   }
 }
 
-.cohort-unit {
-}
-
 .admin-cohort {
    padding: 10px 0;
    border-bottom: 1px solid #ccc;
@@ -98,11 +95,18 @@ p {
 }
 .cohort-unit {
   @include span-columns(5);
+  @include shift(0.5);
   @include omega(2n);
+  @include row();
+  vertical-align: top;
   display: inline-block;
   padding: 20px;
-  height: 300px;
-  vertical-align: top;
+  height: 100%;
+  font-size: .75rem;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: lighten($left-panel-color, 40);
+  }
  }
 
 .main-article {
@@ -136,15 +140,6 @@ p {
   width: 50px;
   height: 50px;
 }
-.comment-avatar {
-  float: left;
-}
-.submission-comment {
-  p {
-    padding: 15px;
-  }
-  background-color: #eee;
-}
 
 .avatar-large {
   height: 200px;
@@ -163,8 +158,9 @@ p {
 aside {
   @include span-columns(4);
   @include pad();
-  padding: 4%;
+  padding: 85px 20px 20px;
   position: fixed;
+  overflow: scroll;
   height: 100%;
   color: white;
   background-color: $left-panel-color;
@@ -203,7 +199,6 @@ ul a {
 #main {
   @include span-columns(8);
   @include reset-display;
-  height: 100%;
   display: inline-block;
   float: right;
   background-color: white;
@@ -211,6 +206,7 @@ ul a {
   h1, h2, h3, h4, h5, h6 {
   color: $left-panel-color;
   }
+  margin-top: 80px;
  }
 
  #profile {
@@ -257,10 +253,6 @@ ul a {
   text-align: center;
 
 }
-.submission-content {
-  background-color: lighten($left-panel-color, 40);
-  padding: 15px;
-}
 #user-partial {
   text-align: center;
 }
@@ -278,7 +270,7 @@ ul a {
     }
     &:hover {
       background-color: lighten($left-panel-color, 10);
-      border: 1px solid white;
+      // WALTER: I removed the white border.  Leaving comment in case there is a merge conflict.
     }
     &:active {
     }
@@ -300,24 +292,18 @@ ul a {
   margin-left: 260px;
 }
 
-.submitted-answer {
-  border-color: $left-panel-color;
-  padding: 20px;
-  border-width: 1px;
-  border-style: solid;
-}
 
 .next-previous {
     margin-top: 100px;
     color: white;
     font-size: 1rem;
-    border: 1px solid white;
+    // border: 1px solid white;
     padding: 10px;
     text-align: center;
-    background: lighten($left-panel-color,5);
+    background: lighten($left-panel-color, 10);
 
   a {
-    
+    font-weight: normal;
     &:link, &:visited {
       color: white;
     }
@@ -342,12 +328,11 @@ ul a {
 }
 
 .small-header {
-  margin-top: 80px;
   color: #999;
   text-transform: uppercase;
-  font: 10px, 'Proxima Nova',sans-serif;
-  border-bottom: 1px solid #999;
-  @include shift(1)
+  font-size: .75rem;
+  border-bottom: 1px solid $left-panel-color;
+  color: $left-panel-color;
 }
 
 .aside-buttons {
@@ -362,8 +347,8 @@ ul a {
       color: white;
     }
     &:hover {
-      background-color: lighten ($left-panel-color, 10);
-      border: 1px solid white;
+      background-color: lighten($left-panel-color, 10);
+      // WALTER: Removed border here too. PS Julie/Bryan- lighten doesn't work with a space. lighten() not lighten ()
     }
     &:active {
     }
@@ -375,8 +360,8 @@ ul a {
       color: white;
     }
     &:hover {
-      background-color: lighten ($left-panel-color, 10);
-      border: 1px solid white;
+      background-color: lighten($left-panel-color, 10);
+      // WALTER: Removed border here too.
 
     }
     &:active {

@@ -7,6 +7,8 @@
 <h1>Sign In</h1>
 
 	<%= form_tag '/login', class: 'login-form' do %>
+		<h3>School: <%= select_tag :school, options_from_collection_for_select(School.all, :id, :name)  %></h3> 
+		
 		<h3>Username:</br> <%= text_field_tag :username %></h3> 
 		<h3>Password:</br> <%= password_field_tag :login_password %> </h3> 
 		<h3><%= submit_tag("Log In") %></h3>

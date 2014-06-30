@@ -131,6 +131,7 @@ p {
 
 .avatar img {
   border-radius: 50%;
+  border-bottom: 2px solid $left-panel-color;
 }
 .small-avatar {
   width: 50px;
@@ -212,8 +213,24 @@ ul a {
   height: 100%;
   display: inline-block;
   background-color: white;
-  line-height: 1.5; 
+  line-height: 1.5;
+  h2 {
+    color: $left-panel-color;
   }
+
+  h3 {
+    text-align: center;
+  } 
+  }
+
+ #profile-block {
+    @include span-columns(6);
+    margin-top: 25px;
+    border: 2px solid $left-panel-color;
+    padding: 10px;
+    height: 200px;
+
+ } 
  
 
 .topic-list-item:hover {

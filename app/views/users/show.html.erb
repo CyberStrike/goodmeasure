@@ -1,14 +1,16 @@
   <div class="profile-cover-photo">
-	<img src="https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg" style="width:100%;">
+	<img src="http://www.wired.com/images_blogs/wiredscience/2009/11/seti_code.jpg" style="width:100%;">
   </div>
 
   <figure class="avatar-large avatar"><%= image_tag @current_user.avatar.url(:medium) %></figure>
 
-
   <section id="profile">
 
   	<h2><%= @current_user.name %></h2>
-  	
+
+
+  <section id="profile-block">
+
   		<h3>Personal Info</h3>
   		
   			<p>Username: <%= @current_user.username %></p>
@@ -18,13 +20,16 @@
   			<p>Last Name: <%= @current_user.last_name %></p>
   
   			<p>Email: <%= @current_user.email %></p>
- 
-  		<h3>Cohorts and Roles</h3>
-  	
-  		  <p>Cohorts: 
+   </section>
+
+  <section id="profile-block">
+  
+  		<h3>Cohorts Enrolled In</h3>
+  
   	     <% @current_user.cohorts.each do |cohort| %>
   			 <p> <%= cohort.name %> </p>
   			<% end %>
   	 </p>
-     
+      </section>  
+     </section>  
   </section>

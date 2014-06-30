@@ -8,6 +8,8 @@
 @import 'card';
 @import 'progress-bar';
 @import 'neat-helpers';
+@import 'submissions';
+@import 'profiles';
 $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
 body {
@@ -117,19 +119,31 @@ p {
 }
 
 .footer-text {
-
  font-size: .8rem;
  font-style: italic;
- color: lighten($base-font-color, 20)
+ color: lighten($base-font-color, 20);
+ float: right;
+}
 
+.left {
+  float: left;
 }
 
 .avatar img {
   border-radius: 50%;
 }
 .small-avatar {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+}
+.comment-avatar {
+  float: left;
+}
+.submission-comment {
+  p {
+    padding: 15px;
+  }
+  background-color: #eee;
 }
 
 .avatar-large {
@@ -200,17 +214,14 @@ ul a {
  }
 
  #profile {
-  @include span-columns(12);
-  margin: auto;
-  @include reset-display;
+  @include span-columns(8);
+  @include shift(2);
   height: 100%;
   display: inline-block;
   background-color: white;
-  line-height: 1.5;
-  h1, h2, h3, h4, h5, h6 {
-  color: $left-panel-color;
+  line-height: 1.5; 
   }
- }
+ 
 
 .topic-list-item:hover {
   background: #eee;
@@ -246,7 +257,10 @@ ul a {
   text-align: center;
 
 }
-
+.submission-content {
+  background-color: lighten($left-panel-color, 40);
+  padding: 15px;
+}
 #user-partial {
   text-align: center;
 }
@@ -263,7 +277,7 @@ ul a {
       color: white;
     }
     &:hover {
-      background-color: lighten ($left-panel-color, 10);
+      background-color: lighten($left-panel-color, 10);
       border: 1px solid white;
     }
     &:active {
@@ -371,6 +385,15 @@ ul a {
 
 }
 
+.pending-reviewed {
+  margin-top: 80px;
+  color: $left-panel-color;
+  text-transform: uppercase;
+  font: 10px, 'Proxima Nova',sans-serif;
+  border-bottom: 1px solid $left-panel-color;
+
+}
+
 // Full-width image for profile pages
 .profile-cover-photo {
   width: 100%;
@@ -378,64 +401,17 @@ ul a {
   overflow: hidden;
 }
 
-.image-gradient {
-  $image-gradient-color-top: teal; 
-  $transparency-top: .6;
-  $image-gradient-color-bottom: green; 
-  $transparency-bottom: .6;
-  $vertical-angle: 180deg;
 
-  $image-gradient-color-left: red; 
-  $transparency-left: .9;
-  $image-gradient-color-right: yellow; 
-  $transparency-right: .8;
-  $horizontal-angle: 90deg;
 
-  background: url(https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg);
-  background-size: 100% 100%;
-  background-position: top;
-  background-repeat: no-repeat;
-  padding: 12em 0 12em 0;
-  position: relative;
-  width: 100%;
-  display: table;
-  margin-bottom: $base-line-height;
-
-  .copy {
-    position: absolute;
-    left: 50%;
-    margin: auto;
-    z-index: 999;
-    top: 40%;
-    text-align: center;
-
-    p {
-      padding: 1em 2em;
-      position: relative;
-      left: -50%;
-      color: white;
-      font-weight: 800;
-      background-color: transparentize(black, .6);
-    }
-  }
-
-  .overlay {
-    @include linear-gradient($vertical-angle, transparentize($image-gradient-color-top, $transparency-top), 
-      transparentize($image-gradient-color-bottom, $transparency-bottom));
-    display: block;
-    @include position(absolute, 0px 0px 0px 0px);
-
-    &:after {
-      content: '';
-      @include linear-gradient($horizontal-angle, transparentize($image-gradient-color-left, $transparency-left), 
-        transparentize($image-gradient-color-right, $transparency-right));
-      display: block;
-      @include position(absolute, 0px 0px 0px 0px);
-    }
-  }
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
 }
 
-
+.cf:after {
+    clear: both;
+}
 
 
 

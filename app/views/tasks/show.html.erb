@@ -17,7 +17,7 @@
 
 	<section id="main">
 
-		<p class="small-header">Current Submission</p>
+		<p class="small-header module">Current Submission</p>
 
 		<section class="module">
 
@@ -28,12 +28,20 @@
 			<% if @current_user.has_submitted?(@task) %>
 
 			<% # Display the user's submission %>
-			<article class="submitted-answer"> <p><%= @current_user.submission_for(@task).submission %></p>
-				<p class="footer-text">	Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
+			<article class="submitted-answer cf">
+				<div class="submission-content cf">
+					<p><%= @current_user.submission_for(@task).submission %></p>
+					<p class="footer-text">	Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
+				</div>
 
+				<% # And any associated comments %>
 				<% @current_user.submission_for(@task).comments.each do |comment| %>
-				<figure class="avatar small-avatar"><%= image_tag comment.user.avatar.url(:thumb) %></figure>
-				<p><%= comment.user.username %>: <%= comment.content %></p>
+					<article class="submission-comment module">
+						<figure class="avatar small-avatar comment-avatar"><%= image_tag comment.user.avatar.url(:thumb) %></figure>
+						<p><%= comment.content %></p>
+						<p class="footer-text left">
+							Posted by <%= link_to comment.user.username, comment.user %> <%= time_ago_in_words(comment.created_at) %> ago
+					</article>
 				<% end %>
 
 				<% # If the submission has already been reviewed %>

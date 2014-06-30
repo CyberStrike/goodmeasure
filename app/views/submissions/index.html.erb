@@ -12,9 +12,9 @@
  
  	<article class="admin-cohort">
 
-    <h2>Pending Review</h2>
+    <p class="pending-reviewed"> Pending Review </p>
 
- <section class="module">
+
 
     <% @submissions.each do |submission| %>
 
@@ -33,12 +33,15 @@
     <% end %>
     	
     <% end %>
-    
-    <h2>Reviewed</h2>
+</section>
 
-    <% @submissions.each do |submission| %>
+ <section class="module">
 
  <article class="admin-cohort"> 
+
+  <p class="pending-reviewed"> Reviewed </p>
+    
+ <% @submissions.each do |submission| %>
 
     	<% if submission.has_been_reviewed? %>
 

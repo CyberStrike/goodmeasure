@@ -6,43 +6,35 @@
 
   <section id="profile">
 
-  	<h1><%= @current_user.name %></h1>
-  	<table>
-  		<h2>Personal Info</h2>
-  		<tr>
-  			<td>Username: </td>
-  			<td><%= @current_user.username %></td>
-  		</tr>
-
-  		<tr>
-  			<td>First Name: </td>
-  			<td><%= @current_user.first_name %></td>
-  		</tr>
+  	<h2><%= @current_user.name %></h2>
   	
-  		<tr>
-  			<td>Last Name: </td>
-  			<td><%= @current_user.last_name %></td>
-  		</tr>
+  		<h3>Personal Info</h3>
+  		
+  			<p>Username: <%= @current_user.username %></p>
+  	
+  	
+  			<p>First Name: <%= @current_user.first_name %></p>
+ 
+  	
+  	
+  			<p>Last Name: <%= @current_user.last_name %></p>
+  		
 
-  		<tr>
-  			<td>Email: </td>
-  			<td><%= @current_user.email %></td>
-  		</tr>
-  	</table>
-  	<br />
-  	<table>
-  		<h2>Cohorts and Roles</h2>
-  		<tr>
-  			<% @current_user.cohorts.each do |cohort| %>
-  			<td><%= cohort.name %></td>
-  			<td><%= @current_user.role(cohort).title %></td>
-  		</tr>
+
+  
+  			<p>Email: <%= @current_user.email %></p>
+ 
+  		<h3>Cohorts and Roles</h3>
+  	
+  		  <p>Cohorts: 
+  	     <% @current_user.cohorts.each do |cohort| %>
+  			 <p> <%= cohort.name %> </p>
   			<% end %>
-
-  	</table>
-
+  	 </p>
+     
   </section>
 
+ 
 
  <!--  <div class="image-gradient">
     <div class="copy"><figure class="cover-photo img-circular"><img src="https://pbs.twimg.com/media/BmwsSaDIYAAiLop.jpg" style="width:100%;"></figure>
@@ -63,3 +55,4 @@
 	</section>
 </section>
  -->
+>>>>>>> 785b50fee3201e0687b3429451cdaa625527b80c

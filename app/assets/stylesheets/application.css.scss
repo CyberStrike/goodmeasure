@@ -321,7 +321,6 @@ ul a {
     }
     &:hover {
       background-color: lighten($left-panel-color, 10);
-      // WALTER: Removed border here too. PS Julie/Bryan- lighten doesn't work with a space. lighten() not lighten ()
     }
     &:active {
     }
@@ -334,7 +333,6 @@ ul a {
     }
     &:hover {
       background-color: lighten($left-panel-color, 10);
-      // WALTER: Removed border here too.
 
     }
     &:active {

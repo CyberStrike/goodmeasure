@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  root to: 'pages#splash_page'
+  resources :schools
+  
   # SUBDOMAIN as root
   match '/', to: 'schools#index', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
-  root to: "schools#index"
 
   # SESSION routes
   get "login", to: "session#login"

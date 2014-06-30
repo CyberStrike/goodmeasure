@@ -1,20 +1,19 @@
-<aside>
+<div class="splash">
 
 
-</aside>
 
-
-<section id="main">
-
+<div class="Sign_Form">
 
 <h2>Sign In</h2>
 
-<div class="Sign_Form">
 	<%= form_tag '/login', class: 'login-form' do %>
 		<p>Username:</br> <%= text_field_tag :username %></p> 
-		<p>Password:</br> <%= password_field_tag :login_password %></p> 
-		<%= submit_tag("Log In") %>
+		<p>Password:</br> <%= password_field_tag :login_password %> <%= submit_tag("Log In") %> </p> 
 	<% end %>
 </div>
 
-</section>
+</div>
+
+
+
+

@@ -25,7 +25,7 @@
 
   <section class="module">
 
-   <% @cohort.units.each do |unit| %>
+   <% @cohort.units.order(:created_at).each do |unit| %>
 
    <article class="cohort-unit">
 

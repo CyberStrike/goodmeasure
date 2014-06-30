@@ -1,6 +1,6 @@
 <aside>
   <header>
-    <section id="back"> <%= link_to 'Back', cohort_path(@unit.cohort.id) %> </section>
+    <section id="back"> <%= link_to "Return to #{@unit.cohort.name}", cohort_path(@unit.cohort.id) %> </section>
     <h1> <%= @unit.name %> </h1>
   </header>
   <p> <%= @unit.description %> </p>

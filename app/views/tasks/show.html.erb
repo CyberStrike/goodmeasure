@@ -29,7 +29,7 @@
 
 
 <% # If the current user is a student in this cohort %>
-<% if @current_user.is_student?(@task.unit.cohort) %>
+<% if @current_user.is_student? @task.unit.cohort  %>
 
 
 	<% # Show the submission history %>
@@ -39,14 +39,13 @@
 	<% # Display submission form if there are no correct or pending answers %>
 	<%= render partial: 'submissions/form' if @current_user.can_submit? @task %>
 
-
 	<% # Display previous submissions %>
 	<%= content_tag_for :article, @current_user.submissions_for(@task), class: "submitted-answer module" do |submission| %>
 
 		<section class="submission-content cf">
 			<%= content_tag :p, submission.answer %>
 			<footer class="footer-text">
-				<%= submission.status %> | Submitted <%= time_ago_in_words(submission.created_at) %> ago
+				<%= submission.status %> | Submitted <%= time_ago_in_words submission.created_at %> ago
 			</footer>
 		</section>
 
@@ -54,11 +53,11 @@
 		<% # And any associated comments %>
 		<%= content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
 
-			<%= content_tag(:figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left") %>
+			<%= content_tag :figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left" %>
 			<p><%= comment.content %></p>
 			<footer class="footer-text left">
 				Posted by <%= link_to comment.user.username, comment.user %> 
-				<%= time_ago_in_words(comment.created_at) %> ago
+				<%= time_ago_in_words comment.created_at %> ago
 			</footer>
 
 		<% end %>

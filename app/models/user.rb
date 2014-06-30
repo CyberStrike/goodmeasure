@@ -81,6 +81,14 @@ class User < ActiveRecord::Base
 		self.role(cohort).title == "Student"
 	end
 
+	def progress_percent(unit)
+		unit.tasks.empty? ? 100 : (tasks_completed(unit).to_f / unit.tasks.size * 100).round
+	end
+
+	def tasks_completed(unit)
+		unit.submissions.accepted.where(user_id: self).size
+	end
+
 	def name
 		self.first_name + " " + self.last_name
 	end

@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   
   get '/profile', to: 'users#show'
 
+
   #TESTING
 
   # assert_generates '/admin/users/1', { controller: 'admin::users', action: 'show', id: '1'}

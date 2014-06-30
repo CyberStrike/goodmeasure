@@ -10,7 +10,7 @@
 @import 'neat-helpers';
 @import 'submissions';
 @import 'profiles';
-$base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+$base-font-family: "Roboto", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
 body {
   font-family: $base-font-family;
@@ -65,6 +65,7 @@ p {
   margin-top: 20px;
 }
 
+
 .cover-photo {
   height: 250px;
   overflow: hidden;
@@ -85,14 +86,22 @@ p {
   @include shift(0.5);
   @include omega(2n);
   @include row();
-  vertical-align: top;
   display: inline-block;
-  padding: 20px;
-  min-height: 300px;
-  font-size: .75rem;
-  border: 1px solid transparent;
-  &:hover {
-    background-color: lighten($left-panel-color, 40);
+  padding: 15px 0;
+  vertical-align: top;
+  & > div {
+    padding: 20px;
+    font-size: .75rem;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    box-shadow: 2px 2px 8px #bbb;
+    &:hover {
+      background-color: lighten($left-panel-color, 40);
+    }
+    h3 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
   }
  }
 
@@ -152,7 +161,8 @@ aside {
   color: white;
   background-color: $left-panel-color;
   line-height: 1.5;
-
+  box-shadow: 3px 0 8px #aaa;
+  border-right: 1px solid darken($left-panel-color, 10);
   p {
     color: white;
       font-size: .9rem;
@@ -405,6 +415,7 @@ ul a {
   width: 100%;
   height: 30px;
   border: 1px solid $left-panel-color;
+  background-color: lighten($left-panel-color, 40);
 }
 
 .current-progress {
@@ -417,7 +428,10 @@ ul a {
   padding-top: 3px;
 }
 
-
+article {
+  // Probably gonna delete this...
+  border-radius: 5px;
+}
 
 
 

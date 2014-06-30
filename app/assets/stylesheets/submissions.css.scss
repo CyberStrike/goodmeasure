@@ -10,6 +10,7 @@
   background-color: #eee;
   display: block;
   margin: 10px 0;
+  @include shift(1);
 }
 .submission-content {
   background-color: lighten($left-panel-color, 40);
@@ -18,7 +19,7 @@
 }
 .submitted-answer {
   padding: 20px;
-  border: 1px solid $left-panel-color;
+  // border: 1px solid $left-panel-color;
 }
 
 .submissions-title {

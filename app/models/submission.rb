@@ -8,7 +8,7 @@ class Submission < ActiveRecord::Base
 	validates :correctness, inclusion: [true, false]
 	validates :reviewed,    inclusion: [true, false]
 
-	validates_uniqueness_of :user, scope: [:task], message: "has already submitted."
+	# validates_uniqueness_of :user, scope: [:task], message: "has already submitted."
 
 	def is_correct?
 		self.correctness == true
@@ -20,6 +20,10 @@ class Submission < ActiveRecord::Base
 
 	def answer 
 		self.submission
+	end
+
+	def to_s
+		"Submission"
 	end
 
 end

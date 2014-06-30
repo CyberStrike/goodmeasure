@@ -21,40 +21,39 @@
 
 
 
+<section id="main">
+
+<% if @current_user.has_completed? @task %>
+	<section class="module"><p>You've completed this task!</p></section>
+<% end %>
+
+<section class="small-header module"><%= @task.title %></section>
+
+<section class="module"><p><%= @task.description %></p></section>
 
 
+<% if @current_user.is_student?(@task.unit.cohort) %>
 
+	<section class="small-header module">Submissions</section>
+	<section class="module">
 
-	<section id="main">
+	<% # If the user has already submitted %>
+	<% if @current_user.has_submitted?(@task) %>
 
-		<section class="small-header module"><%= @task.title %></section>
+		<% # Display each submission %>
+		<% @current_user.submissions_for(@task).each do |submission| %>
 
-		<section class="module">
-			<p> <%= @task.description %> </p>
-		</section>
-
-		<section class="small-header module">Current Submission</section>
-
-		<section class="module">
-
-			<% if @current_user.is_student?(@task.unit.cohort) %>
-
-			<% # If the user has already submitted %>
-			<% if @current_user.has_submitted?(@task) %>
-
-			<% # Display the user's submission %>
 			<article class="submitted-answer cf">
 				<div class="submission-content cf">
-					<p>
-						<%= @current_user.submission_for(@task).submission %>
-					</p>
+					<p><%= submission.answer %></p>
 					<footer class="footer-text">
-						Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago
+						Submitted <%= time_ago_in_words(submission.created_at) %> ago
 					</footer>
 				</div>
 
 				<% # And any associated comments %>
-				<% @current_user.submission_for(@task).comments.each do |comment| %>
+				<% submission.comments.order(:id).each do |comment| %>
+
 					<article class="submission-comment cf">
 						<section>
 							<figure class="avatar small-avatar left">
@@ -66,52 +65,32 @@
 							Posted by <%= link_to comment.user.username, comment.user %> <%= time_ago_in_words(comment.created_at) %> ago
 						</footer>
 					</article>
+
 				<% end %>
+			</article>
+		<% end %>
 
-				<% # If the submission has already been reviewed %>
-				<% if @current_user.submission_for(@task).has_been_reviewed? %>
+		<% # If the most recent submission has already been reviewed %>
+		<% if @current_user.last_submission_for(@task).has_been_reviewed? %>
 
-					<% # And if the submission is correct %>
-					<% if @current_user.submission_for(@task).is_correct? %>
-						<p>Correct!</p>
+			<% # And if the submission is correct %>
+			<% if @current_user.last_submission_for(@task).is_correct? %>
+				<p>Correct!</p>
 
-					<% # And if the submission is incorrect %>
-					<% else %>
-
-						<% # Display submission form prepopulated with user's last submission %>
-						<%= form_for @current_user.submission_for(@task) do |f| %>
-						<% if @submission.errors.any? %>
-							<div id="error_explanation">
-
-							<h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-							<ul>
-								<% @submission.errors.full_messages.each do |message| %>
-								<li><%= message %></li>
-								<% end %>
-							</ul>
-							</div>
-						<% end %>
-						<div class="field">
-						<%= f.label :submission %><br>
-						<%= f.text_area :submission, value: @current_user.submission_for(@task).submission %>
-						</div>
-						<%= f.hidden_field :correctness, value: false %>
-						<%= f.hidden_field :reviewed, value: false %>
-						<div class="actions">
-							<%= f.submit %>
-						</div>
-					<% end %>
-				<% end %>
-
-				<% # If the submission is pending evaluation %>
-				<% else %>
-				<p class="footer-text"> Pending Evaluation </p>
-				<% end %>
-
-				<% # If the user has not yet submitted %>
-				<% else %>
+			<% # And if the submission is incorrect %>
+			<% else %>
 				<%= render partial: 'submissions/form' %>
-				<% end %>
-			</section>
 			<% end %>
-		</section>
+
+		<% # If the submission is pending evaluation %>
+		<% else %>
+			<p class="footer-text"> Pending Evaluation </p>
+		<% end %>
+
+	<% # If the user has not yet submitted %>
+	<% else %>
+		<%= render partial: 'submissions/form' %>
+	<% end %>
+	</section>
+<% end %>
+</section>

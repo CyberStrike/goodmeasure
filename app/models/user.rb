@@ -35,11 +35,21 @@ class User < ActiveRecord::Base
 	end
 
 	def has_submitted?(task)
-		!self.submissions.find_by(task_id: task.id).nil?
+		self.submissions.where(task_id: task).size > 0
 	end
 
-	def submission_for(task)
-		self.submissions.find_by(task_id: task.id)
+	def last_submission_for(task)
+		self.submissions.where(task_id: task).order(:created_at).last
+	end
+
+	def submissions_for(task)
+		self.submissions.where(task_id: task).order(:id)
+	end
+
+	def has_completed?(task)
+		self.has_submitted?(task) &&
+		self.last_submission_for(task).has_been_reviewed? &&
+		self.last_submission_for(task).is_correct?
 	end
 
 	def is_instructor?(cohort)

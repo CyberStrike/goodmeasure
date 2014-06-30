@@ -5,41 +5,5 @@ $admin-left-panel-color: gray;
   background-color: $admin-left-panel-color;
   color: white;
   box-shadow: 3px 0 8px #aaa;
-  border-right: 1px solid darken($left-panel-color, 10);
-  p {
-    color: white;
-      font-size: .9rem;
-  }
-
-  a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($left-panel-color, 25)
-    }
-    &:active {
-    }
-    }
-
-ul a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($left-panel-color, 25)
-    }
-    &:active {
-    }
-  }
-}
-
-.admin-cohort {
-   padding: 10px 0;
-   border-bottom: 1px solid #ccc;
-   &:last-child {
-    border-bottom: none;
-   }
+  border-right: 1px solid darken($admin-left-panel-color, 10);
 }

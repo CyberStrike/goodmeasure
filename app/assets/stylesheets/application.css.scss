@@ -142,7 +142,6 @@ aside {
   @include pad();
   padding: 85px 20px 20px;
   position: fixed;
-  overflow: scroll;
   height: 100%;
   color: white;
   background-color: $left-panel-color;
@@ -166,9 +165,6 @@ aside {
     }
     }
 
-.admin-global {
-    $left-panel-color: gray;
-  }
 
 ul a {
     
@@ -301,7 +297,6 @@ ul a {
 }
 
 .small-header {
-  color: #999;
   text-transform: uppercase;
   font-size: .75rem;
   border-bottom: 1px solid $left-panel-color;

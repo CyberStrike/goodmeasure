@@ -11,6 +11,7 @@
 @import 'submissions';
 @import 'profiles';
 @import 'session';
+@import 'admin';
 $base-font-family: "Roboto", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
 body {
@@ -75,13 +76,6 @@ p {
   }
 }
 
-.admin-cohort {
-   padding: 10px 0;
-   border-bottom: 1px solid #ccc;
-   &:last-child {
-    border-bottom: none;
-   }
-}
 .cohort-unit {
   @include span-columns(5);
   @include shift(0.5);

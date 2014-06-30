@@ -2,31 +2,31 @@
 	<img src="http://www.wired.com/wp-content/uploads/2014/06/health-conf-inline.jpg" style="width:100%;">
   </div>
 
-  <figure class="avatar-large avatar"><%= image_tag @current_user.avatar.url(:medium) %></figure>
+  <figure class="avatar-large avatar"><%= image_tag @user.avatar.url(:medium) %></figure>
 
   <section id="profile">
 
-  	<h2><%= @current_user.name %></h2>
+  	<h2><%= @user.name %></h2>
 
 
   <section id="profile-block">
 
   		<h3>Personal Info</h3>
   		
-  			<p>Username: <%= @current_user.username %></p>
+  			<p>Username: <%= @user.username %></p>
   	
-  			<p>First Name: <%= @current_user.first_name %></p>
+  			<p>First Name: <%= @user.first_name %></p>
   	
-  			<p>Last Name: <%= @current_user.last_name %></p>
+  			<p>Last Name: <%= @user.last_name %></p>
   
-  			<p>Email: <%= @current_user.email %></p>
+  			<p>Email: <%= @user.email %></p>
    </section>
 
   <section id="profile-block">
   
   		<h3>Cohorts Enrolled In</h3>
   
-  	     <% @current_user.cohorts.each do |cohort| %>
+  	     <% @user.cohorts.each do |cohort| %>
   			 <p> <%= cohort.name %> </p>
   			<% end %>
   	 </p>

@@ -6,32 +6,19 @@
 
 <section id="main">
 
-    <section class="module small-header">Pending Review</section>
-    <section class="module">
-        <%= content_tag_for :article, @submissions.pending_review, class: "submission-list" do |submission| %>
-            <%= link_to submission.task.title, edit_submission_path(submission) %> 
-            | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
-            <%= link_to submission.user.username, submission.user %>.
-        <% end %>
-    </section>
 
-    <section class="module small-header">Not Accepted</section>
-    <section class="module">
-        <%= content_tag_for :article, @submissions.not_accepted, class: "submission-list" do |submission| %>
-            <%= link_to submission.task.title, edit_submission_path(submission) %> 
-            | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
-            <%= link_to submission.user.username, submission.user %>.
-        <% end %>
-    </section>
+    <% @submission_by_status.keys.sort.reverse.each do |status| %>
 
-    <section class="module small-header">Accepted</section>
-    <section class="module">
-        <%= content_tag_for :article, @submissions.accepted, class: "submission-list" do |submission| %>
-            <%= link_to submission.task.title, edit_submission_path(submission) %> 
-            | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
-            <%= link_to submission.user.username, submission.user %>.
-        <% end %>
-    </section>
+        <section class="module small-header"><%= status %></section>
+        <section class="module">
+            <%= content_tag_for :article, @submission_by_status[status], class: "submission-list" do |submission| %>
+                <%= link_to submission.task.title, edit_submission_path(submission) %> 
+                | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
+                <%= link_to submission.user.username, submission.user %>.
+            <% end %>
+        </section>
+
+    <% end %>
 
 </section>
 

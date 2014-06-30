@@ -33,11 +33,11 @@
   	<table>
   		<h2>Cohorts and Roles</h2>
   		<tr>
-  			<td>Cohorts: </td>
   			<% @current_user.cohorts.each do |cohort| %>
   			<td><%= cohort.name %></td>
-  			<% end %>
+  			<td><%= @current_user.role(cohort).title %></td>
   		</tr>
+  			<% end %>
 
   	</table>
 

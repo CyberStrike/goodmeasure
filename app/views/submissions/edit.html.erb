@@ -1,33 +1,82 @@
-<aside> 
-<section id="back"> <%= link_to 'Back', submissions_path(@submission.id) %> </section>
-<h1><%= @submission.task.title %></h1>
-<p><%= @submission.task.description %></p>
+<aside>
+    <section id="back"> <%= link_to 'Return to Submissions', cohort_submissions_path(@submission.task.unit.cohort) %> </section>
+    <h1> <%= @submission.task.unit.cohort.name %> Submissions </h1>
+    Submissions are user-blind for unbiased reviews.
 </aside>
 
 <section id="main">
 
-<div class="submissions-title"><h2>Editing Submission</h2></div>
 
+<section class="module small-header">Submission</section>
 <section class="module">
+	<section class="submission-content cf">
+		<%= content_tag :p, @submission.answer %>
+		<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
+	</section>
 
 
-<%= form_for @submission do |form| %>
+<% # Display form %>
+	<%= form_for @submission do |form| %>
+		<% # Fields for optional administrator comment %>
+		<%= form.fields_for :comment do |f| %>
+			<%= f.hidden_field :commentable_id, value: @submission.id %>
+			<%= f.hidden_field :commentable_type, value: @submission.class %>
+			<%= f.hidden_field :user_id, value: @current_user.id %>
+			<div>
+			<%= f.label :content, "Comments? (Optional)" %>
+			<%= f.text_field :content %>
+		<% end %>
 
-	<% # Fields for optional administrator comment %>
-	<%= form.fields_for :comment do |f| %>
-		<%= f.hidden_field :commentable_id, value: @submission.id %>
-		<%= f.hidden_field :commentable_type, value: @submission.class %>
-		<%= f.hidden_field :user_id, value: @current_user.id %>
-		<%= f.label :content %>
-		<%= f.text_field :content %>
+		<%= form.hidden_field :reviewed, value: true %>
+		<div>
+		<%= form.submit "Accepted" %>
+		<%= form.submit "Not Accepted" %>
+		</div>
 	<% end %>
+</section>
 
-	<%= form.hidden_field :reviewed, value: true %>
 
-	<%= form.submit "Correct" %>
-	<%= form.submit "Incorrect" %>
+
+
+<section class="module small-header"><%= @submission.task.title %></section>
+<section class="module"><%= @submission.task.description %></section>
+
+
+<%= content_tag :section, "Previous Submissions", class: "module small-header" if
+	@current_user.has_submitted_before? @submission.task %>
+
+<% # Display previous submissions %>
+<%= content_tag_for :article, @current_user.previous_submissions_for(@submission.task), class: "submitted-answer module" do |submission| %>
+
+	<section class="submission-content cf">
+		<%= content_tag :p, submission.answer %>
+		<footer class="footer-text">
+			<%= submission.status %> | Submitted <%= time_ago_in_words(submission.created_at) %> ago
+		</footer>
+	</section>
+
+
+	<% # And any associated comments %>
+	<%= content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
+
+		<%= content_tag(:figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left") %>
+		<p><%= comment.content %></p>
+		<footer class="footer-text left">
+			Posted by <%= link_to comment.user.username, comment.user %> 
+			<%= time_ago_in_words(comment.created_at) %> ago
+		</footer>
+
+	<% end %>
 <% end %>
 
-</section>
+
 
 </section>
+
+
+
+
+
+
+
+

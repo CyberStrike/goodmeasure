@@ -45,7 +45,7 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1.json
   def update
     respond_to do |format|
-      params[:commit] == "Correct" ? @submission.correctness = true : @submission.correctness = false
+      params[:commit] == "Accepted" ? @submission.correctness = true : @submission.correctness = false
       if @submission.update(submission_params)
         @comment = Comment.create(comment_params[:comment])
 

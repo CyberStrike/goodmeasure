@@ -38,12 +38,20 @@ class User < ActiveRecord::Base
 		self.submissions.where(task_id: task).size > 0
 	end
 
+	def has_submitted_before?(task)
+		self.submissions.where(task_id: task).size > 1
+	end
+
 	def last_submission_for(task)
 		self.submissions.where(task_id: task).order(:created_at).first
 	end
 
 	def submissions_for(task)
 		self.submissions.where(task_id: task).order(:id)
+	end
+
+	def previous_submissions_for(task)
+		self.submissions.where(task_id: task, reviewed: true).order(:id)
 	end
 
 	def has_completed?(task)

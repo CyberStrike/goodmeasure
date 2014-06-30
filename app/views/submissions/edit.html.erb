@@ -43,10 +43,10 @@
 
 
 	<%= content_tag :section, "Previous Submissions", class: "module small-header" if
-		@current_user.has_submitted_before? @submission.task %>
+		@submitter.has_submitted_before? @submission.task %>
 
 	<% # Display previous submissions %>
-	<%= content_tag_for :article, @current_user.previous_submissions_for(@submission.task), class: "submitted-answer module" do |submission| %>
+	<%= content_tag_for :article, @submission.related_submissions, class: "submitted-answer module" do |submission| %>
 
 		<section class="submission-content cf">
 			<%= content_tag :p, submission.answer %>

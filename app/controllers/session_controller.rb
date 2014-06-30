@@ -4,7 +4,7 @@ class SessionController < ApplicationController
 
   def login
   	if @current_user
-  		redirect_to root_path
+  		redirect_to 'wyncode.lvh.me'
   	end
   end
 

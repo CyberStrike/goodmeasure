@@ -6,7 +6,13 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
-    @submissions = Submission.where(task_id: (@cohort.tasks))
+    @tasks = @cohort.tasks
+    @submissions = Submission.where(task_id: @tasks)
+    @users = @submissions.distinct_users
+    @most_recent_submissions = @tasks.map{ |task|
+      @users.map{ |user| user.last_submission_for(task) }.compact
+    }.flatten
+    @submission_by_status = @most_recent_submissions.group_by{ |s| s.status }
   end
 
   # GET /submissions/1
@@ -82,6 +88,7 @@ class SubmissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @submission = Submission.find(params[:id])
+      @submitter = @submission.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

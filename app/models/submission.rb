@@ -29,6 +29,11 @@ class Submission < ActiveRecord::Base
 	end
 
 	def self.most_recent_version
+		# self.
+	end
+
+	def self.distinct_users
+		self.reorder("").select(:user_id).distinct.map{ |submission| submission.user }
 	end
 
 	def self.pending_review
@@ -41,6 +46,11 @@ class Submission < ActiveRecord::Base
 
 	def self.accepted
 		self.where(correctness: true)
+	end
+
+	# Returns all other submissions with matching User and Task ID's
+	def related_submissions
+		self.user.previous_submissions_for(self.task).includes(comments: :user)
 	end
 
 	def status

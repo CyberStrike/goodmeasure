@@ -35,11 +35,11 @@ class User < ActiveRecord::Base
 	end
 
 	def has_submitted?(task)
-		self.submissions.where(task_id: task).size > 0
+		self.submissions.where(task_id: task).exists?
 	end
 
 	def has_submitted_before?(task)
-		self.submissions.where(task_id: task).size > 1
+		self.submissions.where(task_id: task).count > 1
 	end
 
 	def last_submission_for(task)
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
 	end
 
 	def submissions_for(task)
-		self.submissions.where(task_id: task).order(:id)
+		self.submissions.where(task_id: task).order(:id).includes(comments: :user)
 	end
 
 	def previous_submissions_for(task)

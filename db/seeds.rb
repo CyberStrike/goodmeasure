@@ -50,6 +50,12 @@ task_list = [
 ]
 
 
+School.create(
+  name: "Wyncode",
+  description: "Wyncode is a development bootcamp immersing ambitious individuals in a demanding and inspiring learning environment engineered to develop successful coders with business acumen.",
+  subdomain: "wyncode"
+  )
+
 user_list.each do |username, first, last, email, admin|
   User.create(username: username,
 	first_name: first,

@@ -8,6 +8,8 @@
 @import 'card';
 @import 'progress-bar';
 @import 'neat-helpers';
+@import 'submissions';
+@import 'profiles';
 $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
 body {
@@ -117,19 +119,31 @@ p {
 }
 
 .footer-text {
-
  font-size: .8rem;
  font-style: italic;
- color: lighten($base-font-color, 20)
+ color: lighten($base-font-color, 20);
+ float: right;
+}
 
+.left {
+  float: left;
 }
 
 .avatar img {
   border-radius: 50%;
 }
 .small-avatar {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+}
+.comment-avatar {
+  float: left;
+}
+.submission-comment {
+  p {
+    padding: 15px;
+  }
+  background-color: #eee;
 }
 
 .avatar-large {
@@ -243,7 +257,10 @@ ul a {
   text-align: center;
 
 }
-
+.submission-content {
+  background-color: lighten($left-panel-color, 40);
+  padding: 15px;
+}
 #user-partial {
   text-align: center;
 }
@@ -260,7 +277,7 @@ ul a {
       color: white;
     }
     &:hover {
-      background-color: lighten ($left-panel-color, 10);
+      background-color: lighten($left-panel-color, 10);
       border: 1px solid white;
     }
     &:active {
@@ -386,7 +403,15 @@ ul a {
 
 
 
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
 
+.cf:after {
+    clear: both;
+}
 
 
 

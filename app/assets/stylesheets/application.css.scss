@@ -160,6 +160,7 @@ aside {
   @include pad();
   padding: 4%;
   position: fixed;
+  overflow: scroll;
   height: 100%;
   color: white;
   background-color: $left-panel-color;
@@ -198,7 +199,6 @@ ul a {
 #main {
   @include span-columns(8);
   @include reset-display;
-  height: 100%;
   display: inline-block;
   float: right;
   background-color: white;
@@ -206,6 +206,7 @@ ul a {
   h1, h2, h3, h4, h5, h6 {
   color: $left-panel-color;
   }
+  margin-top: 80px;
  }
 
  #profile {
@@ -327,12 +328,11 @@ ul a {
 }
 
 .small-header {
-  margin-top: 80px;
   color: #999;
   text-transform: uppercase;
-  font: 10px, 'Proxima Nova',sans-serif;
-  border-bottom: 1px solid #999;
-  @include shift(1)
+  font-size: .75rem;
+  border-bottom: 1px solid $left-panel-color;
+  color: $left-panel-color;
 }
 
 .aside-buttons {

@@ -50,6 +50,7 @@ class SubmissionsController < ApplicationController
         format.html { redirect_to cohort_submissions_path(@submission.task.unit.cohort), notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else
+        @comment = Comment.create(comment_params[:comment])
         format.html { render :edit }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end

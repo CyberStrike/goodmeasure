@@ -1,23 +1,39 @@
 <aside>
-	<header>
-		<section id="back"> <%= link_to 'Back', unit_path(@task.unit.id) %></p>
-			<h1> <%= @task.title%> </h1>
-		</header>
-		<p> <%= @task.description %> </p>
-		<%# Show options to edit task ONLY if current user is an instructor %>
-		<% if @current_user.is_staff?(@task.unit.cohort) %>
-		<hr />
-		<h3>Instructor Options</h3>
-			<p class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
-		<% end %>
-		<% # Link to previous and next task within the unit %>
-		<p class="next-previous"> <strong>  <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %> | <%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong> </p>
+  <header>
+    <section id="back"> <%= link_to 'Return to Unit', unit_path(@task.unit.id) %> </section>
+    <h1> <%= @task.unit.name %> </h1>
+  </header>
+  <p> <%= @task.unit.description %> </p>
 
-	</aside>
+  <% if @current_user.is_instructor?(@task.unit.cohort) %>
+
+	<h3>Instructor Options</h3>
+		<p class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
+	<% end %>
+
+	<% if @task.has_previous? or @task.has_next? %>
+		<p class="next-previous"> <strong>  <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %>
+		<%= "|" if @task.has_previous? and @task.has_next? %>
+		<%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong> </p>
+	<% end %>
+
+</aside>
+
+
+
+
+
+
 
 	<section id="main">
 
-		<p class="small-header module">Current Submission</p>
+		<section class="small-header module"><%= @task.title %></section>
+
+		<section class="module">
+			<p> <%= @task.description %> </p>
+		</section>
+
+		<section class="small-header module">Current Submission</section>
 
 		<section class="module">
 

@@ -6,6 +6,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
+    redirect_to cohort_path(@cohort) if @current_user.is_student? @cohort
     @tasks = @cohort.tasks
     @submissions = Submission.where(task_id: @tasks)
     @users = @submissions.distinct_users

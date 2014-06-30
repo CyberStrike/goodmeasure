@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .submission-comment {
   p {
     padding: 5px;
@@ -18,4 +19,8 @@
 .submitted-answer {
   padding: 20px;
   border: 1px solid $left-panel-color;
+}
+
+.submissions-title {
+	margin-top: 100px;
 }

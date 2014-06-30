@@ -1,11 +1,12 @@
 <aside> 
 <section id="back"> <%= link_to 'Back', submissions_path(@submission.id) %> </section>
-<h1> </h1>
+<h1><%= @submission.task.title %></h1>
+<p><%= @submission.task.description %></p>
 </aside>
 
 <section id="main">
 
-<h2>Editing Submission</h2>
+<div class="submissions-title"><h2>Editing Submission</h2></div>
 
 <section class="module">
 

@@ -25,8 +25,8 @@
 
   <section class="module">
 
-   <% @unit.tasks.each do |task| %>
-    <article class="main-article">
+   <% @unit.tasks.order(:created_at).each do |task| %>
+    <article class="main-article cf">
     <h3><%= link_to task.title, task %></h3>
     <p><%= task.description %></p>
 

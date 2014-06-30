@@ -94,16 +94,18 @@ p {
    }
 }
 .cohort-unit {
-  @include span-columns(4);
-  @include shift(1);
+  @include span-columns(5);
+  @include shift(0.5);
   @include omega(2n);
+  @include row();
   vertical-align: top;
   display: inline-block;
   padding: 20px;
-  height: 350px;
+  height: 100%;
+  font-size: .75rem;
   border: 1px solid transparent;
   &:hover {
-  border: 1px solid $left-panel-color;
+    background-color: lighten($left-panel-color, 40);
   }
  }
 
@@ -294,13 +296,13 @@ ul a {
     margin-top: 100px;
     color: white;
     font-size: 1rem;
-    border: 1px solid white;
+    // border: 1px solid white;
     padding: 10px;
     text-align: center;
-    background: lighten($left-panel-color,5);
+    background: lighten($left-panel-color, 10);
 
   a {
-    
+    font-weight: normal;
     &:link, &:visited {
       color: white;
     }

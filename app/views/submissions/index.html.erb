@@ -16,7 +16,7 @@
 
 
 
-    <% @submissions.each do |submission| %>
+    <% @submissions.order(:created_at).each do |submission| %>
 
     	<% unless submission.has_been_reviewed? %>
 

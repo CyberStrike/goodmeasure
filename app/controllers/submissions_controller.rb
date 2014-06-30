@@ -27,6 +27,8 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(submission_params)
+    @submission.correctness = false
+    @submission.reviewed = false
 
     respond_to do |format|
       if @submission.save

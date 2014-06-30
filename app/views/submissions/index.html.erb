@@ -1,61 +1,37 @@
 <aside>
-<section id="back"> <%= link_to 'Back', task_path(@cohort.id) %> </section>
-<h1> <%= @cohort.name %> Submissions </h1>
- <hr />
-<small><i>Submissions are user-blind for unbiased reviews.</i></small>
-
+    <section id="back"> <%= link_to 'Back', task_path(@cohort.id) %> </section>
+    <h1> <%= @cohort.name %> Submissions </h1>
+    Submissions are user-blind for unbiased reviews.
 </aside>
 
 <section id="main">
 
-<section class="module">
- 
- 	<article class="admin-cohort">
-
-    <p class="pending-reviewed"> Pending Review </p>
-
-
-
-    <% @submissions.order(:created_at).each do |submission| %>
-
-    	<% unless submission.has_been_reviewed? %>
-
- <article class="admin-cohort">
-
-		<p><strong>Question:</strong> <%= submission.task.description %></p>
-
-		<p><strong>Answer:</strong> <%= submission.answer %></p>
-		<p><%= link_to 'Review', edit_submission_path(submission) %></p>
-
-
-</article>	
-
-    <% end %>
-    	
-    <% end %>
-</section>
-
- <section class="module">
-
- <article class="admin-cohort"> 
-
-  <p class="pending-reviewed"> Reviewed </p>
-    
- <% @submissions.each do |submission| %>
-
-    	<% if submission.has_been_reviewed? %>
-
-		<p><strong>Question:</strong> <%= submission.task.title %></p>
-
-		<p><strong>Answer:</strong> <%= submission.answer %></p>
-
-        <p><%= link_to 'Review', edit_submission_path(submission) %></p>
-
-</article>  
+    <section class="module small-header">Pending Review</section>
+    <section class="module">
+        <%= content_tag_for :article, @submissions.pending_review, class: "submission-list" do |submission| %>
+            <%= link_to submission.task.title, edit_submission_path(submission) %> 
+            | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
+            <%= link_to submission.user.username, submission.user %>.
         <% end %>
-        
-    <% end %>
+    </section>
 
-</section>
+    <section class="module small-header">Not Accepted</section>
+    <section class="module">
+        <%= content_tag_for :article, @submissions.not_accepted, class: "submission-list" do |submission| %>
+            <%= link_to submission.task.title, edit_submission_path(submission) %> 
+            | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
+            <%= link_to submission.user.username, submission.user %>.
+        <% end %>
+    </section>
+
+    <section class="module small-header">Accepted</section>
+    <section class="module">
+        <%= content_tag_for :article, @submissions.accepted, class: "submission-list" do |submission| %>
+            <%= link_to submission.task.title, edit_submission_path(submission) %> 
+            | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
+            <%= link_to submission.user.username, submission.user %>.
+        <% end %>
+    </section>
+
 </section>
 

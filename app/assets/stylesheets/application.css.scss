@@ -24,19 +24,6 @@ html, body {
   height: 100%;
 }
 
-@mixin module($span) {
-  @include span-columns($span);
-  border-radius: 6px;
-  border-bottom: 1px solid darken(white, 10);
-  border-left: 1px solid darken(white, 10);
-  border-right: 1px solid darken(white, 10);
-  border-top: 1px solid darken(white, 5);
-  background-color: white;
-  border-radius: 2px;
-  font-family: $base-font-family;
-  font-size: 1rem;
-}
-
 a { 
     &:link, &:visited {
       color: $left-panel-color;
@@ -386,6 +373,23 @@ ul a {
 }
 
 
+.completed-task {
+  background-color: lighten($left-panel-color, 40);
+  // border: 1px solid $left-panel-color;
+  color: $left-panel-color;
+  text-align: center;
+  padding: 3px;
+  font-size: .75em;
+}
+.submission-list {
+  padding: 5px;
+  &:nth-child(2n) {
+    background-color: lighten($left-panel-color, 50);
+  }
+  &:hover {
+    background-color: lighten($left-panel-color, 40);
+  }
+}
 
 .cf:before,
 .cf:after {

@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 	end
 
 	def last_submission_for(task)
-		self.submissions.where(task_id: task).order(:created_at).last
+		self.submissions.where(task_id: task).order(:created_at).first
 	end
 
 	def submissions_for(task)
@@ -50,6 +50,15 @@ class User < ActiveRecord::Base
 		self.has_submitted?(task) &&
 		self.last_submission_for(task).has_been_reviewed? &&
 		self.last_submission_for(task).is_correct?
+	end
+
+	def has_pending_submissions?(task)
+		self.has_submitted?(task) &&
+		self.last_submission_for(task).has_been_reviewed? == false
+	end
+
+	def can_submit?(task)
+		self.has_submitted?(task) == false || self.last_submission_for(task).is_incorrect?
 	end
 
 	def is_instructor?(cohort)

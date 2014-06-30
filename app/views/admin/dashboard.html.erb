@@ -13,7 +13,7 @@
 
 <section id="main">
 
-     <p class="small-header"> Cohorts</p>
+     <p class="small-header module"> Cohorts</p>
 
   <section class="module">
 
@@ -23,19 +23,14 @@
 
      <h3> <%= link_to cohort.name, admin_cohort_path(cohort) %></h3>
       <p> <%= cohort.description %></p>
+
       <p class="footer-text left"> Number Of Students: <%= cohort.students.size %> | Number Of Staff: <%= cohort.staff.size %> |  <%= link_to " Edit Cohort", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></p>
 
       </article>
+
         <% end %>
 
   </section> 
  
 </section>
-
-  <% #render partial: 'admin/enrollments/form' if @school.has_users? and @school.has_cohorts? %>
-
-  <% #render 'admin/invites/form' %>
-
-
-
 

@@ -10,16 +10,17 @@
 
   	<p class="small-header module">Cohorts</p>
   	
-  	<section class="module">
 		<% @current_user.cohorts.order(:id).each do |cohort| %>
 
-		<article class="main-article">
+		<article class="main-article module">
 
 			<h3><%= link_to cohort.name, cohort_path(cohort) %></h3>
 
 			<p><%= cohort.description %></p>
 
-			<p><small>You're a<%= "n" if @current_user.is_instructor?(cohort) %> <%= @current_user.role(cohort).title %></small></p>
+			<p><small>You're a<%= "n" if @current_user.is_instructor?(cohort) %> <%= @current_user.role(cohort).title %>
+
+			</small></p>
 
 		</article>
 		<% end %>

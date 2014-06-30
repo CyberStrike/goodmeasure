@@ -1,3 +1,21 @@
 // Place all the styles related to the Submissions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.submission-comment {
+  p {
+    padding: 5px;
+  }
+  background-color: #eee;
+  display: block;
+  margin: 10px 0;
+}
+.submission-content {
+  background-color: lighten($left-panel-color, 40);
+  padding: 15px;
+
+}
+.submitted-answer {
+  padding: 20px;
+  border: 1px solid $left-panel-color;
+}

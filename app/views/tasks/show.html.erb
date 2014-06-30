@@ -21,7 +21,6 @@
 
 		<section class="module">
 
-
 			<% if @current_user.is_student?(@task.unit.cohort) %>
 
 			<% # If the user has already submitted %>
@@ -30,17 +29,26 @@
 			<% # Display the user's submission %>
 			<article class="submitted-answer cf">
 				<div class="submission-content cf">
-					<p><%= @current_user.submission_for(@task).submission %></p>
-					<p class="footer-text">	Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago</p>
+					<p>
+						<%= @current_user.submission_for(@task).submission %>
+					</p>
+					<footer class="footer-text">
+						Submitted <%= time_ago_in_words(@current_user.submission_for(@task).created_at) %> ago
+					</footer>
 				</div>
 
 				<% # And any associated comments %>
 				<% @current_user.submission_for(@task).comments.each do |comment| %>
-					<article class="submission-comment module">
-						<figure class="avatar small-avatar comment-avatar"><%= image_tag comment.user.avatar.url(:thumb) %></figure>
-						<p><%= comment.content %></p>
-						<p class="footer-text left">
+					<article class="submission-comment cf">
+						<section>
+							<figure class="avatar small-avatar left">
+								<%= image_tag comment.user.avatar.url(:thumb) %>
+							</figure>
+							<p><%= comment.content %></p>
+						</section>
+						<footer class="footer-text left">
 							Posted by <%= link_to comment.user.username, comment.user %> <%= time_ago_in_words(comment.created_at) %> ago
+						</footer>
 					</article>
 				<% end %>
 

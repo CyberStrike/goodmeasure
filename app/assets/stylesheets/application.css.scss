@@ -34,7 +34,7 @@ html, body {
   background-color: white;
   border-radius: 2px;
   font-family: $base-font-family;
-  font-size: 12px;
+  font-size: 1rem;
 }
 
 a { 
@@ -86,9 +86,6 @@ p {
   }
 }
 
-.cohort-unit {
-}
-
 .admin-cohort {
    padding: 10px 0;
    border-bottom: 1px solid #ccc;
@@ -97,12 +94,17 @@ p {
    }
 }
 .cohort-unit {
-  @include span-columns(5);
+  @include span-columns(4);
+  @include shift(1);
   @include omega(2n);
+  vertical-align: top;
   display: inline-block;
   padding: 20px;
-  height: 300px;
-  vertical-align: top;
+  height: 350px;
+  border: 1px solid transparent;
+  &:hover {
+  border: 1px solid $left-panel-color;
+  }
  }
 
 .main-article {
@@ -135,15 +137,6 @@ p {
 .small-avatar {
   width: 50px;
   height: 50px;
-}
-.comment-avatar {
-  float: left;
-}
-.submission-comment {
-  p {
-    padding: 15px;
-  }
-  background-color: #eee;
 }
 
 .avatar-large {
@@ -257,10 +250,6 @@ ul a {
   text-align: center;
 
 }
-.submission-content {
-  background-color: lighten($left-panel-color, 40);
-  padding: 15px;
-}
 #user-partial {
   text-align: center;
 }
@@ -278,7 +267,7 @@ ul a {
     }
     &:hover {
       background-color: lighten($left-panel-color, 10);
-      border: 1px solid white;
+      // WALTER: I removed the white border.  Leaving comment in case there is a merge conflict.
     }
     &:active {
     }
@@ -300,12 +289,6 @@ ul a {
   margin-left: 260px;
 }
 
-.submitted-answer {
-  border-color: $left-panel-color;
-  padding: 20px;
-  border-width: 1px;
-  border-style: solid;
-}
 
 .next-previous {
     margin-top: 100px;
@@ -362,8 +345,8 @@ ul a {
       color: white;
     }
     &:hover {
-      background-color: lighten ($left-panel-color, 10);
-      border: 1px solid white;
+      background-color: lighten($left-panel-color, 10);
+      // WALTER: Removed border here too. PS Julie/Bryan- lighten doesn't work with a space. lighten() not lighten ()
     }
     &:active {
     }
@@ -375,8 +358,8 @@ ul a {
       color: white;
     }
     &:hover {
-      background-color: lighten ($left-panel-color, 10);
-      border: 1px solid white;
+      background-color: lighten($left-panel-color, 10);
+      // WALTER: Removed border here too.
 
     }
     &:active {

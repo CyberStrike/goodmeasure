@@ -12,7 +12,7 @@
 	<section class="small-header module">Cohorts</section>
 	<section class="module">
 
-		<%= content_tag_for :article, @school.cohorts.order(:id), class: "admin-cohort cf" do |cohort| %>
+		<%= content_tag_for :article, @school.cohorts.order(:id), class: "main-article cf" do |cohort| %>
 			<h3><%= link_to cohort.name, admin_cohort_path(cohort) %></h3>
 			<p><%= cohort.description %></p>
 			<p class="footer-text left"> Number Of Students: <%= cohort.students.size %> | Number Of Staff: <%= cohort.staff.size %> |  <%= link_to " Edit Cohort", edit_admin_cohort_path(cohort), class: "fa fa-cog" %></p>

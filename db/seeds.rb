@@ -26,7 +26,9 @@ user_list = [
   [ "darrell", "Darrell", "Lastname", "darrell@wyncode.co", false ],
   [ "joey", "Joey", "Brazinzki", "joey@wyncode.co", false ],
   [ "jordan", "Jordan", "Robowitz", "jordan@wyncode.co", false ],
-  [ "crystalei", "Crystalei", "Daneils", "crystalei@wyncode.co", false ]
+  [ "crystalei", "Crystalei", "Daneils", "crystalei@wyncode.co", false ],
+  [ "gregory", "Gregory", "Lastname", "gregory@wyncode.co", false ],
+  [ "ezra", "Ezra", "Lastname", "ezra@wyncode.co", false ]
 ]
 
 cohorts_list = [

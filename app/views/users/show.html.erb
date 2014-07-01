@@ -1,35 +1,40 @@
-  <div class="profile-cover-photo">
-	<img src="http://www.wired.com/wp-content/uploads/2014/06/health-conf-inline.jpg" style="width:100%;">
-  </div>
+<div class="profile-cover-photo">
+   <img src="http://www.wired.com/wp-content/uploads/2014/06/health-conf-inline.jpg" style="width:100%;">
+ </div>
 
-  <figure class="avatar-large avatar"><%= image_tag @user.avatar.url(:medium) %></figure>
+<section id="profile">
 
-  <section id="profile">
+ <figure class="avatar-large avatar"><%= image_tag @user.avatar.url(:medium) %></figure>
 
-  	<h2><%= @user.name %></h2>
+   <section id="profile-block">
+
+    <h2><%= @user.name %></h2>
+
+    <p>Username: <%= @user.username %></p>
+
+    <p>First Name: <%= @user.first_name %></p>
+
+    <p>Last Name: <%= @user.last_name %></p>
+
+    <p>Email: <%= @user.email %></p>
+    </section> 
+
+      <section id="profile-block">
+
+    <h3>About Me</h3>
+
+    <p> As a South Florida native I can decidedly say there is no better place to live and work.
+
+      I recently escaped the publishing world to cultivate my web development skills at Wyncode. </p>
+    </section>
 
 
-  <section id="profile-block">
+    <section id="profile-block">
+    <h3> Cohorts Enrolled In</h3>
+    <%@user.cohorts.each do |cohort| %>  <p> <%= cohort.name %><% end %> </p>
+    </section> 
 
-  		<h3>Personal Info</h3>
-  		
-  			<p>Username: <%= @user.username %></p>
-  	
-  			<p>First Name: <%= @user.first_name %></p>
-  	
-  			<p>Last Name: <%= @user.last_name %></p>
   
-  			<p>Email: <%= @user.email %></p>
-   </section>
 
-  <section id="profile-block">
-  
-  		<h3>Cohorts Enrolled In</h3>
-  
-  	     <% @user.cohorts.each do |cohort| %>
-  			 <p> <%= cohort.name %> </p>
-  			<% end %>
-  	 </p>
-      </section>  
-     </section>  
-  </section>
+    </section>  
+

@@ -8,21 +8,21 @@
 
 
 	
-	<h2>Currently Enrolled Students</h2>
 
-	<section id="enrolled-users">
-
+	<section class="small-header">Currently Enrolled Students</section>
+	<section class="module">
 		<% @users.each do |user| %>
 
-		<section id="users">
-			<ul> 
-				<li> <figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure> </li>
-				<li> <%= link_to user.username, admin_user_path(user) %><%= " (Admin)" if user.admin %> </li>
-				<li> <%= user.first_name %> <%= user.last_name %> </li>
-				<li> <%= user.email %> </li>
-				<li> <%= link_to 'Edit', edit_admin_user_path(user) %> </li>
-			</section>
-			<% end %>
-		</section>s
-	</section>
+			<article class="users">
+				<ul> 
+					<li> <figure class="avatar"><%= image_tag user.avatar.url(:thumb) %></figure> </li>
+					<li> <%= link_to user.username, admin_user_path(user) %><%= " (Admin)" if user.admin %> </li>
+					<li> <%= user.first_name %> <%= user.last_name %> </li>
+					<li> <%= user.email %> </li>
+					<li> <%= link_to 'Edit', edit_admin_user_path(user) %> </li>
+				</ul>
+			</article>
+		<% end %>
+	</section>s
+
 </section>

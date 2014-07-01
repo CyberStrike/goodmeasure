@@ -19,6 +19,7 @@ body {
 	font-family: $base-font-family;
 	@include span-columns(12);
 	@include row(table);
+	background-color: #eee;
 }
 
 html, body {
@@ -31,7 +32,8 @@ a {
 		color: $left-panel-color;
 	}
 	&:hover {
-		color: darken($left-panel-color, 25)
+		color: darken($left-panel-color, 25);
+		@include transition(all 0.3s);
 	}
 	&:active {
 	}
@@ -96,6 +98,7 @@ p {
 		box-shadow: 2px 2px 8px #bbb;
 		&:hover {
 			background-color: lighten($left-panel-color, 45);
+			@include transition(all 0.3s);
 		}
 		h3 {
 			border-bottom: 1px solid #ccc;
@@ -165,7 +168,8 @@ aside {
 			color: white;
 		}
 		&:hover {
-			color: darken($left-panel-color, 25)
+			color: darken($left-panel-color, 25);
+			@include transition(all 0.3s);
 		}
 		&:active {
 		}
@@ -177,7 +181,8 @@ aside {
 			color: white;
 		}
 		&:hover {
-			color: darken($left-panel-color, 25)
+			color: darken($left-panel-color, 25);
+			@include transition(all 0.3s);
 		}
 		&:active {
 		}
@@ -199,6 +204,7 @@ aside {
 
 .topic-list-item:hover {
 	background: #eee;
+	@include transition(all 0.3s);
 }
 
 #footer {
@@ -249,6 +255,7 @@ aside {
 		}
 		&:hover {
 			background-color: lighten($left-panel-color, 10);
+			@include transition(all 0.3s);
 		}
 		&:active {
 		}
@@ -279,7 +286,8 @@ aside {
 			color: white;
 		}
 		&:hover {
-			color: darken($left-panel-color, 25)
+			color: darken($left-panel-color, 25);
+			@include transition(all 0.3s);
 		}
 		&:active {
 		}
@@ -289,7 +297,8 @@ aside {
 			color: white;
 		}
 		&:hover {
-			color: darken($left-panel-color, 25)
+			color: darken($left-panel-color, 25);
+			@include transition(all 0.3s);
 		}
 		&:active {
 		}
@@ -313,6 +322,7 @@ aside {
 		}
 		&:hover {
 			background-color: lighten($left-panel-color, 10);
+			@include transition(all 0.3s);
 		}
 		&:active {
 		}
@@ -323,6 +333,7 @@ aside {
 		}
 		&:hover {
 			background-color: lighten($left-panel-color, 10);
+			@include transition(all 0.3s);
 		}
 		&:active {
 		}
@@ -358,6 +369,7 @@ aside {
 	}
 	&:hover {
 		background-color: lighten($left-panel-color, 40);
+		@include transition(all 0.3s);
 	}
 }
 

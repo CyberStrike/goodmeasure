@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   # SUBDOMAIN as root
   match '/', to: 'pages#splash_page', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
-
   root to: 'pages#splash_page'
-  resources :schools
-  
+
   # SESSION routes
   get "login", to: "session#login"
   post "login", to: "session#login_attempt"
@@ -20,6 +18,7 @@ Rails.application.routes.draw do
     resources :enrollments
     resources :users
     resources :invites
+    resources :schools, only: [:edit, :update]
   end
 
   # REGISTRATION routes
@@ -36,7 +35,6 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:index, :show]
   resources :cohorts, only: [:index, :show]
 
- 
   resources :cohorts do
     resources :units 
     resources :submissions, only: [:index]
@@ -51,17 +49,5 @@ Rails.application.routes.draw do
   end
   
   get '/profile', to: 'users#show'
-
-
-  #TESTING
-
-  # assert_generates '/admin/users/1', { controller: 'admin::users', action: 'show', id: '1'}
-  # assert_generates '/admin/users/1/edit', { controller: 'admin::users', action: 'edit', id: '1'}
-
-  # assert_generates '/admin/cohorts/1', { controller: 'admin::cohorts', action: 'show', id: '1'}
-  # assert_generates '/admin/cohorts/1/edit', { controller: 'admin::cohorts', action: 'edit', id: '1'}
-
-  # assert_generates '/admin/enrollments/1', { controller: 'admin::enrollments', action: 'show', id: '1'}
-  # assert_generates '/admin/enrollments/1/edit', { controller: 'admin::enrollments', action: 'edit', id: '1'}
 
 end

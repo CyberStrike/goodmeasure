@@ -1,81 +1,73 @@
 <aside>
-  <header>
     <section id="back"> <%= link_to 'Return to Unit', unit_path(@task.unit.id) %> </section>
-    <h1> <%= @task.unit.name %> </h1>
-  </header>
-  <p> <%= @task.unit.description %> </p>
+    <h1><%= @task.unit.name %></h1>
+	<p><%= @task.unit.description %></p>
 
-  <% if @current_user.is_instructor?(@task.unit.cohort) %>
-
-		<p class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
+	<% if @current_user.is_instructor?(@task.unit.cohort) %>
+		<ul class="aside-links">
+			<li class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </li>
+		</ul>
 	<% end %>
 
 	<% if @task.has_previous? or @task.has_next? %>
-		<p class="next-previous">
-		<strong>  <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %>
+		<section class="next-previous">
+		<strong> <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %>
 		<%= "|" if @task.has_previous? and @task.has_next? %>
-		<%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong> </p>
+		<%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong> </section>
 	<% end %>
 
 </aside>
 
-
-
-
-
-
-
-
 <section id="main">
 
-<section class="small-header module"><%= @task.title %></section>
-<section class="module"><%= @task.description %></section>
+	<section class="small-header module"><%= @task.title %></section>
+	<section class="module"><%= @task.description %></section>
 
 
-<% # If the current user is a student in this cohort %>
-<% if @current_user.is_student? @task.unit.cohort  %>
+	<% # If the current user is a student in this cohort %>
+	<% if @current_user.is_student? @task.unit.cohort  %>
 
 
-	<% # Show the submission history %>
-	<section class="module small-header">Submission History</section>
+		<% # Show the submission history %>
+		<section class="module small-header">Submission History</section>
 
 
-	<% # Display submission form if there are no correct or pending answers %>
-	<%= render partial: 'submissions/form' if @current_user.can_submit? @task %>
+		<% # Display submission form if there are no correct or pending answers %>
+		<%= render partial: 'submissions/form' if @current_user.can_submit? @task %>
 
-	<% # Display previous submissions %>
-	<%= content_tag_for :article, @current_user.submissions_for(@task), class: "submitted-answer module" do |submission| %>
+		<% # Display previous submissions %>
+		<%= content_tag_for :article, @current_user.submissions_for(@task), class: "submitted-answer module" do |submission| %>
 
-		<section class="submission-content cf">
-			<%= content_tag :p, submission.answer %>
-			<footer class="footer-text">
-				<%= submission.status %> | Submitted <%= time_ago_in_words submission.created_at %> ago
-			</footer>
-		</section>
+			<section class="submission-content cf">
+				<%= content_tag :p, submission.answer %>
+				<footer class="footer-text">
+					<%= submission.status %> | Submitted <%= time_ago_in_words submission.created_at %> ago
+				</footer>
+			</section>
 
 
-		<% # And any associated comments %>
-		<%= content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
+			<% # And any associated comments %>
+			<%= content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
 
-			<%= content_tag :figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left" %>
-			<p><%= comment.content %></p>
-			<footer class="footer-text left">
-				Posted by <%= link_to comment.user.username, comment.user %> 
-				<%= time_ago_in_words comment.created_at %> ago
-			</footer>
+				<%= content_tag :figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left" %>
+				<p><%= comment.content %></p>
+				<footer class="footer-text left">
+					Posted by <%= link_to comment.user.username, comment.user %> 
+					<%= time_ago_in_words comment.created_at %> ago
+				</footer>
 
+			<% end %>
 		<% end %>
-	<% end %>
-<% else %>
-<% # If the current user is a TA or Instructor %>
+	<% else %>
+	<% # If the current user is a TA or Instructor %>
 
-	<section class="module small-header">Stats</section>
-	<section class="module">
-		<p>
-			<%= @task.submissions.accepted.count %> of <%= @task.unit.cohort.students.count %> users have correctly submitted.
-		</p>
-	</section>
-<% end %>
+		<section class="module small-header">Stats</section>
+		<section class="module">
+			<p>
+				<%= @task.submissions.accepted.count %> of <%= @task.unit.cohort.students.count %> users have correctly submitted.
+			</p>
+		</section>
+	<% end %>
 
 
 </section>

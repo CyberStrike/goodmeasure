@@ -11,7 +11,7 @@ header.navigation {
   $navigation-search-border: 1px solid darken($navigation-background, 5);
   $navigation-active-link-color: transparentize(white, 0.5);
   $navigation-submenu-padding: 1em;
-  $horizontal-bar-mode: $max-width;
+  $horizontal-bar-mode: 0;
   $base-font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
   background-color: $navigation-background;
@@ -189,18 +189,10 @@ header.navigation {
   }
 
   .navigation-tools {
-    @include clearfix;
-    display: block;
     padding-right: $navigation-padding;
     padding-left: $navigation-padding/2;
-    clear: both;
-    background: #505050;
-
-    @include media($large-screen) {
-      background: transparent;
-      float: right;
-      clear: none;
-    }
+    background: transparent;
+    float: right;
   }
 
   a.sign-up {

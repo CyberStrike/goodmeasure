@@ -15,102 +15,102 @@
 $base-font-family: "Roboto", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
 body {
-  font-family: $base-font-family;
-  font-family: $base-font-family;
-  @include span-columns(12);
-  @include row(table);
+	font-family: $base-font-family;
+	font-family: $base-font-family;
+	@include span-columns(12);
+	@include row(table);
 }
 
 html, body {
-  margin: 0;
-  height: 100%;
+	margin: 0;
+	height: 100%;
 }
 
 a { 
-    &:link, &:visited {
-      color: $left-panel-color;
-    }
-    &:hover {
-      color: darken($left-panel-color, 25)
-    }
-    &:active {
-    }
-  }
+		&:link, &:visited {
+			color: $left-panel-color;
+		}
+		&:hover {
+			color: darken($left-panel-color, 25)
+		}
+		&:active {
+		}
+	}
 
 h1 {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 2.5rem;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 2.5rem;
 }
 
 h2 {
-  margin-top: 30px;
-  font-size: 2rem;
-  text-align: center;
+	margin-top: 30px;
+	font-size: 2rem;
+	text-align: center;
 }
 
 h3 {
-  margin-bottom: 20px;
-  font-size: 1rem;
+	margin-bottom: 20px;
+	font-size: 1rem;
 }
 
 p {
-  padding-left: 10px;
-  color: $base-font-color;
+	padding-left: 10px;
+	color: $base-font-color;
 }
 
 .module {
-  @include shift(1);
-  @include span-columns(10);
-  padding: 10px;
-  display: inline-block;
-  margin-top: 20px;
+	@include shift(1);
+	@include span-columns(10);
+	padding: 10px;
+	display: inline-block;
+	margin-top: 20px;
 }
 
 
 .cover-photo {
-  height: 250px;
-  overflow: hidden;
-  img {
-    margin-top: -200px;
-  }
+	height: 250px;
+	overflow: hidden;
+	img {
+		margin-top: -200px;
+	}
 }
 
 .cohort-unit {
-  @include span-columns(5);
-  @include shift(0.5);
-  @include omega(2n);
-  @include row();
-  display: inline-block;
-  padding: 15px 0;
-  vertical-align: top;
-  & > div {
-    padding: 20px;
-    font-size: .75rem;
-    border: 1px solid #ccc;
-    background-color: #f4f4f4;
-    box-shadow: 2px 2px 8px #bbb;
-    &:hover {
-      background-color: lighten($left-panel-color, 40);
-    }
-    h3 {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
-    }
-  }
+	@include span-columns(5);
+	@include shift(0.5);
+	@include omega(2n);
+	@include row();
+	display: inline-block;
+	padding: 15px 0;
+	vertical-align: top;
+	& > div {
+		padding: 20px;
+		font-size: .75rem;
+		border: 1px solid #ccc;
+		background-color: #f4f4f4;
+		box-shadow: 2px 2px 8px #bbb;
+		&:hover {
+			background-color: lighten($left-panel-color, 40);
+		}
+		h3 {
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 10px;
+		}
+	}
  }
 
 .main-article {
-   padding: 10px 0;
-   border-bottom: 1px solid #ccc;
-   &:last-child {
-    border-bottom: none;
-   }
+	 padding: 10px 0;
+	 border-bottom: 1px solid #ccc;
+	 &:last-child {
+		border-bottom: none;
+	 }
 }
 
 .review-buttons {
 
-  text-align: center;
+	text-align: center;
 }
 
 .footer-text {
@@ -121,310 +121,317 @@ p {
 }
 
 .left {
-  float: left;
+	float: left;
 }
 
 .small-avatar {
-  width: 50px;
-  height: 50px;
+	width: 50px;
+	height: 50px;
 }
 
 .admin {
-  background-color: lighten(red, 35);
+	background-color: lighten(red, 35);
 }
 
 .user {
-  text-align: center;
+	text-align: center;
 }
 
 aside {
-  @include span-columns(4);
-  @include pad();
-  padding: 85px 20px 20px;
-  position: fixed;
-  height: 100%;
-  color: white;
-  background-color: $left-panel-color;
-  line-height: 1.5;
-  box-shadow: 3px 0 8px #aaa;
-  border-right: 1px solid darken($left-panel-color, 10);
-  p {
-    color: white;
-      font-size: .9rem;
-  }
+	@include span-columns(4);
+	@include pad();
+	padding: 85px 30px 20px;
+	position: fixed;
+	height: 100%;
+	color: white;
+	background-color: $left-panel-color;
+	line-height: 1.5;
+	box-shadow: 3px 0 8px #aaa;
+	border-right: 1px solid darken($left-panel-color, 10);
+	p {
+		color: white;
+		font-size: .8rem;
+		// padding-bottom: 40px;
+		line-height: 2;
+		padding-left: 10px;
+		border-left: 1px solid lighten($left-panel-color, 25);
+	}
 
-  a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($left-panel-color, 25)
-    }
-    &:active {
-    }
-    }
-
+	a {
+		font-size: .8rem;
+		font-weight: bold;
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			color: darken($left-panel-color, 25)
+		}
+		&:active {
+		}
+		}
 
 ul a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($left-panel-color, 25)
-    }
-    &:active {
-    }
-  }
+		font-size: .8rem;
+		font-weight: bold;
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			color: darken($left-panel-color, 25)
+		}
+		&:active {
+		}
+	}
 }
 
 #main {
-  @include span-columns(8);
-  @include reset-display;
-  display: inline-block;
-  float: right;
-  background-color: white;
-  line-height: 1.5;
-  h1, h2, h3, h4, h5, h6 {
-  color: $left-panel-color;
-  }
-  margin-top: 80px;
+	@include span-columns(8);
+	@include reset-display;
+	display: inline-block;
+	float: right;
+	background-color: white;
+	line-height: 1.5;
+	h1, h2, h3, h4, h5, h6 {
+	color: $left-panel-color;
+	}
+	margin-top: 80px;
  }
  
 
 .topic-list-item:hover {
-  background: #eee;
+	background: #eee;
 }
 
 #footer {
-  background-color: #fdfdfd;
-  border-top: 1px solid #ddd;
-  clear: both;
-  color: #999;
-  font-size: 12px;
-  height: auto;
-  line-height: 20px;
-  min-width: 970px;
-  position: relative;
-  z-index: 10;
+	background-color: #fdfdfd;
+	border-top: 1px solid #ddd;
+	clear: both;
+	color: #999;
+	font-size: 12px;
+	height: auto;
+	line-height: 20px;
+	min-width: 970px;
+	position: relative;
+	z-index: 10;
 }
 
 #enrollment {
-  margin-top: 20px;
-  text-align: center;
+	margin-top: 20px;
+	text-align: center;
 }
 
 #enrolled-users {
-   width: 90%;
-   text-align: center;
-   margin-left: 20px;
+	 width: 90%;
+	 text-align: center;
+	 margin-left: 20px;
 }
 
 .users {
-  @include span-columns(3);
-  @include omega(4n);
-  text-align: center;
+	@include span-columns(3);
+	@include omega(4n);
+	text-align: center;
 
 }
 #user-partial {
-  text-align: center;
+	text-align: center;
 }
 
 #back {
-  margin-top: 20px;
-
-  a { 
-
-    padding: 10px; 
-    border: 1px solid transparent;
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      background-color: lighten($left-panel-color, 10);
-      // WALTER: I removed the white border.  Leaving comment in case there is a merge conflict.
-    }
-    &:active {
-    }
-    }
+	margin-top: 20px;
+	margin-left: -8px;
+	a { 
+		padding: 10px; 
+		border: 1px solid transparent;
+		font-weight: normal;
+		font-size: .75rem;
+		text-transform: uppercase;
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			background-color: lighten($left-panel-color, 10);
+		}
+		&:active {
+		}
+	}
 }
 
 .invite {
-  border-color: white;
-  border-width: 1px;
-  border-style: solid;
-  background-color: #3b414e;
-  width: 450px;
-  text-align: center;
-  margin: 10px;
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #3b414e;
+	width: 450px;
+	text-align: center;
+	margin: 10px;
 }
 
 
 .next-previous {
-    margin-top: 100px;
-    color: white;
-    font-size: 1rem;
-    // border: 1px solid white;
-    padding: 10px;
-    text-align: center;
-    background: lighten($left-panel-color, 10);
+		margin-top: 100px;
+		color: white;
+		font-size: 1rem;
+		// border: 1px solid white;
+		padding: 10px;
+		text-align: center;
+		background: lighten($left-panel-color, 10);
 
-  a {
-    font-weight: normal;
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($left-panel-color, 25)
-    }
-    &:active {
-    }
-    }
+	a {
+		font-weight: normal;
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			color: darken($left-panel-color, 25)
+		}
+		&:active {
+		}
+		}
 
 ul a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($left-panel-color, 25)
-    }
-    &:active {
-    }
-  }
+		
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			color: darken($left-panel-color, 25)
+		}
+		&:active {
+		}
+	}
 }
 
 .small-header {
-  text-transform: uppercase;
-  font-size: .75rem;
-  border-bottom: 1px solid $left-panel-color;
-  color: $left-panel-color;
+	text-transform: uppercase;
+	font-size: .75rem;
+	border-bottom: 1px solid $left-panel-color;
+	color: $left-panel-color;
 }
 
 .aside-buttons {
-  padding: 5px;
+	padding: 5px;
 
-  a { 
+	a { 
 
-    padding: 10px; 
-     border: 1px solid transparent;
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      background-color: lighten($left-panel-color, 10);
-    }
-    &:active {
-    }
-    }
+		padding: 10px; 
+		 border: 1px solid transparent;
+		
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			background-color: lighten($left-panel-color, 10);
+		}
+		&:active {
+		}
+		}
 
 ul a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      background-color: lighten($left-panel-color, 10);
+		
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			background-color: lighten($left-panel-color, 10);
 
-    }
-    &:active {
-    }
-  }
+		}
+		&:active {
+		}
+	}
 
 }
-
+.aside-links {
+	padding-top: 30px;
+}
 .pending-reviewed {
-  color: $left-panel-color;
-  text-transform: uppercase;
-  font: 10px, 'Proxima Nova',sans-serif;
-  border-bottom: 1px solid $left-panel-color;
+	color: $left-panel-color;
+	text-transform: uppercase;
+	font: 10px, 'Proxima Nova',sans-serif;
+	border-bottom: 1px solid $left-panel-color;
 
 }
 
 .completed-task {
-  background-color: lighten($left-panel-color, 40);
-  // border: 1px solid $left-panel-color;
-  color: $left-panel-color;
-  text-align: center;
-  padding: 3px;
-  font-size: .75em;
+	background-color: lighten($left-panel-color, 40);
+	// border: 1px solid $left-panel-color;
+	color: $left-panel-color;
+	text-align: center;
+	padding: 3px;
+	font-size: .75em;
 }
 .submission-list {
-  padding: 5px;
-  &:nth-child(2n) {
-    background-color: lighten($left-panel-color, 50);
-  }
-  &:hover {
-    background-color: lighten($left-panel-color, 40);
-  }
+	padding: 5px;
+	&:nth-child(2n) {
+		background-color: lighten($left-panel-color, 50);
+	}
+	&:hover {
+		background-color: lighten($left-panel-color, 40);
+	}
 }
 
 .cf:before,
 .cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+		content: " "; /* 1 */
+		display: table; /* 2 */
 }
 
 .cf:after {
-    clear: both;
+		clear: both;
 }
 
 .progress-bar {
-  width: 100%;
-  height: 30px;
-  border: 1px solid $left-panel-color;
-  background-color: lighten($left-panel-color, 40);
+	width: 100%;
+	height: 30px;
+	border: 1px solid $left-panel-color;
+	background-color: lighten($left-panel-color, 40);
 }
 
 .current-progress {
-  background-color: $left-panel-color;
-  height: 100%;
-  display: block;
-  font-weight: bold;
-  color: white;
-  vertical-align: middle;
-  padding-top: 3px;
+	background-color: $left-panel-color;
+	height: 100%;
+	display: block;
+	font-weight: bold;
+	color: white;
+	vertical-align: middle;
+	padding-top: 3px;
 }
 
 article {
-  // Probably gonna delete this...
-  border-radius: 5px;
+	// Probably gonna delete this...
+	border-radius: 5px;
 }
 
 .pages-background {
 
 background: url('http://www.wired.com/wp-content/uploads/2014/06/file-sharing.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 0;
-  top: 0px;
-  left: 0;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 0;
+	top: 0px;
+	left: 0;
 }
 
 #pages {
-  background: rgba(82, 156, 157, 0.70);
-  color: white;
-  text-align: center;
-  @include transform(translate(50%, 50%));
-  width: 50%;
-  padding: 10px;
+	background: rgba(82, 156, 157, 0.70);
+	color: white;
+	text-align: center;
+	@include transform(translate(50%, 50%));
+	width: 50%;
+	padding: 10px;
 
-  h1 { 
-    font-size: 72px
-  }
+	h1 { 
+		font-size: 72px
+	}
 
-  p { 
-    font-size: 32px;
-    color: white;
-    font-style: bold;
-  }
+	p { 
+		font-size: 32px;
+		color: white;
+		font-style: bold;
+	}
 }
 

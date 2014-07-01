@@ -1,14 +1,13 @@
 <aside>
-    <section id="back"> <%= link_to 'Back', task_path(@cohort.id) %> </section>
+    <section id="back"> <%= link_to 'Back', cohort_path(@cohort) %> </section>
     <h1> <%= @cohort.name %> Submissions </h1>
-    Submissions are user-blind for unbiased reviews.
+    <p>Submissions are user-blind for unbiased reviews.</p>
 </aside>
 
 <section id="main">
 
 
     <% @submission_by_status.keys.sort.reverse.each do |status| %>
-
         <section class="module small-header"><%= status %></section>
         <section class="module">
             <%= content_tag_for :article, @submission_by_status[status], class: "submission-list" do |submission| %>
@@ -17,7 +16,6 @@
                 <%= link_to submission.user.username, submission.user %>.
             <% end %>
         </section>
-
     <% end %>
 
 </section>

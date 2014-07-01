@@ -13,19 +13,19 @@ $admin-left-panel-color: gray;
   }
 
   a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($admin-left-panel-color, 25)
-    }
-    &:active {
-    }
+       font-weight: bold;
+      &:link, &:visited {
+        color: white;
+      }
+      &:hover {
+        color: darken($admin-left-panel-color, 25)
+      }
+      &:active {
+      }
     }
 
 ul a {
-    
+   font-weight: bold;
     &:link, &:visited {
       color: white;
     }
@@ -69,6 +69,7 @@ ul a {
 }
 #back {
   margin-top: 20px;
+  font-weight: normal;
 
   a { 
 

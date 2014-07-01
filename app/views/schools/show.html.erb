@@ -1,17 +1,16 @@
 <aside>
-	<header>
-		<h1> <%= @school.name %> Dashboard </h1>
-		<p> <%= @school.description %> </p>
-	</header>
+	<h1> <%= @school.name %> Dashboard </h1>
+	<p> <%= @school.description %> </p>
 </aside>
 
 <section id="main">
 
-  	<p class="small-header module">Cohorts</p>
+  	<section class="small-header module">Cohorts</section>
   	
+  	<section class="module">
 		<% @current_user.cohorts.order(:id).each do |cohort| %>
 
-		<article class="main-article module">
+		<article class="main-article">
 
 			<h3><%= link_to cohort.name, cohort_path(cohort) %></h3>
 

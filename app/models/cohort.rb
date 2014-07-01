@@ -15,19 +15,19 @@ class Cohort < ActiveRecord::Base
                             presence: true   
    
 	def students
-		self.enrollments.where(role_id:1)
-	end
-
-	def staff
-		instructors + tas
+		self.enrollments.where(role_id: 1).map{ |enrollment| enrollment.user }
 	end
 
 	def instructors
-		self.enrollments.where(role_id:3)
+		self.enrollments.where(role_id: 3).map{ |enrollment| enrollment.user }
+	end
+
+	def staff
+		self.enrollments.where(role_id: 2 || 3).map{ |enrollment| enrollment.user }
 	end
 
 	def tas
-		self.enrollments.where(role_id:2)
+		self.enrollments.where(role_id: 2).map{ |enrollment| enrollment.user }
 	end
 
 	def has_users?

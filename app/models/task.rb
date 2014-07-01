@@ -20,6 +20,6 @@ class Task < ActiveRecord::Base
 		unit.tasks.where("id < ?", self.id).order("id DESC").first
 	end
 	
-	end
+end
 
 ## if we wanted to time up to the milisecond it would go in the task model

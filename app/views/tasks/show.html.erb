@@ -7,7 +7,6 @@
 
   <% if @current_user.is_instructor?(@task.unit.cohort) %>
 
-	<h3>Instructor Options</h3>
 		<p class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </p>
 	<% end %>
 
@@ -69,6 +68,14 @@
 	<% end %>
 <% else %>
 <% # If the current user is a TA or Instructor %>
+
+	<section class="module small-header">Stats</section>
+	<section class="module">
+		<p>
+			<%= @task.submissions.accepted.count %> of <%= @task.unit.cohort.students.count %> users have correctly submitted.
+		</p>
+	</section>
 <% end %>
+
 
 </section>

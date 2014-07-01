@@ -12,24 +12,20 @@ class Submission < ActiveRecord::Base
 	# validates_uniqueness_of :user, scope: [:task], message: "has already submitted."
 
 	def is_correct?
-		self.correctness == true
+		self.correctness
 	end
 
 	def is_incorrect?
-		self.reviewed == true &&
-		self.correctness == false
+		self.reviewed &&
+		!self.correctness
 	end
 
 	def has_been_reviewed?
-		self.reviewed == true
+		self.reviewed
 	end
 
 	def is_pending_review?
-		self.reviewed == false
-	end
-
-	def self.most_recent_version
-		# self.
+		!self.reviewed
 	end
 
 	def self.distinct_users

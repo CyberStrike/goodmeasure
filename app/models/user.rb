@@ -77,6 +77,10 @@ class User < ActiveRecord::Base
 		self.is_instructor?(cohort) || self.role(cohort).title == "TA"
 	end	
 
+	def is_ta?(cohort)
+		self.role(cohort).title == "TA"
+	end
+
 	def is_student?(cohort)
 		self.role(cohort).title == "Student"
 	end

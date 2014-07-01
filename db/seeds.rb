@@ -86,7 +86,7 @@ end
 
 
 
-#School.create(name:'Wyncode', subdomain:'wyncode', description:'A development boot camp immersing students in a demanding and inspiring learning environment engineered to develop successful coders with business acumen.')
+School.create(name:'Wyncode', subdomain:'wyncode', description:'A development boot camp immersing students in a demanding and inspiring learning environment engineered to develop successful coders with business acumen.')
 
 Role.create(title:'Student')
 Role.create(title:'TA')

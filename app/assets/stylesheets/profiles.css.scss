@@ -12,12 +12,13 @@
   height: 100%;
   width: 100%;
   padding: 15px;
-  background-color: lighten($left-panel-color, 20);
+  background-color: lighten(#70DB70, 20);
   line-height: 1.5;
   h2 {
     margin-top: -5px;
     margin-bottom: 10px;
   }
+  
   h3 {
     text-align: center;
   }
@@ -29,7 +30,7 @@
     border-radius: 3px;
     margin-top: 15px;
     padding-top: 15px;
-    background-color: lighten($left-panel-color, 50);
+    background-color: lighten(#70DB70, 30);
  } 
 
 .avatar-large {
@@ -41,5 +42,5 @@
 
 .avatar img {
   border-radius: 50%;
-  border-bottom: 2px solid $left-panel-color;
+  border-bottom: 2px solid #70DB70;
 }

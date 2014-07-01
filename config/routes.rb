@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match '/', to: 'pages#splash_page', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
   root to: 'pages#splash_page'
+  resources :schools, only: [:index]
 
   # SESSION routes
   get "login", to: "session#login"

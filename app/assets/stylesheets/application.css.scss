@@ -76,18 +76,22 @@ p {
 	}
 }
 
+// Come back to this and figure out how to make it more responsive
 .cohort-unit {
-	@include span-columns(5);
-	@include shift(0.5);
 	@include omega(2n);
 	@include row();
-	display: inline-block;
+	@include span-columns(5);
+	@include shift(0.5);
 	padding: 15px 0;
 	vertical-align: top;
+	position: relative;
 	& > div {
 		padding: 20px;
 		font-size: .75rem;
 		border: 1px solid #ccc;
+		width: 100%;
+		height: 250px;
+		overflow: scroll;
 		background-color: #f4f4f4;
 		box-shadow: 2px 2px 8px #bbb;
 		&:hover {

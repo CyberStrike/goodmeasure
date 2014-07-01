@@ -108,11 +108,16 @@ p {
  }
 
 .main-article {
-	 padding: 10px 0;
-	 border-bottom: 1px solid #ccc;
+	 padding: 10px;
+	 margin: 10px 0;
+	 @include span-columns(12);
+	 // border-bottom: 1px solid #ccc;
 	 &:last-child {
 		border-bottom: none;
 	 }
+}
+.completed {
+	background-color: lighten($left-panel-color, 40);
 }
 
 .review-buttons {
@@ -428,6 +433,21 @@ aside {
 		font-size: 32px;
 		color: white;
 		font-style: bold;
+	}
+}
+.cohort {
+	background-color: $left-panel-color;
+	box-shadow: 2px 2px 5px #666;
+	// border: 1px solid darken($left-panel-color, 20);
+	p, a {
+		// color: white;
+	}
+	background-color: #f4f4f4;
+	box-shadow: 2px 2px 8px #bbb;
+	border: 1px solid #ccc;
+	&:hover {
+		background-color: lighten($left-panel-color, 45);
+		@include transition(all 0.3s);
 	}
 }
 

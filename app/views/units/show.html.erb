@@ -21,7 +21,11 @@
 		<% @unit.tasks.order(:id).each do |task| %>
 			<article class="main-article cf">
 				<h3><%= link_to task.title, task %></h3>
-				<p><%= task.description %></p>
+				<p><small><%= task.description %></small></p>
+
+				<% if @current_user.has_completed? task %>
+					<p class="footer-text">Completed on <%= @current_user.last_submission_for(task).created_at %></p>
+				<% end %>
 
 				<% if @current_user.is_instructor?(@unit.cohort) %>
 					<p class="footer-text"><%= link_to ' Edit Task', edit_task_path(task.id), class: "fa fa-cog" %></p>

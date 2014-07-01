@@ -1,11 +1,15 @@
 <aside>
-	<section id="back"> <%= link_to "Back to #{@school.name}", root_path %> </section>
-	<h1> <%= @cohort.name %> </h1>
-	<p> <%= @cohort.description %> </p>
+	<section id="back"><%= link_to "Back to #{@school.name}", root_path %></section>
+	<h1><%= @cohort.name %></h1>
+	<p><%= @cohort.description %></p>
+
 	<% if @current_user.is_staff? @cohort %>
-		<div class="aside-buttons"> <%= link_to 'New Unit', new_cohort_unit_path(@cohort) if @current_user.is_instructor? @cohort %></div>
-		<div class="aside-buttons"> <%= link_to 'Show All Submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff? @cohort %></div>
+		<ul class="aside-links">
+			<li class="aside-buttons"><%= link_to 'New Unit', new_cohort_unit_path(@cohort) if @current_user.is_instructor? @cohort %></li>
+			<li class="aside-buttons"><%= link_to 'Show All Submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff? @cohort %></li>
+		</ul>
 	<% end %>
+
 </aside>
 
 <section id="main">

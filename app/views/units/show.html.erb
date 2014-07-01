@@ -1,38 +1,34 @@
 <aside>
-  <header>
-    <section id="back"> <%= link_to "Return to #{@unit.cohort.name}", cohort_path(@unit.cohort.id) %> </section>
-    <h1> <%= @unit.name %> </h1>
-  </header>
-  <p> <%= @unit.description %> </p>
+	<section id="back"> <%= link_to "Return to #{@unit.cohort.name}", cohort_path(@unit.cohort.id) %> </section>
+	<h1><%= @unit.name %></h1>
+	<p><%= @unit.description %></p>
 
-  <% if @current_user.is_instructor?(@unit.cohort) %>
-
- 
-   <p class="aside-buttons"> <%= link_to 'New Task', new_unit_task_path(@unit.id) %></p>
-   <p class="aside-buttons"><%= link_to 'Edit Unit', edit_unit_path(@unit) %> </p>
-
-  <% end %>
-
+	<% if @current_user.is_instructor?(@unit.cohort) %>
+		<ul class="aside-links">
+			<li class="aside-buttons"><%= link_to 'New Task', new_unit_task_path(@unit.id) %></li>
+			<li class="aside-buttons"><%= link_to ' Edit Unit', edit_unit_path(@unit) %> </li>
+		</ul>
+	<% end %>
 </aside>
 
 
 <section id="main">
 
-    <p class="small-header module">Tasks in <%= @unit.name %></p> 
+	<section class="small-header module">Tasks in <%= @unit.name %></section> 
 
+	<section class="module">
 
+		<% @unit.tasks.order(:id).each do |task| %>
+			<article class="main-article cf">
+				<h3><%= link_to task.title, task %></h3>
+				<p><%= task.description %></p>
 
-  <section class="module">
+				<% if @current_user.is_instructor?(@unit.cohort) %>
+					<p class="footer-text"><%= link_to ' Edit Task', edit_task_path(task.id), class: "fa fa-cog" %></p>
+				<% end %>
+			</article>
+		<% end %>
 
-   <% @unit.tasks.order(:id).each do |task| %>
-    <article class="main-article cf">
-    <h3><%= link_to task.title, task %></h3>
-    <p><%= task.description %></p>
+	</section>
 
-    <% if @current_user.is_instructor?(@unit.cohort) %>
-    <p class="footer-text">  <%= link_to ' Edit Task', edit_task_path(task.id), class: "fa fa-cog" %></p>
-    <% end %>
-  </article>
-  <% end %>
-  </section>
 </section>

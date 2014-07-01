@@ -27,15 +27,15 @@ html, body {
 }
 
 a { 
-		&:link, &:visited {
-			color: $left-panel-color;
-		}
-		&:hover {
-			color: darken($left-panel-color, 25)
-		}
-		&:active {
-		}
+	&:link, &:visited {
+		color: $left-panel-color;
 	}
+	&:hover {
+		color: darken($left-panel-color, 25)
+	}
+	&:active {
+	}
+}
 
 h1 {
 	margin-top: 20px;
@@ -109,15 +109,13 @@ p {
 }
 
 .review-buttons {
-
 	text-align: center;
 }
 
 .footer-text {
- font-size: .8rem;
- font-style: italic;
- color: lighten($base-font-color, 20);
- // float: right;
+	font-size: .8rem;
+	font-style: italic;
+	color: lighten($base-font-color, 20);
 }
 
 .left {
@@ -151,7 +149,6 @@ aside {
 	p {
 		color: white;
 		font-size: .8rem;
-		// padding-bottom: 40px;
 		line-height: 2;
 		padding-left: 10px;
 		border-left: 1px solid lighten($left-panel-color, 25);
@@ -168,9 +165,8 @@ aside {
 		}
 		&:active {
 		}
-		}
-
-ul a {
+	}
+	ul a {
 		font-size: .8rem;
 		font-weight: bold;
 		&:link, &:visited {
@@ -192,7 +188,7 @@ ul a {
 	background-color: white;
 	line-height: 1.5;
 	h1, h2, h3, h4, h5, h6 {
-	color: $left-panel-color;
+		color: $left-panel-color;
 	}
 	margin-top: 80px;
  }
@@ -268,14 +264,12 @@ ul a {
 
 
 .next-previous {
-		margin-top: 100px;
-		color: white;
-		font-size: 1rem;
-		// border: 1px solid white;
-		padding: 10px;
-		text-align: center;
-		background: lighten($left-panel-color, 10);
-
+	margin-top: 100px;
+	color: white;
+	font-size: 1rem;
+	padding: 10px;
+	text-align: center;
+	background: lighten($left-panel-color, 10);
 	a {
 		font-weight: normal;
 		&:link, &:visited {
@@ -286,10 +280,8 @@ ul a {
 		}
 		&:active {
 		}
-		}
-
-ul a {
-		
+	}
+	ul a {
 		&:link, &:visited {
 			color: white;
 		}
@@ -310,55 +302,52 @@ ul a {
 
 .aside-buttons {
 	padding: 5px;
-
 	a { 
-
 		padding: 10px; 
-		 border: 1px solid transparent;
-		
+		border: 1px solid transparent;
 		&:link, &:visited {
 			color: white;
 		}
 		&:hover {
 			background-color: lighten($left-panel-color, 10);
-		}
-		&:active {
-		}
-		}
-
-ul a {
-		
-		&:link, &:visited {
-			color: white;
-		}
-		&:hover {
-			background-color: lighten($left-panel-color, 10);
-
 		}
 		&:active {
 		}
 	}
-
+	ul a {
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			background-color: lighten($left-panel-color, 10);
+		}
+		&:active {
+		}
+	}
 }
+
 .aside-links {
 	padding-top: 30px;
+	li {
+		margin: 10px 0;
+	}
 }
+
 .pending-reviewed {
 	color: $left-panel-color;
 	text-transform: uppercase;
 	font: 10px, 'Proxima Nova',sans-serif;
 	border-bottom: 1px solid $left-panel-color;
-
 }
 
 .completed-task {
 	background-color: lighten($left-panel-color, 40);
-	// border: 1px solid $left-panel-color;
 	color: $left-panel-color;
 	text-align: center;
 	padding: 3px;
 	font-size: .75em;
 }
+
 .submission-list {
 	padding: 5px;
 	&:nth-child(2n) {
@@ -396,14 +385,8 @@ ul a {
 	padding-top: 3px;
 }
 
-article {
-	// Probably gonna delete this...
-	border-radius: 5px;
-}
-
 .pages-background {
-
-background: url('http://www.wired.com/wp-content/uploads/2014/06/file-sharing.jpg') no-repeat center center fixed; 
+	background: url('http://www.wired.com/wp-content/uploads/2014/06/file-sharing.jpg') no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -423,11 +406,9 @@ background: url('http://www.wired.com/wp-content/uploads/2014/06/file-sharing.jp
 	@include transform(translate(50%, 50%));
 	width: 50%;
 	padding: 10px;
-
 	h1 { 
 		font-size: 72px
 	}
-
 	p { 
 		font-size: 32px;
 		color: white;

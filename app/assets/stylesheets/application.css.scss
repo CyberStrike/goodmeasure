@@ -445,6 +445,7 @@ aside {
 	background-color: #f4f4f4;
 	box-shadow: 2px 2px 8px #bbb;
 	border: 1px solid #ccc;
+	padding: 10px;
 	&:hover {
 		background-color: lighten($left-panel-color, 45);
 		@include transition(all 0.3s);

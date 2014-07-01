@@ -95,7 +95,7 @@ p {
 		background-color: #f4f4f4;
 		box-shadow: 2px 2px 8px #bbb;
 		&:hover {
-			background-color: lighten($left-panel-color, 40);
+			background-color: lighten($left-panel-color, 45);
 		}
 		h3 {
 			border-bottom: 1px solid #ccc;
@@ -152,7 +152,7 @@ aside {
 	border-right: 1px solid darken($left-panel-color, 10);
 	p {
 		color: white;
-		font-size: .8rem;
+		font-size: .85rem;
 		line-height: 2;
 		padding-left: 10px;
 		border-left: 1px solid lighten($left-panel-color, 25);
@@ -189,7 +189,6 @@ aside {
 	@include reset-display;
 	display: inline-block;
 	float: right;
-	background-color: white;
 	line-height: 1.5;
 	h1, h2, h3, h4, h5, h6 {
 		color: $left-panel-color;

@@ -29,6 +29,10 @@
 			</article>
 		<% end %>
 
+		<% if @unit.tasks.empty? %>
+			<p>There aren't any tasks in this unit!</p>
+		<% end %>
+
 	</section>
 
 </section>

@@ -1,19 +1,33 @@
 <aside>
-	<header>
-		<section id="back"> <%= link_to "Back to #{@school.name}", root_path %> </section>
-		<h1> <%= @cohort.name %> </h1>
-		<p> <%= @cohort.description %> </p>
-		<% if @current_user.is_staff? @cohort %>
-		<h3>Instructor Options</h3>
-		
-			<p class="aside-buttons"> <%= link_to 'New Unit', new_cohort_unit_path(@cohort) if @current_user.is_instructor? @cohort %></p>
-			<p class="aside-buttons"> <%= link_to 'Show All Submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff? @cohort %></p>
+	<section id="back"><%= link_to "Back to #{@school.name}", root_path %></section>
+	<h1><%= @cohort.name %></h1>
+	<p><%= @cohort.description %></p>
 
-		<% end %>
-	</header>
+	<% if @current_user.is_staff? @cohort %>
+		<ul class="aside-links">
+			<li class="aside-buttons"><%= link_to 'New Unit', new_cohort_unit_path(@cohort) if @current_user.is_instructor? @cohort %></li>
+			<li class="aside-buttons"><%= link_to 'Show All Submissions', cohort_submissions_path(@cohort.id) if @current_user.is_staff? @cohort %></li>
+		</ul>
+	<% end %>
+
 </aside>
 
 <section id="main">
+
+<!-- 
+	<section class="small-header module">Teaching Team</section>
+	<section class="module">
+		<% @cohort.instructors.each do |instructor| %>
+			<figure class="avatar small-avatar"><%= image_tag instructor.avatar.url(:medium) %></figure>
+		<% end %>
+
+		<% @cohort.tas.each do |ta| %>
+			<figure class="avatar small-avatar"><%= image_tag ta.avatar.url(:medium) %></figure>
+		<% end %>
+	</section> -->
+
+
+
 
 	<section class="small-header module">Units</section> 
 

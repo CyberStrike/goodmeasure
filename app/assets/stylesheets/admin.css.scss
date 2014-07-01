@@ -2,89 +2,82 @@ $admin-left-panel-color: gray;
 
 
 #admin-aside {
-  background-color: $admin-left-panel-color;
-  color: white;
-  box-shadow: 3px 0 8px #aaa;
-  border-right: 1px solid darken($admin-left-panel-color, 10);
+	background-color: $admin-left-panel-color;
+	color: white;
+	box-shadow: 3px 0 8px #aaa;
+	border-right: 1px solid darken($admin-left-panel-color, 10);
 
-  p {
-    color: white;
-      font-size: .9rem;
-  }
+	p {
+		color: white;
+		font-size: .9rem;
+		border-left: 1px solid lighten($admin-left-panel-color, 25);
+	}
 
-  a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($admin-left-panel-color, 25)
-    }
-    &:active {
-    }
-    }
+	a {
+		font-weight: bold;
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			color: darken($admin-left-panel-color, 25)
+		}
+		&:active {
+		}
+	}
 
-ul a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      color: darken($admin-left-panel-color, 25)
-    }
-    &:active {
-    }
-  }
-.aside-buttons {
-  padding: 5px;
+	ul a {
+		font-weight: bold;
+		&:link, &:visited {
+			color: white;
+		}
+		&:hover {
+			color: darken($admin-left-panel-color, 25)
+		}
+		&:active {
+		}
+	}
 
-  a { 
+	.aside-buttons {
+		padding: 5px;
+		a { 
+			padding: 10px; 
+			border: 1px solid transparent;
+			&:link, &:visited {
+				color: white;
+			}
+			&:hover {
+				background-color: lighten($admin-left-panel-color, 10);
+			}
+			&:active {
+			}
+		}
 
-    padding: 10px; 
-     border: 1px solid transparent;
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      background-color: lighten($admin-left-panel-color, 10);
-    }
-    &:active {
-    }
-    }
+		ul a {
+			&:link, &:visited {
+				color: white;
+			}
+			&:hover {
+				background-color: lighten($admin-left-panel-color, 10);
+			}
+			&:active {
+			}
+		}
+	}
 
-ul a {
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      background-color: lighten($admin-left-panel-color, 10);
-
-    }
-    &:active {
-    }
-  }
-
-}
-#back {
-  margin-top: 20px;
-
-  a { 
-
-    padding: 10px; 
-    border: 1px solid transparent;
-    
-    &:link, &:visited {
-      color: white;
-    }
-    &:hover {
-      background-color: lighten($admin-left-panel-color, 10);
-
-    }
-    &:active {
-    }
-    }
-}
-  
+	#back {
+		margin-top: 20px;
+		font-weight: normal;
+		a { 
+			padding: 10px; 
+			border: 1px solid transparent;
+			&:link, &:visited {
+				color: white;
+			}
+			&:hover {
+				background-color: lighten($admin-left-panel-color, 10);
+			}
+			&:active {
+			}
+		}
+	}	
 }

@@ -1,14 +1,11 @@
 <aside>
-<header>
-<section id="back"> <%= link_to 'Back', unit_path %> </section>
-<h1> </h1>
-<p></p>
-</header>
+	<section id="back"> <%= link_to 'Back', :back %> </section>
 </aside>
 
 <section id="main">
-<h2>Edit Unit</h2>
-<section class="module">
-<%= render 'form' %>
-</section>
+
+	<section class="module small-header">Edit Unit</section>
+	<section class="module">
+		<%= render 'form' %>
+	</section>
 </section>

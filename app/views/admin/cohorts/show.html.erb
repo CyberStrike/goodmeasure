@@ -1,14 +1,10 @@
 <aside id="admin-aside">
-	<header> 
-
-		<section id="back"> <%= link_to 'Back', admin_path %> </section>
-
-		<h1> <%= @cohort.name %> </h1>
-
-	</header>
+	<section id="back"> <%= link_to 'Back', admin_path %> </section>
+	<h1> <%= @cohort.name %> </h1>
 	<p><%= @cohort.description %></p>
-<p class="aside-buttons"> <%= link_to " Edit Cohort", edit_admin_cohort_path(@cohort), class: "fa fa-cog" %> </p>
-
+	<section class="aside-links">
+		<%= link_to " Edit Cohort", edit_admin_cohort_path(@cohort), class: "fa fa-cog" %>
+	</section>
 </aside>
 
 <section id="main">

@@ -17,7 +17,16 @@ user_list = [
   [ "johanna", "Jo", "Mikkola", "jo@wyncode.co", false ],
   [ "chris", "Chris", "Scott", "chris@wyncode.co", false ],
   [ "bryce", "Bryce", "Lastname", "bryce@lastname.co.uk", false ],
-  [ "frank", "Frank", "Ortiz", "frank@wyncode.co", false ]
+  [ "frank", "Frank", "Ortiz", "frank@wyncode.co", false ],
+  [ "pk", "PK", "Lastname", "pk@wyncode.co", false ],
+  [ "matt", "Matt", "Lastname", "matt@wyncode.co", false ],
+  [ "sara", "Sara", "Lastname", "sara@wyncode.co", false ],
+  [ "janvier", "Janvier", "Lastname", "janvier@wyncode.co", false ],
+  [ "javier", "Javier", "Lastname", "javier@wyncode.co", false ],
+  [ "darrell", "Darrell", "Lastname", "darrell@wyncode.co", false ],
+  [ "joey", "Joey", "Brazinzki", "joey@wyncode.co", false ],
+  [ "jordan", "Jordan", "Robowitz", "jordan@wyncode.co", false ],
+  [ "crystalei", "Crystalei", "Daneils", "crystalei@wyncode.co", false ]
 ]
 
 cohorts_list = [

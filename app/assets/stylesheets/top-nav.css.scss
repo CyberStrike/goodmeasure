@@ -24,11 +24,11 @@ header.navigation {
   position: fixed;
 
   .menu-wrapper {
-    @include outer-container;
+    // @include outer-container;
      @include clearfix;
     position: relative;
     z-index: 9999;
-    max-width: 76em;
+    // max-width: 76em;
   }
 
   .logo {

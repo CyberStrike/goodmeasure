@@ -1,28 +1,27 @@
-== README
+# GoodMeasure.io
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GoodMeasure is a learning platform for coding bootcamps built by [Julie Kramer](http://juliekramer.co), [Walter Latimer](http://walterlatimer.com), and [Bryan Perez](http://bryanprz.com).
 
-Things you may want to cover:
+## Current Features
 
-* Ruby version
+* Task submission revision history
 
-* System dependencies
+* Administrator enrollment management
 
-* Configuration
+* User profiles
 
-* Database creation
+* Progress tracking
 
-* Database initialization
+## Planned Features
 
-* How to run the test suite
+* Syntax highlighting
 
-* Services (job queues, cache servers, search engines, etc.)
+* Answer upvotes
 
-* Deployment instructions
+* Public cohorts
 
-* ...
+* Additional instructor statistics
 
+* Submission file uploads
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+v0.0.1 of this app was created at [Wyncode](http://wyncode.co) in June 2014.

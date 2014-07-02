@@ -1,6 +1,6 @@
 == GoodMeasure.io
 
-GoodMeasure is a learning platform for coding bootcamps built by [Julie Kramer](http://juliekramer.co), [Walter Latimer](http://walterlatimer.com), and [Bryan Perez](http://bryanprz.com).
+GoodMeasure is a learning platform for coding bootcamps built by {Julie Kramer}[http://juliekramer.co], {Walter Latimer}[http://walterlatimer.com], and {Bryan Perez}[http://bryanprz.com].
 
 == Current Features
 
@@ -24,4 +24,4 @@ GoodMeasure is a learning platform for coding bootcamps built by [Julie Kramer](
 
 * Submission file uploads
 
-v0.0.1 of this app was created at [Wyncode](http://wyncode.co) in June 2014.
+v0.0.1 of this app was created at {Wyncode}[http://wyncode.co] in June 2014.

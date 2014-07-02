@@ -39,6 +39,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    aws-sdk (1.43.3)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt-ruby (3.1.1.rc1)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -230,6 +233,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   bcrypt-ruby (= 3.1.1.rc1)
   better_errors
   binding_of_caller

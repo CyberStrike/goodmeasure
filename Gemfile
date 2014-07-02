@@ -25,6 +25,7 @@ gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
 # For attachments
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
 
 # To visualize models
 gem 'rails-erd', '~> 1.1.0'

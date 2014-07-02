@@ -1,8 +1,8 @@
-# GoodMeasure.io
+== GoodMeasure.io
 
 GoodMeasure is a learning platform for coding bootcamps built by [Julie Kramer](http://juliekramer.co), [Walter Latimer](http://walterlatimer.com), and [Bryan Perez](http://bryanprz.com).
 
-## Current Features
+== Current Features
 
 * Task submission revision history
 
@@ -12,7 +12,7 @@ GoodMeasure is a learning platform for coding bootcamps built by [Julie Kramer](
 
 * Progress tracking
 
-## Planned Features
+== Planned Features
 
 * Syntax highlighting
 

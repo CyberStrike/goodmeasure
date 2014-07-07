@@ -417,13 +417,15 @@ aside {
 	z-index: 0;
 	top: 0px;
 	left: 0;
+	display: table;
 }
 
 #pages {
 	background: rgba(82, 156, 157, 0.70);
 	color: white;
+	display: table-cell;
+	vertical-align: middle;
 	text-align: center;
-	@include transform(translate(50%, 50%));
 	width: 50%;
 	padding: 10px;
 	h1 { 

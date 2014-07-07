@@ -34,15 +34,7 @@
       </div>
   </div>
 </header>
-
-
-
-<% if flash[:success] %><p id="success"><%= flash[:success] %></p><% end %>
-<% if flash[:error] %><p id="error"><%= flash[:error] %></p><% end %>
-<% if notice %><p id="notice"><%= notice %></p><% end %>
-
+<body>
 <%= yield %>
-
-
 </body>
 </html>

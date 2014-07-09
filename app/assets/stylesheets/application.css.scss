@@ -16,7 +16,6 @@ $base-font-family: "Roboto", "Lucida Grande", "Lucida Sans Unicode", Helvetica, 
 
 body {
 	font-family: $base-font-family;
-	font-family: $base-font-family;
 	@include span-columns(12);
 	@include row(table);
 	background-color: #eee;

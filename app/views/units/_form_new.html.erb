@@ -18,13 +18,13 @@
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-    <%= f.fields_for :related_material do |form| %>
-        <%= form.hidden_field :attachable_id, value: @unit.id %>
-        <%= form.hidden_field :attachable_type, value: @unit.class %>
+    <%#= f.fields_for :related_material do |form| %>
+    <%= f.hidden_field :attachable_id, value: @unit.id %>
+    <%= f.hidden_field :attachable_type, value: @unit.class %>
         <div>
-        <%= form.file_field :file %>
+        <%= f.file_field :file %>
         </div>
-    <% end %>
+    <%# end %>
   </div>
 
 

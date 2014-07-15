@@ -30,7 +30,10 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.save
-        @unit = Unit.create(related_material_params[:related_material])
+        attachment = RelatedMaterial.create(related_material_params)
+        attachment.attachable_id = @unit.id
+        attachment.attachable_type = @unit.class.to_s
+        attachment.save
         format.html { redirect_to cohort_path(params[:cohort_id]), notice: 'Unit was successfully created.' }
         format.json { render :show, status: :created, location: @unit }
       else
@@ -80,6 +83,6 @@ class UnitsController < ApplicationController
     end
 
     def related_material_params
-      parmas.require(:unit).permit(:related_material [:attachable_id, :attachable_type, :file])
+      params.require(:unit).permit(:attachable_id, :attachable_type, :file)
     end
 end

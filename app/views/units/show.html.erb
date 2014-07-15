@@ -2,6 +2,9 @@
 	<section id="back"> <%= link_to "Return to #{@unit.cohort.name}", cohort_path(@unit.cohort.id) %> </section>
 	<h1><%= @unit.name %></h1>
 	<p><%= @unit.description %></p>
+	<% @unit.related_materials.each do |attachment| %>
+		<p> <%= link_to attachment.file_file_name, attachment.file.url %> </p>
+		<% end %>
 
 	<% if @current_user.is_instructor?(@unit.cohort) %>
 		<ul class="aside-links">

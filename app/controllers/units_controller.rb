@@ -29,11 +29,8 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
 
     respond_to do |format|
-      if @unit.save
-        attachment = RelatedMaterial.create(related_material_params)
-        attachment.attachable_id = @unit.id
-        attachment.attachable_type = @unit.class.to_s
-        attachment.save
+      if @unit.save     
+        @unit.related_materials.create(related_material_params)
         format.html { redirect_to cohort_path(params[:cohort_id]), notice: 'Unit was successfully created.' }
         format.json { render :show, status: :created, location: @unit }
       else

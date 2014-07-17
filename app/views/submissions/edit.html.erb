@@ -19,12 +19,11 @@
 		<%= form_for @submission do |form| %>
 			<% # Fields for optional administrator comment %>
 			<%= form.fields_for :comment do |f| %>
-				<%= f.hidden_field :commentable_id, value: @submission.id %>
-				<%= f.hidden_field :commentable_type, value: @submission.class %>
 				<%= f.hidden_field :user_id, value: @current_user.id %>
 				<div>
 				<%= f.label :content, "Comments? (Optional)" %>
 				<%= f.text_field :content %>
+				</div>
 			<% end %>
 
 			<%= form.hidden_field :reviewed, value: true %>

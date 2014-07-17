@@ -29,7 +29,8 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
 
     respond_to do |format|
-      if @unit.save
+      if @unit.save     
+        @unit.related_materials.create(related_material_params)
         format.html { redirect_to cohort_path(params[:cohort_id]), notice: 'Unit was successfully created.' }
         format.json { render :show, status: :created, location: @unit }
       else
@@ -76,5 +77,9 @@ class UnitsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
       params.require(:unit).permit(:name, :description, :cohort_id)
+    end
+
+    def related_material_params
+      params.require(:unit).permit(:attachable_id, :attachable_type, :file)
     end
 end

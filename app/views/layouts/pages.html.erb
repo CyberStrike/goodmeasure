@@ -30,7 +30,6 @@
         <% if current_user && current_user.admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
         <% if current_user %><li><%= link_to @current_user.first_name.capitalize, profile_path %></li><% end %>
         <% if current_user %><li><%= link_to "Logout", '/logout' if current_user %></li><% end %>
-        <% unless current_user %><li><%= link_to "Login", '/login' %></li><% end %>
       </div>
   </div>
 </header>

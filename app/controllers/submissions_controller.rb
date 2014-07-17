@@ -54,12 +54,11 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       params[:commit] == "Accepted" ? @submission.correctness = true : @submission.correctness = false
       if @submission.update(submission_params)
-        @comment = Comment.create(comment_params[:comment])
+        @submission.comments.create(comment_params[:comment])
 
         format.html { redirect_to cohort_submissions_path(@submission.task.unit.cohort), notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else
-        @comment = Comment.create(comment_params[:comment])
         format.html { render :edit }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end
@@ -98,6 +97,6 @@ class SubmissionsController < ApplicationController
     end
 
     def comment_params
-      params.require(:submission).permit(comment: [:commentable_id, :commentable_type, :user_id, :content])
+      params.require(:submission).permit(comment: [:user_id, :content])
     end
 end

@@ -11,46 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715202209) do
+ActiveRecord::Schema.define(version: 20140720020344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accessories", force: true do |t|
-    t.string   "type"
-    t.boolean  "not_missing"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "bike_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
-
-  add_index "accessories", ["bike_id"], name: "index_accessories_on_bike_id", using: :btree
-
-  create_table "bikes", force: true do |t|
-    t.string   "lock_password"
+  create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
-
-  create_table "checkouts", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "bike_id"
-    t.datetime "returned_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "checkouts", ["bike_id"], name: "index_checkouts_on_bike_id", using: :btree
-  add_index "checkouts", ["user_id"], name: "index_checkouts_on_user_id", using: :btree
 
   create_table "cohorts", force: true do |t|
     t.string   "name"
@@ -97,6 +67,19 @@ ActiveRecord::Schema.define(version: 20140715202209) do
   end
 
   add_index "invites", ["school_id"], name: "index_invites_on_school_id", using: :btree
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.integer  "price_in_cents"
+    t.integer  "quantity"
+    t.text     "description"
+    t.integer  "category_id"
+    t.boolean  "featured"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "related_materials", force: true do |t|
     t.integer  "attachable_id"
@@ -159,6 +142,7 @@ ActiveRecord::Schema.define(version: 20140715202209) do
     t.integer  "cohort_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible"
   end
 
   add_index "units", ["cohort_id"], name: "index_units_on_cohort_id", using: :btree

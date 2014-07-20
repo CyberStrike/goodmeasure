@@ -35,7 +35,7 @@
 
 		<% # Show units %>
 		<% @cohort.units.order(:id).each do |unit| %>
-			<% if unit.has_tasks? or @current_user.admin %>
+			<% if unit.visible or @current_user.admin or @current_user.is_instructor?(@cohort) %>
 				<article class="cohort-unit">
 				<div>
 
@@ -51,7 +51,7 @@
 
 					<p> <%= unit.description.truncate(150) %> </p>
 
-					<%= content_tag(:p, "Currently hidden to students") unless unit.has_tasks? %>
+					<%= content_tag(:p, "Currently hidden to students") unless unit.visible %>
 					<%= link_to ' Edit Unit', edit_unit_path(unit), class: "fa fa-cog" if @current_user.is_instructor? @cohort %>
 				</div>
 				</article>

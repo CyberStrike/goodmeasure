@@ -35,7 +35,7 @@
 
 		<% # Show units %>
 		<% @cohort.units.order(:id).each do |unit| %>
-			<% if unit.has_tasks? or @current_user.admin %>
+			<% if unit.visible or @current_user.admin or @current_user.is_instructor?(@cohort) %>
 				<article class="cohort-unit">
 				<div>
 

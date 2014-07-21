@@ -114,7 +114,7 @@ user_list = [
   [ "samzobel", "Samuel", "Zobel", "samuelezobel@gmail.com", false ],
   [ "joellusky", "Joel", "Lusky", "joelzlusky@gmail.com", false ],
   [ "hassanmian", "Hassan", "Mian", "hassanmian83@gmail.com", false ],
-  [ "jonathanlyons", "Jonathan", "Lyons", "jrl08d@my.fsu.edu", false ]
+  [ "jonathanlyons", "Jonathan", "Lyons", "jrl08d@my.fsu.edu", false ],
   [ "chrisscott", "Chris", "Scott", "cyberstrike@gmail.com", false ]
 ]
 

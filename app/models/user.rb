@@ -12,11 +12,9 @@ class User < ActiveRecord::Base
                            presence:   true
 
 	validates :first_name, presence:   true, 
-                           uniqueness: { case_sensitive: false }, 
                            length:     { minimum: 2 }
 
 	validates :last_name,  presence:   true, 
-                           uniqueness: { case_sensitive: false }, 
                            length:     { minimum: 2 }
 
 	validates :email,      presence:   true, 

@@ -1,8 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
+
 # Examples:
-#
+
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
@@ -103,3 +103,28 @@ Role.create(title:'Student')
 Role.create(title:'TA')
 Role.create(title:'Instructor')
 
+
+
+user_list = [
+  [ "andyweiss", "Andy", "Weiss", "andyweiss1982@gmail.com", false ],
+  [ "joshpowell", "Josh", "Powell", "josh@innovativeops.co", false ],
+  [ "alfonsopintos", "Alfonso", "Pintos", "alfonsopintos@gmail.com", false ],
+  [ "bayardonavarro", "Bayardo", "Navarro", "bayardo@me.com", false ],
+  [ "craigsniffen", "Craig", "Sniffen", "craigsniffen@craigsniffen.com", false ],
+  [ "samzobel", "Samuel", "Zobel", "samuelezobel@gmail.com", false ],
+  [ "joellusky", "Joel", "Lusky", "joelzlusky@gmail.com", false ],
+  [ "hassanmian", "Hassan", "Mian", "hassanmian83@gmail.com", false ],
+  [ "jonathanlyons", "Jonathan", "Lyons", "jrl08d@my.fsu.edu", false ],
+  [ "chrisscott", "Chris", "Scott", "cyberstrike@gmail.com", false ]
+]
+
+
+user_list.each do |username, first, last, email, admin|
+  User.create(username: username,
+  first_name: first,
+  last_name: last,
+  email: email,
+  password:'password',
+  admin: admin,
+  school_id:1)
+end

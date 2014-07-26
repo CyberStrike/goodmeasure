@@ -20,6 +20,10 @@ gem 'bitters'
 gem 'refills'
 gem 'font-awesome-rails'
 
+# Markdown
+gem 'redcarpet'
+gem 'nokogiri'
+
 # To encrypt password
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 

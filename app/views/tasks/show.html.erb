@@ -1,83 +1,83 @@
 <aside>
 
-    <section id="back"> <%= link_to 'Return to Unit', unit_path(@task.unit.id) %> </section>
+  <section id="back"> <%= link_to 'Return to Unit', unit_path(@task.unit.id) %> </section>
 
-    <h1><%= @task.unit.name %></h1>
+  <h1><%= @task.unit.name %></h1>
 
-	<p><%== @task.unit.description %></p>
+  <p><%== @task.unit.description %></p>
 
-	<% if @current_user.is_instructor?(@task.unit.cohort) %>
-		<ul class="aside-links">
-			<li class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </li>
-		</ul>
-	<% end %>
+  <% if @current_user.is_instructor?(@task.unit.cohort) %>
+      <ul class="aside-links">
+        <li class="aside-buttons"> <%= link_to 'Edit Task', edit_task_path(@task) %> </li>
+      </ul>
+  <% end %>
 
-	<% if @task.has_previous? or @task.has_next? %>
-		<section class="next-previous">
-            <strong> <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %>
-            <%= "|" if @task.has_previous? and @task.has_next? %>
-            <%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong>
-        </section>
-	<% end %>
+  <% if @task.has_previous? or @task.has_next? %>
+      <section class="next-previous">
+        <strong> <%= (link_to "Previous Task", @task.previous) if @task.has_previous? %>
+          <%= "|" if @task.has_previous? and @task.has_next? %>
+          <%= (link_to "Next Task", @task.next) if @task.has_next? %> </strong>
+      </section>
+  <% end %>
 
 </aside>
 
 <section id="main">
 
-	<section class="small-header module"><%= @task.title %></section>
+  <section class="small-header module"><%= @task.title %></section>
 
-	<section class="module"><%= @task.description %></section>
+  <section class="module"><%= @task.description %></section>
 
   <% # If the current user is a student in this cohort %>
   <% if @current_user.is_student? @task.unit.cohort  %>
 
-    <% # Show the submission history %>
-    <section class="module small-header">Submission History</section>
+      <% # Show the submission history %>
+      <section class="module small-header">Submission History</section>
 
-    <% # Display submission form if there are no correct or pending answers %>
-    <%= render partial: 'submissions/form' if @current_user.can_submit? @task %>
+      <% # Display submission form if there are no correct or pending answers %>
+      <%= render partial: 'submissions/form' if @current_user.can_submit? @task %>
 
-    <% # Display previous submissions %>
-    <%= content_tag_for :article, @current_user.submissions_for(@task), class: "submitted-answer module" do |submission| %>
+      <% # Display previous submissions %>
+      <%= content_tag_for :article, @current_user.submissions_for(@task), class: "submitted-answer module" do |submission| %>
 
-    <section class="submission-content cf">
-        <%== submission.answer %>
-        <footer class="footer-text">
-            <%= submission.status %> | Submitted <%= time_ago_in_words submission.created_at %> ago
-        </footer>
-    </section>
+          <section class="submission-content cf">
+            <%== submission.answer %>
+            <footer class="footer-text">
+              <%= submission.status %> | Submitted <%= time_ago_in_words submission.created_at %> ago
+            </footer>
+          </section>
 
-        <% # And any associated comments %>
-            <%= content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
+          <% # And any associated comments %>
+          <%= content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
 
-            <%= content_tag :figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left" %>
-            <%== comment.content %>
-            <footer class="footer-text left">
+              <%= content_tag :figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left" %>
+              <%== comment.content %>
+              <footer class="footer-text left">
                 Posted by <%= link_to comment.user.username, comment.user %>
                 <%= time_ago_in_words comment.created_at %> ago
-            </footer>
+              </footer>
 
-        <% end %>
-    <% end %>
+          <% end %>
+      <% end %>
   <% else %>
-    <% # If the current user is a TA or Instructor %>
-    <section class="module small-header">Stats</section>
-    <section class="module">
+      <% # If the current user is a TA or Instructor %>
+      <section class="module small-header">Stats</section>
+      <section class="module">
         <p>
-            <%= @task.submissions.accepted.count %> of <%= @task.unit.cohort.students.count %> users have correctly submitted.
+          <%= @task.submissions.accepted.count %> of <%= @task.unit.cohort.students.count %> users have correctly submitted.
         </p>
-    </section>
+      </section>
   <% end %>
 
 </section>
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-46526300-3', 'auto');
-  ga('send', 'pageview');
+    ga('create', 'UA-46526300-3', 'auto');
+    ga('send', 'pageview');
 
 </script>

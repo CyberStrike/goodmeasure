@@ -1,7 +1,7 @@
 <aside>
     <section id="back"> <%= link_to 'Return to Unit', unit_path(@task.unit.id) %> </section>
     <h1><%= @task.unit.name %></h1>
-	<p><%= @task.unit.description %></p>
+	<p><%= @task.unit.description.html_safe %></p>
 
 	<% if @current_user.is_instructor?(@task.unit.cohort) %>
 		<ul class="aside-links">
@@ -24,9 +24,10 @@
 	<section class="module"><%= @task.description %></section>
 
 
-	<% # If the current user is a student in this cohort %>
-	<% if @current_user.is_student? @task.unit.cohort  %>
 
+
+  <% # If the current user is a student in this cohort %>
+	<% if @current_user.is_student? @task.unit.cohort  %>
 
 		<% # Show the submission history %>
 		<section class="module small-header">Submission History</section>
@@ -39,7 +40,7 @@
 		<%= content_tag_for :article, @current_user.submissions_for(@task), class: "submitted-answer module" do |submission| %>
 
 			<section class="submission-content cf">
-				<%= content_tag :p, submission.answer %>
+				<%== submission.answer %>
 				<footer class="footer-text">
 					<%= submission.status %> | Submitted <%= time_ago_in_words submission.created_at %> ago
 				</footer>
@@ -47,10 +48,10 @@
 
 
 			<% # And any associated comments %>
-			<%= content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
+			<%== content_tag_for(:article, submission.comments, class: "submission-comment cf") do |comment| %>
 
 				<%= content_tag :figure, image_tag(comment.user.avatar.url(:thumb)), class: "avatar small-avatar left" %>
-				<p><%= comment.content %></p>
+				<%= raw comment.content %>
 				<footer class="footer-text left">
 					Posted by <%= link_to comment.user.username, comment.user %> 
 					<%= time_ago_in_words comment.created_at %> ago
@@ -58,7 +59,10 @@
 
 			<% end %>
 		<% end %>
-	<% else %>
+
+
+
+<% else %>
 	<% # If the current user is a TA or Instructor %>
 
 		<section class="module small-header">Stats</section>
@@ -68,7 +72,6 @@
 			</p>
 		</section>
 	<% end %>
-
 
 </section>
 

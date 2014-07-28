@@ -53,11 +53,11 @@ class Submission < ActiveRecord::Base
 
 	def status
 		case
-		  when self.is_correct? then "Accepted"
-		  when self.is_incorrect? then "Not Accepted"
-      when self.is_pending_review? then "Pending Review"
-      else
-        'Unknown'
+		when self.is_correct? then "Accepted"
+		when self.is_incorrect? then "Not Accepted"
+		when self.is_pending_review? then "Pending Review"
+		else
+			'Unknown'
 		end
 	end
 

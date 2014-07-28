@@ -62,7 +62,7 @@ class Submission < ActiveRecord::Base
 	end
 
 	def answer 
-		self.html
+		self.html || self.submission
 	end
 
 	def to_s

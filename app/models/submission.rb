@@ -70,7 +70,6 @@ class Submission < ActiveRecord::Base
 	end
 
   ## Parses Markdown and adds Pygment
-
   protected
 
   def parse

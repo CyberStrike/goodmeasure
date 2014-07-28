@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = params[:id] ? User.find(params[:id]) : @current_user
+    @user = params[:id] ? User.find_by(username: params[:id]) : @current_user
   end
 
   # POST /users

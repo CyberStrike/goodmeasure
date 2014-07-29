@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	belongs_to :school
 	belongs_to :role
 
+	validates :password, confirmation: true
+
 	validates :username,   uniqueness: { case_sensitive: false},
                            presence:   true
 

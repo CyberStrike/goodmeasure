@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   get "register", to: "users#new"
   post "users", to: "users#create"
 
+
+  # SETTINGS routes
+  get "settings", to: "settings#profile"
+  get "settings/profile", to: "settings#profile"
+  patch "settings/profile", to: "settings#update_profile"
+
   resources :tasks
   resources :comments
   resources :submissions#, only: [:update, :destroy, :edit, :show]

@@ -1,0 +1,68 @@
+<%= render partial: 'settings_nav' %>
+
+
+<section id="main">
+
+	<section class="small-header module"><%= @current_user.username %></section> 
+
+	<section class="module">
+
+<%= form_for @current_user, url: settings_profile_path do |f| %>
+
+
+  <% if @current_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@current_user.errors.count, "error") %> prohibited this admin from being saved:</h2>
+
+      <ul>
+      <% @current_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+    <div class="field">
+    <%= f.label :current_password %><br>
+    <%= f.password_field :current_password %>
+  </div>
+      <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+    <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+<% end %>
+
+
+
+	</section>
+
+</section>

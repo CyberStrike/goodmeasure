@@ -12,9 +12,9 @@
 
 		<div class="submission-content cf">
 
-            <%== @submission.html %>
+    <%== @submission.html %>
 
-			<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
+		<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
 
 		</div>
 
@@ -24,15 +24,15 @@
 			<%= form.fields_for :comment do |f| %>
 				<%= f.hidden_field :user_id, value: @current_user.id %>
 				<h5>
-                  <%= f.label :content, "Comments? (Optional)" %>
-                </h5>
+                  		  <%= f.label :content, "Comments? (Optional)" %>
+                		</h5>
 				<%= f.text_area :content, size: '24x8', style:'width: 100%' %>
 			<% end %>
 
 			<%= form.hidden_field :reviewed, value: true %>
 			<div>
-			<%= form.submit "Accepted" %>
-			<%= form.submit "Not Accepted" %>
+				<%= form.submit "Accepted" %>
+				<%= form.submit "Not Accepted" %>
 			</div>
 		<% end %>
 
@@ -68,8 +68,6 @@
 
 		<% end %>
 	<% end %>
-
-
 
 </section>
 

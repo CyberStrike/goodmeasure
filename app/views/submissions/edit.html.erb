@@ -14,7 +14,7 @@
 
             <%== @submission.answer %>
 			<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
-		</section>
+		</div>
 
 		<% # Display form %>
 		<%= form_for @submission do |form| %>

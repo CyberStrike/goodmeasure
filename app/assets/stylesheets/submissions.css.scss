@@ -14,6 +14,7 @@
 .submission-content {
   background-color: lighten($left-panel-color, 40);
   padding: 15px;
+  overflow: auto;
 
 }
 .submitted-answer {

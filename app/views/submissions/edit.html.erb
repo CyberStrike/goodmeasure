@@ -12,11 +12,9 @@
 
 		<div class="submission-content cf">
 
-    <%== @submission.html %>
-
-		<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
-
-		</div>
+            <%== @submission.answer %>
+			<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
+		</section>
 
 		<% # Display form %>
 		<%= form_for @submission do |form| %>
@@ -31,12 +29,14 @@
 
 			<%= form.hidden_field :reviewed, value: true %>
 			<div>
-				<%= form.submit "Accepted" %>
-				<%= form.submit "Not Accepted" %>
+			<%= form.submit "Accepted" %>
+			<%= form.submit "Not Accepted" %>
 			</div>
 		<% end %>
 
 	</section>
+
+
 
 	<section class="module small-header"><%= @submission.task.title %></section>
 	<section class="module"><%= @submission.task.description %></section>
@@ -68,6 +68,8 @@
 
 		<% end %>
 	<% end %>
+
+
 
 </section>
 

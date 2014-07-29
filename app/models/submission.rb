@@ -53,16 +53,16 @@ class Submission < ActiveRecord::Base
 
 	def status
 		case
-		  when self.is_correct? then "Accepted"
-		  when self.is_incorrect? then "Not Accepted"
-      when self.is_pending_review? then "Pending Review"
-      else
-        'Unknown'
+		when self.is_correct? then "Accepted"
+		when self.is_incorrect? then "Not Accepted"
+		when self.is_pending_review? then "Pending Review"
+		else
+			'Unknown'
 		end
 	end
 
 	def answer 
-		self.submission.html
+		self.html || self.submission
 	end
 
 	def to_s
@@ -70,7 +70,6 @@ class Submission < ActiveRecord::Base
 	end
 
   ## Parses Markdown and adds Pygment
-
   protected
 
   def parse

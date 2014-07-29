@@ -10,21 +10,23 @@
 	<section class="module small-header">Submission</section>
 	<section class="module">
 
-		<section class="submission-content cf">
+		<div class="submission-content cf">
 
             <%== @submission.html %>
+
 			<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
-		</section>
+
+		</div>
 
 		<% # Display form %>
 		<%= form_for @submission do |form| %>
 			<% # Fields for optional administrator comment %>
 			<%= form.fields_for :comment do |f| %>
 				<%= f.hidden_field :user_id, value: @current_user.id %>
-				<div>
-				<%= f.label :content, "Comments? (Optional)" %>
-				<%= f.text_field :content %>
-				</div>
+				<h5>
+                  <%= f.label :content, "Comments? (Optional)" %>
+                </h5>
+				<%= f.text_area :content, size: '24x8', style:'width: 100%' %>
 			<% end %>
 
 			<%= form.hidden_field :reviewed, value: true %>
@@ -35,8 +37,6 @@
 		<% end %>
 
 	</section>
-
-
 
 	<section class="module small-header"><%= @submission.task.title %></section>
 	<section class="module"><%= @submission.task.description %></section>

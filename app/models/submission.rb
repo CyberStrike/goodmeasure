@@ -1,11 +1,14 @@
 class Submission < ActiveRecord::Base
-  before_save :parse
 
-  default_scope { order(id: :desc) }
+	before_save :parse
+	after_save :notify
+
+	default_scope { order(id: :desc) }
 
 	belongs_to :user
 	belongs_to :task
 	has_many :comments, as: :commentable, dependent: :destroy
+	has_many :notifications, as: :notifiable, dependent: :destroy
 
 	validates :submission,  presence: true
 	validates :correctness, inclusion: [true, false]
@@ -69,38 +72,43 @@ class Submission < ActiveRecord::Base
 		"Submission"
 	end
 
-  ## Parses Markdown and adds Pygment
-  protected
+	## Parses Markdown and adds Pygment
+	protected
 
-  def parse
-    markdown = Redcarpet::Markdown.new( Redcarpet::Render::HTML.new(:hard_wrap => true),
+	def notify
+		if self.reviewed_changed?
+			self.notifications.create(sender_id: self.current_user, receiver_id: self.user_id, unread: true)
+		end
+	end
+
+
+	def parse
+		markdown = Redcarpet::Markdown.new( Redcarpet::Render::HTML.new(:hard_wrap => true),
                                         extensions = {
                                             :hard_wrap => true,
                                             :no_intra_emphasis => true,
                                             :autolink => true,
                                             :fenced_code_blocks => true })
 
-    self.html = Redcarpet::Render::SmartyPants.render(
-        pygment( markdown.render(submission)).to_s)
-  end
+		self.html = Redcarpet::Render::SmartyPants.render(
+	        pygment( markdown.render(submission)).to_s)
+	end
 
 
-  def pygment(markdown_body)
-    require 'net/http'
-    require 'uri'
+	def pygment(markdown_body)
+		require 'net/http'
+		require 'uri'
 
-    pygment_api = 'http://pygments.appspot.com/'
+		pygment_api = 'http://pygments.appspot.com/'
 
-    doc = Nokogiri::HTML(markdown_body)
-    doc.search('pre > code[class]').each do |code|
-      request = Net::HTTP.post_form(
-          URI.parse(pygment_api),
-          { 'lang' => code[:class], 'code' => code.text.rstrip })
-      code.parent.replace request.body
-    end
-
-    doc.to_s
-
-  end
+		doc = Nokogiri::HTML(markdown_body)
+		doc.search('pre > code[class]').each do |code|
+			request = Net::HTTP.post_form(
+				URI.parse(pygment_api),
+				{ 'lang' => code[:class], 'code' => code.text.rstrip })
+			code.parent.replace request.body
+		end
+		doc.to_s
+	end
 
 end

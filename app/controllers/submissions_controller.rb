@@ -36,6 +36,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(submission_params)
     @submission.correctness = false
     @submission.reviewed = false
+    @submission.current_user = @current_user.id
 
     respond_to do |format|
       if @submission.save

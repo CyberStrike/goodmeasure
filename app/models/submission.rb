@@ -6,6 +6,7 @@ class Submission < ActiveRecord::Base
 	default_scope { order(id: :desc) }
 
 	belongs_to :user
+	belongs_to :graded_by 
 	belongs_to :task
 	has_many :comments, as: :commentable, dependent: :destroy
 	has_many :notifications, as: :notifiable, dependent: :destroy

@@ -4,9 +4,11 @@ class User < ActiveRecord::Base
 	has_many   :cohorts,       through: :enrollments
 	has_many   :comments,      dependent: :destroy
 	has_many   :enrollments,   dependent: :destroy
-	has_many   :submissions,   dependent: :destroy
 	has_many   :user_blockers, dependent: :destroy
 	has_many   :blockers,      through: :user_blockers
+
+	has_many   :submissions,  class_name: 'Submission', foreign_key: :user_id, dependent: :destroy
+	has_many   :graded_tasks, class_name: 'Submission', foreign_key: :graded_by_id, dependent: :destroy
 
 	has_many   :sent_notifications, class_name: 'Notification', foreign_key: :sender_id
 	has_many   :notifications,      class_name: 'Notification', foreign_key: :receiver_id

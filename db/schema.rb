@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730145003) do
+ActiveRecord::Schema.define(version: 20140730174512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,8 +161,10 @@ ActiveRecord::Schema.define(version: 20140730145003) do
     t.datetime "updated_at"
     t.boolean  "reviewed"
     t.text     "html"
+    t.integer  "graded_by_id"
   end
 
+  add_index "submissions", ["graded_by_id"], name: "index_submissions_on_graded_by_id", using: :btree
   add_index "submissions", ["task_id"], name: "index_submissions_on_task_id", using: :btree
   add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
 

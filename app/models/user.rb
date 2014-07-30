@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 	has_many   :submissions,   dependent: :destroy
 	has_many   :user_blockers, dependent: :destroy
 	has_many   :blockers,      through: :user_blockers
+
+	has_many   :sent_notifications, class_name: 'Notification', foreign_key: :sender_id
+	has_many   :notifications,      class_name: 'Notification', foreign_key: :receiver_id
+
 	belongs_to :school
 	belongs_to :role
 

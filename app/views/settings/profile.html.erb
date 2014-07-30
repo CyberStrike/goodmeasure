@@ -38,21 +38,21 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
-    <div class="field">
-    <%= f.label :current_password %><br>
-    <%= f.password_field :current_password %>
-  </div>
-      <div class="field">
-    <%= f.label :password %><br>
+  <div class="field">
+    <%= f.label :password, "New Password (Optional)" %><br>
     <%= f.password_field :password %>
   </div>
     <div class="field">
-    <%= f.label :password_confirmation %><br>
+    <%= f.label :password_confirmation, "Confirm Password" %><br>
     <%= f.password_field :password_confirmation %>
   </div>
   <div>
     <%= f.label :avatar %><br>
     <%= f.file_field :avatar %>
+  </div>
+  <div class="field">
+    <%= f.label :current_password, "Please enter your current password to confirm changes" %><br>
+    <%= f.password_field :current_password %>
   </div>
   <div class="actions">
     <%= f.submit %>

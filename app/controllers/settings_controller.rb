@@ -12,6 +12,9 @@ class SettingsController < ApplicationController
 		end
 	end
 
+	def profile
+	end
+
   	private
 
 	def profile_params(with_password)

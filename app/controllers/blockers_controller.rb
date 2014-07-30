@@ -20,9 +20,9 @@ class BlockersController < ApplicationController
 
     respond_to do |format|
       if @user_blocker.save
-        format.html { redirect_to root_path }
+        format.html { redirect_to cohort_blockers_path(@user_blocker.blocker.cohort) }
       else
-        format.thml { redirect_to root_path }
+        format.html { redirect_to cohort_blockers_path(@user_blocker.blocker.cohort) }
       end
     end
   end

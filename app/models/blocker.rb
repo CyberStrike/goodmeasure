@@ -1,6 +1,6 @@
 class Blocker < ActiveRecord::Base
   belongs_to :cohort
-  has_many :user_blockers
+  has_many :user_blockers, dependent: :destroy
   has_many :users, through: :user_blockers
 
   validates :blocker, presence: true

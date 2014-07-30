@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730060757) do
+ActiveRecord::Schema.define(version: 20140730150033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20140730060757) do
   end
 
   add_index "blockers", ["cohort_id"], name: "index_blockers_on_cohort_id", using: :btree
+
+  create_table "carts", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "checkouts", force: true do |t|
     t.integer  "user_id"
@@ -107,6 +119,28 @@ ActiveRecord::Schema.define(version: 20140730060757) do
 
   add_index "invites", ["school_id"], name: "index_invites_on_school_id", using: :btree
 
+  create_table "photos", force: true do |t|
+    t.string   "url"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.integer  "price_in_cents"
+    t.integer  "quantity"
+    t.text     "description"
+    t.integer  "category_id"
+    t.boolean  "featured"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+
   create_table "related_materials", force: true do |t|
     t.integer  "attachable_id"
     t.string   "attachable_type"
@@ -119,6 +153,19 @@ ActiveRecord::Schema.define(version: 20140730060757) do
   end
 
   add_index "related_materials", ["attachable_id", "attachable_type"], name: "index_related_materials_on_attachable_id_and_attachable_type", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.string   "title"
+    t.text     "comment"
+    t.integer  "rating"
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "title"
@@ -159,9 +206,17 @@ ActiveRecord::Schema.define(version: 20140730060757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.integer  "position"
   end
 
   add_index "tasks", ["unit_id"], name: "index_tasks_on_unit_id", using: :btree
+
+  create_table "things", force: true do |t|
+    t.string   "goal"
+    t.string   "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "units", force: true do |t|
     t.string   "name"

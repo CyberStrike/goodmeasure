@@ -24,7 +24,7 @@
 
 <section id="main">
 
-  <section class="small-header module"><%= @task.title %></section>
+  <section class="small-header module">(<%= @task.position %> - <%= @task.unit.tasks.size%>) <%= @task.title %></section>
 
   <section class="module"><%= @task.description %></section>
 

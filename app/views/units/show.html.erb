@@ -20,10 +20,10 @@
 	<section class="small-header module">Tasks in <%= @unit.name %></section> 
 
 	<section class="module">
-
-		<% @unit.tasks.order(:id).each do |task| %>
+		<% @unit.tasks.order(:id).each_with_index do |task, index| %>
 			<article class="main-article cf">
-				<h3><%= link_to task.title, task %></h3>
+
+				<h3><%= task.position %>) <%= link_to task.title, task %></h3>
 				<p><small><%= task.description %></small></p>
 
 				<% if @current_user.has_completed? task %>
@@ -34,6 +34,7 @@
 					<p class="footer-text"><%= link_to ' Edit Task', edit_task_path(task.id), class: "fa fa-cog" %></p>
 				<% end %>
 			</article>
+			
 		<% end %>
 
 		<% if @unit.tasks.empty? %>

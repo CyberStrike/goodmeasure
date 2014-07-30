@@ -13,7 +13,8 @@
 		<div class="submission-content cf">
 
             <%== @submission.answer %>
-			<footer class="footer-text">Submitted <%= time_ago_in_words(@submission.created_at) %> ago</footer>
+			<footer class="footer-text">Submitted by <%= @submission.user.username %>
+				<%= time_ago_in_words(@submission.created_at) %> ago</footer>
 		</div>
 
 		<% # Display form %>
@@ -52,7 +53,8 @@
 		<section class="submission-content cf">
 			<%== submission.answer %>
 			<footer class="footer-text">
-				<%= submission.status %> | Submitted <%= time_ago_in_words(submission.created_at) %> ago
+				<%= submission.status %> | Submitted <%= @submission.user.username %>
+				<%= time_ago_in_words(submission.created_at) %> ago
 			</footer>
 		</section>
 

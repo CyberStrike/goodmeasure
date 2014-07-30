@@ -82,4 +82,32 @@ class UnitsController < ApplicationController
     def related_material_params
       params.require(:unit).permit(:attachable_id, :attachable_type, :file)
     end
+
+        def check_position
+      if @task.nil? && !@unit.nil?
+          @unit.tasks.each do |task|
+          if task.position.nil?
+            tasks_in_unit = @unit.tasks.length
+            task.position = tasks_in_unit
+            task.position.save
+            return task.position
+          elsif task.position.class == Fixnum
+            return task.position
+          else 
+            return "error in check_position"
+          end # check for value of task position
+        end # end do loop of unit's tasks
+      else
+        if @task.position.nil?
+          parent_unit = @task.unit
+          tasks_in_unit = parent_unit.tasks.length
+          @task.position = tasks_in_unit
+          return @task.position
+        elsif @task.position.class == Fixnum
+          return @task.position
+        else 
+          return "error in check_position"
+        end # check for value of task position
+      end # check for task or unit being nil
+    end # check position method
 end

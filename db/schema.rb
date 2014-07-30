@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 20140730174512) do
 
   add_index "blockers", ["cohort_id"], name: "index_blockers_on_cohort_id", using: :btree
 
+  create_table "carts", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "checkouts", force: true do |t|
     t.integer  "user_id"
     t.integer  "bike_id"
@@ -134,6 +146,19 @@ ActiveRecord::Schema.define(version: 20140730174512) do
 
   add_index "related_materials", ["attachable_id", "attachable_type"], name: "index_related_materials_on_attachable_id_and_attachable_type", using: :btree
 
+  create_table "reviews", force: true do |t|
+    t.string   "title"
+    t.text     "comment"
+    t.integer  "rating"
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
   create_table "roles", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -175,9 +200,17 @@ ActiveRecord::Schema.define(version: 20140730174512) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.integer  "position"
   end
 
   add_index "tasks", ["unit_id"], name: "index_tasks_on_unit_id", using: :btree
+
+  create_table "things", force: true do |t|
+    t.string   "goal"
+    t.string   "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "units", force: true do |t|
     t.string   "name"

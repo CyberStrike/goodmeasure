@@ -1,0 +1,18 @@
+<aside>
+    <h1>Notifications</h1>
+</aside>
+
+<section id="main">
+
+
+	<section class="module small-header">Notifications</section>
+	<section class="module">
+
+		<% @notifications.each do |notification| %>
+			<article class="submission-list"><%= link_to notification.message, notification.notifiable %></article>
+		<% end %>
+
+
+	</section>
+
+</section>

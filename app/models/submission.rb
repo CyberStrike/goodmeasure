@@ -1,7 +1,7 @@
 class Submission < ActiveRecord::Base
 
 	before_save :parse
-	after_save :notify
+	after_update :notify
 
 	default_scope { order(id: :desc) }
 

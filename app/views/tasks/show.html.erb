@@ -41,9 +41,9 @@
       <%= content_tag_for :article, @current_user.submissions_for(@task), class: "submitted-answer module" do |submission| %>
 
           <section class="submission-content cf">
-            <%= submission.answer %>
+            <%== submission.answer %>
             <footer class="footer-text">
-              Marked <%= submission.status %> by <%= link_to submission.graded_by.username, submission.graded_by %> | Submitted <%= time_ago_in_words submission.created_at %> ago
+              <%= submission.status %> <%= link_to "| Graded by #{submission.graded_by.username}", submission.graded_by if submission.has_been_reviewed? %> | Submitted <%= time_ago_in_words submission.created_at %> ago
             </footer>
           </section>
 

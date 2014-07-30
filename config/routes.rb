@@ -26,11 +26,13 @@ Rails.application.routes.draw do
   get "register", to: "users#new"
   post "users", to: "users#create"
 
-
   # SETTINGS routes
   get "settings", to: "settings#profile"
   get "settings/profile", to: "settings#profile"
   patch "settings/profile", to: "settings#update_profile"
+
+  # NOTIFICATION routes
+  get "notifications", to: "notifications#index"
 
   resources :tasks
   resources :comments

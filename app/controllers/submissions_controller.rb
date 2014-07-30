@@ -19,6 +19,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions/1
   # GET /submissions/1.json
   def show
+    redirect_to task_path(@submission.task)
   end
 
   # GET /submissions/new

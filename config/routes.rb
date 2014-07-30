@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   # SUBDOMAIN as root
   match '/', to: 'pages#splash_page', constraints: { subdomain: /www/ }, via: [:get, :post]
   match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
@@ -43,9 +43,13 @@ Rails.application.routes.draw do
   resources :cohorts, only: [:index, :show]
 
   resources :cohorts do
+    resources :blockers
     resources :units 
     resources :submissions, only: [:index]
   end
+
+  resources :blockers
+  post "blockers/adduser", to: "blockers#adduser"
 
   resources :units do
     resources :tasks

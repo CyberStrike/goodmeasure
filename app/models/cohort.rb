@@ -6,6 +6,7 @@ class Cohort < ActiveRecord::Base
 	has_many :tasks,        through: :units
 	has_many :units,        dependent: :destroy
 	has_many :users,        through: :enrollments
+	has_many :blockers,     dependent: :destroy
 
 	validates :school,      presence: true
 

@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
 
 	has_secure_password
-	has_many   :cohorts,     through: :enrollments
-	has_many   :comments,    dependent: :destroy
-	has_many   :enrollments, dependent: :destroy
-	has_many   :submissions, dependent: :destroy
+	has_many   :cohorts,       through: :enrollments
+	has_many   :comments,      dependent: :destroy
+	has_many   :enrollments,   dependent: :destroy
+	has_many   :submissions,   dependent: :destroy
+	has_many   :user_blockers, dependent: :destroy
+	has_many   :blockers,      through: :user_blockers
 	belongs_to :school
 	belongs_to :role
 
@@ -69,8 +71,12 @@ class User < ActiveRecord::Base
 		self.has_submitted?(task) == false || self.last_submission_for(task).is_incorrect?
 	end
 
+	def is_admin?
+		self.admin
+	end
+
 	def is_instructor?(cohort)
-		self.role(cohort).title == "Instructor"
+		self.role(cohort).title == "Instructor" || self.is_admin?
 	end
 
 	def is_staff?(cohort)

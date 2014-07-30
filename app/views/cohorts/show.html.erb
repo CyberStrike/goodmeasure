@@ -14,23 +14,24 @@
 
 <section id="main">
 
-<!-- 
-	<section class="small-header module">Teaching Team</section>
+
+
+
+	<section class="small-header module">Today's Blockers</section> 
 	<section class="module">
-		<% @cohort.instructors.each do |instructor| %>
-			<figure class="avatar small-avatar"><%= image_tag instructor.avatar.url(:medium) %></figure>
+		<% @cohort.blockers.from_today.each do |blocker| %>
+			<p><%= blocker.blocker %></p>
+
+			<% blocker.users.each do |user| %>
+				<%= user.username %>
+			<% end %>
 		<% end %>
 
-		<% @cohort.tas.each do |ta| %>
-			<figure class="avatar small-avatar"><%= image_tag ta.avatar.url(:medium) %></figure>
-		<% end %>
-	</section> -->
-
-
+		<%= link_to "Edit Blockers", cohort_blockers_path(@cohort) if @current_user.is_staff?(@cohort) %>
+	</section>
 
 
 	<section class="small-header module">Units</section> 
-
 	<section class="module">
 
 		<% # Show units %>
@@ -58,6 +59,21 @@
 			<% end %>
 		<% end %>
 
+	</section>
+	<!-- End Units Section -->
+
+
+
+
+	<section class="small-header module">Teaching Team</section>
+	<section class="module">
+		<% @cohort.instructors.each do |instructor| %>
+			<figure class="avatar small-avatar"><%= image_tag instructor.avatar.url(:medium) %></figure>
+		<% end %>
+
+		<% @cohort.tas.each do |ta| %>
+			<figure class="avatar small-avatar"><%= image_tag ta.avatar.url(:medium) %></figure>
+		<% end %>
 	</section>
 
 </section>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726000346) do
+ActiveRecord::Schema.define(version: 20140730060757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20140726000346) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "blockers", force: true do |t|
+    t.string   "blocker"
+    t.integer  "cohort_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blockers", ["cohort_id"], name: "index_blockers_on_cohort_id", using: :btree
 
   create_table "checkouts", force: true do |t|
     t.integer  "user_id"
@@ -164,6 +173,17 @@ ActiveRecord::Schema.define(version: 20140726000346) do
   end
 
   add_index "units", ["cohort_id"], name: "index_units_on_cohort_id", using: :btree
+
+  create_table "user_blockers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "blocker_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_blockers", ["blocker_id"], name: "index_user_blockers_on_blocker_id", using: :btree
+  add_index "user_blockers", ["user_id"], name: "index_user_blockers_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

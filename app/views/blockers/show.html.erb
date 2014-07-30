@@ -1,0 +1,31 @@
+<aside>
+  <section id="back"><%= link_to 'Back', cohort_blockers_path(@blocker.cohort.id) %></section>
+  <h1>Blockers</h1>
+
+
+</aside>
+
+<section id="main">
+
+	<section class="small-header module">Blockers</section> 
+	<section class="module">
+
+
+
+		<p>
+		  <strong>Blocker:</strong>
+		  <%= @blocker.blocker %>
+		</p>
+
+		<p>
+		  <strong>Cohort:</strong>
+		  <%= @blocker.cohort %>
+		</p>
+
+		<%= link_to 'Edit', edit_blocker_path(@blocker) %> |
+		<%= link_to 'Back', cohort_blockers_path(@blocker.cohort.id) %>
+
+
+	</section>
+
+</section>

@@ -1,0 +1,61 @@
+<aside>
+  <section id="back"><%= link_to "Back to #{@school.name}", root_path %></section>
+  <h1>Blockers</h1>
+
+
+</aside>
+
+<section id="main">
+
+
+  <section class="small-header module">This Week's Blockers</section> 
+  <section class="module">
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Blocker</th>
+      <th>Cohort</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blockers.each do |blocker| %>
+      <tr>
+        <td><%= blocker.blocker %></td>
+        <td><%= blocker.cohort.name %></td>
+        <td><%= link_to 'Edit', edit_blocker_path(blocker) %></td>
+        <td><%= link_to 'Delete', blocker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          
+
+
+        <%= form_for @user_blocker, url: blockers_adduser_path do |f| %>
+          <%= f.hidden_field :blocker_id, value: blocker.id %>
+          <%= f.collection_select :user_id, @cohort.students, :id, :username %>
+          <%= f.submit %>
+        <% end %>
+
+
+
+
+
+
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% # New Blocker Form %>
+<%= render 'form' %>
+
+</section>
+
+
+</section>

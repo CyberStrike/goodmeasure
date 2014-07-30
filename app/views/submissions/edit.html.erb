@@ -49,7 +49,7 @@
 	<%= content_tag_for :article, @submission.related_submissions, class: "submitted-answer module" do |submission| %>
 
 		<section class="submission-content cf">
-			<%== submission.html %>
+			<%== submission.answer %>
 			<footer class="footer-text">
 				<%= submission.status %> | Submitted <%= time_ago_in_words(submission.created_at) %> ago
 			</footer>

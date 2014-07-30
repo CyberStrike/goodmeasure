@@ -28,6 +28,7 @@
 			<% end %>
 
 			<%= form.hidden_field :reviewed, value: true %>
+			<%= form.hidden_field :graded_by_id, value: @current_user.id %>
 			<div>
 			<%= form.submit "Accepted" %>
 			<%= form.submit "Not Accepted" %>

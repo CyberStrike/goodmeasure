@@ -36,7 +36,6 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(submission_params)
     @submission.correctness = false
     @submission.reviewed = false
-    @submission.current_user = @current_user.id
 
     respond_to do |format|
       if @submission.save
@@ -94,7 +93,7 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:user_id, :task_id, :submission, :correctness, :reviewed, :percieved_points, :actual_points)
+      params.require(:submission).permit(:user_id, :task_id, :graded_by_id, :submission, :correctness, :reviewed, :percieved_points, :actual_points)
     end
 
     def comment_params

@@ -6,7 +6,7 @@ class Submission < ActiveRecord::Base
 	default_scope { order(id: :desc) }
 
 	belongs_to :user
-	belongs_to :graded_by 
+	belongs_to :graded_by, class_name: 'User'
 	belongs_to :task
 	has_many :comments, as: :commentable, dependent: :destroy
 	has_many :notifications, as: :notifiable, dependent: :destroy
@@ -77,8 +77,8 @@ class Submission < ActiveRecord::Base
 	protected
 
 	def notify
-		if self.reviewed_changed?
-			self.notifications.create(sender_id: self.current_user, receiver_id: self.user_id, unread: true)
+		if self.reviewed_changed? || self.correctness_changed?
+			self.notifications.create(sender_id: self.graded_by_id, receiver_id: self.user_id, unread: true)
 		end
 	end
 

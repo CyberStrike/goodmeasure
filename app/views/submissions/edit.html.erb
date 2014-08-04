@@ -41,7 +41,7 @@
 
 
 	<section class="module small-header"><%= @submission.task.title %></section>
-	<section class="module"><%= @submission.task.description %></section>
+	<section class="module"><%== @submission.task.question %></section>
 
 
 	<%= content_tag :section, "Previous Submissions", class: "module small-header" if

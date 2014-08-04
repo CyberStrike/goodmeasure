@@ -26,7 +26,7 @@
 
   <section class="small-header module">(<%= @task.position %> - <%= @task.unit.tasks.size%>) <%= @task.title %></section>
 
-  <section class="module"><%= @task.description %></section>
+  <section class="module"><%== @task.question %></section>
 
   <% # If the current user is a student in this cohort %>
   <% if @current_user.is_student? @task.unit.cohort  %>

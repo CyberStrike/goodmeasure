@@ -8,6 +8,7 @@ class Submission < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :graded_by, class_name: 'User'
 	belongs_to :task
+	belongs_to :unit
 	has_many :comments, as: :commentable, dependent: :destroy
 	has_many :notifications, as: :notifiable, dependent: :destroy
 

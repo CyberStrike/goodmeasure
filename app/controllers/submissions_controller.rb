@@ -8,7 +8,11 @@ class SubmissionsController < ApplicationController
   def index
     redirect_to cohort_path(@cohort) if @current_user.is_student? @cohort
     @tasks = @cohort.tasks
-    @submissions = Submission.where(task_id: @tasks)
+    if params[:unit]
+      @submissions = Submission.where(task_id: @tasks, unit_id: params[:unit])
+    else
+      @submissions = Submission.where(task_id: @tasks)
+    end
     @users = @submissions.distinct_users
     @most_recent_submissions = @tasks.map{ |task|
       @users.map{ |user| user.last_submission_for(task) }.compact

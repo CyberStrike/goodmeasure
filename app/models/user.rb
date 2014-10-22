@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   # last unaccepted submission or nil if none
   def last_unaccepted_submission_for(task)
     last_sub = self.last_submission_for(task)
-    last_sub if !last_sub.is_correct?
+    last_sub if last_sub and !last_sub.is_correct?
   end
 
 	def submissions_for(task)

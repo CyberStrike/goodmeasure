@@ -69,9 +69,9 @@ class User < ActiveRecord::Base
 	end
 
 	def has_completed?(task)
-		self.has_submitted?(task) &&
-		self.last_submission_for(task).has_been_reviewed? &&
-		self.last_submission_for(task).is_correct?
+    last_submission = self.last_submission_for(task)
+
+		self.has_submitted?(task) && last_submission && last_submission.has_been_reviewed? && last_submission.is_correct?
 	end
 
 	def has_pending_submissions?(task)

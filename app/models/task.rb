@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
 	validates :title, presence: true
 	validates :position, :uniqueness => {:scope => :unit}
 
-	default_scope { order(position: :asc) }
+	#default_scope { order(position: :asc) }
 
 
 	# Checks to see if task has a position, if not, add one

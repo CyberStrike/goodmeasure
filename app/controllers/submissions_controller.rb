@@ -7,16 +7,25 @@ class SubmissionsController < ApplicationController
   # GET /submissions.json
   def index
     redirect_to cohort_path(@cohort) if @current_user.is_student? @cohort
+
     @tasks = @cohort.tasks
+
     if params[:unit]
-      @submissions = Submission.where(task_id: @tasks, unit_id: params[:unit])
+      @submissions = Submission.where(task: @tasks, unit_id: params[:unit])
     else
-      @submissions = Submission.where(task_id: @tasks)
+      @submissions = Submission.where(task: @tasks)
     end
-    @users = @submissions.distinct_users
+
+    # Users corresponding to these submissions.
+    # TODO: refactor to get users in this cohort, which should be the same as users with submissions
+    @users = User.from_submissions(@submissions)
+
+    # most recent Submission for each user
+    # TODO: refactor - this is slow
     @most_recent_submissions = @tasks.map{ |task|
       @users.map{ |user| user.last_submission_for(task) }.compact
-    }.flatten
+    }.flatten.compact
+
     @submission_by_status = @most_recent_submissions.group_by{ |s| s.status }
   end
 

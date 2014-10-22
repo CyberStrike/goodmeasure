@@ -15,11 +15,15 @@ class ApplicationController < ActionController::Base
 	end
 
 	def school
-		school = School.find_by subdomain: request.subdomain
-		if school
-			@school = school
-		elsif request.subdomain != 'www'
-			@school = nil
+    return @school unless @school.nil?
+
+    if Rails.env.development?
+      @school = School.find_by_name 'Wyncode'
+    else
+		  @school = School.find_by subdomain: request.subdomain
+    end
+
+		if @school.nil? and request.subdomain != 'www'
 			redirect_to root_url(subdomain: 'www')
 		end
 	end
@@ -28,4 +32,4 @@ class ApplicationController < ActionController::Base
 end
 
 ## any method you don't want called over the internet make private
-## public methods are publicly accessable actions
+## public methods are publicly accessible actions

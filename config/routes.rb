@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # SUBDOMAIN as root
   match '/', to: 'pages#splash_page', constraints: { subdomain: /www/ }, via: [:get, :post]
-  match '/', to: 'schools#show', constraints: { subdomain: /.+/ }, via: [:get, :post]
+  match '/', to: 'schools#show', via: [:get, :post]
   root to: 'pages#splash_page'
   resources :schools, only: [:index]
 

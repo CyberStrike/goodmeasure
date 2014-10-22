@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	has_many   :notifications,      class_name: 'Notification', foreign_key: :receiver_id
 
 	belongs_to :school
-	belongs_to :role
+	#belongs_to :role
 
 	validates :password, confirmation: true
 
@@ -51,7 +51,13 @@ class User < ActiveRecord::Base
 	end
 
 	def last_submission_for(task)
-		self.submissions.where(task_id: task).order(:created_at).first
+		#self.submissions.where(task: task).order(:created_at).first
+		last_submission = self.submissions.where(task: task).order(:created_at).first
+    if last_submission.is_correct?
+      nil # perf: ignore correct submission so we render the view faster
+    else
+      last_submission
+    end
 	end
 
 	def submissions_for(task)
@@ -112,5 +118,10 @@ class User < ActiveRecord::Base
 	def to_param 
 	    username
 	end
+
+  # unique list of users for a given group of submissions
+  def self.from_submissions(submissions)
+    User.joins(:submissions).merge(submissions).distinct
+  end
 
 end

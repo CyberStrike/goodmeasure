@@ -8,15 +8,19 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
+  prepared_statements: false # workaround postgres bug in Rails 4.1.6. Fix scheduled for 4.1.7
 
 development:
+  database: goodmeasure_dev
   <<: *default
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
+  database: goodmeasure_test
   <<: *default
 
 production:
+  database: goodmeasure
   <<: *default

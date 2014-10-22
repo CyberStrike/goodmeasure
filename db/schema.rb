@@ -11,35 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804204455) do
+ActiveRecord::Schema.define(version: 20141021221026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "accessories", force: true do |t|
-    t.string   "type"
-    t.boolean  "not_missing"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "bike_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
-
-  add_index "accessories", ["bike_id"], name: "index_accessories_on_bike_id", using: :btree
-
-  create_table "bikes", force: true do |t|
-    t.string   "lock_password"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
 
   create_table "blockers", force: true do |t|
     t.string   "blocker"
@@ -49,17 +24,6 @@ ActiveRecord::Schema.define(version: 20140804204455) do
   end
 
   add_index "blockers", ["cohort_id"], name: "index_blockers_on_cohort_id", using: :btree
-
-  create_table "checkouts", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "bike_id"
-    t.datetime "returned_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "checkouts", ["bike_id"], name: "index_checkouts_on_bike_id", using: :btree
-  add_index "checkouts", ["user_id"], name: "index_checkouts_on_user_id", using: :btree
 
   create_table "cohorts", force: true do |t|
     t.string   "name"

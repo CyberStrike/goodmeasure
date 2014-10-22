@@ -3,12 +3,11 @@ class Submission < ActiveRecord::Base
 	before_save :parse
 	after_update :notify
 
-	default_scope { order(id: :desc) }
+	#default_scope { order(id: :desc) }
 
 	belongs_to :user
 	belongs_to :graded_by, class_name: 'User'
 	belongs_to :task
-	belongs_to :unit
 	has_many :comments, as: :commentable, dependent: :destroy
 	has_many :notifications, as: :notifiable, dependent: :destroy
 
@@ -35,9 +34,9 @@ class Submission < ActiveRecord::Base
 		!self.reviewed
 	end
 
-	def self.distinct_users
-		self.reorder("").select(:user_id).distinct.map{ |submission| submission.user }
-	end
+	#def self.distinct_users
+	#	self.pluck(:user_id).uniq.map{ |submission| User.find(submission) }
+	#end
 
 	def self.pending_review
 		self.where(reviewed: false)

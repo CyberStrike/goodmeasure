@@ -43,22 +43,22 @@ class User < ActiveRecord::Base
 	end
 
 	def has_submitted?(task)
-		self.submissions.where(task_id: task).exists?
+		self.submissions.where(task: task).exists?
 	end
 
 	def has_submitted_before?(task)
 		self.submissions.where(task_id: task).count > 1
 	end
 
-	def last_submission_for(task)
-		#self.submissions.where(task: task).order(:created_at).first
-		last_submission = self.submissions.where(task: task).order(:created_at).first
-    if last_submission and last_submission.is_correct?
-      nil # perf: ignore correct submission so we render the view faster
-    else
-      last_submission
-    end
-	end
+  def last_submission_for(task)
+    self.submissions.where(task: task).order(:created_at).first
+  end
+
+  # last unaccepted submission or nil if none
+  def last_unaccepted_submission_for(task)
+    last_sub = self.last_submission_for(task)
+    last_sub if !last_sub.is_correct?
+  end
 
 	def submissions_for(task)
 		self.submissions.where(task_id: task).order(:id).includes(comments: :user)
@@ -68,20 +68,20 @@ class User < ActiveRecord::Base
 		self.submissions.where(task_id: task, reviewed: true).order(:id)
 	end
 
-	def has_completed?(task)
-    last_submission = self.last_submission_for(task)
+  def has_completed?(task)
+    if self.has_submitted?(task)
+      last_sub = self.last_submission_for(task)
+      last_sub.has_been_reviewed? && last_sub.is_correct?
+    end
+  end
 
-		self.has_submitted?(task) && last_submission && last_submission.has_been_reviewed? && last_submission.is_correct?
-	end
+  def has_pending_submissions?(task)
+    self.has_submitted?(task) && !self.last_submission_for(task).has_been_reviewed?
+  end
 
-	def has_pending_submissions?(task)
-		self.has_submitted?(task) &&
-		self.last_submission_for(task).has_been_reviewed? == false
-	end
-
-	def can_submit?(task)
-		self.has_submitted?(task) == false || self.last_submission_for(task).is_incorrect?
-	end
+  def can_submit?(task)
+    !self.has_submitted?(task) || self.last_submission_for(task).is_incorrect?
+  end
 
 	def is_admin?
 		self.admin

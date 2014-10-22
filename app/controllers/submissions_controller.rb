@@ -20,11 +20,11 @@ class SubmissionsController < ApplicationController
     # TODO: refactor to get users in this cohort, which should be the same as users with submissions
     @users = User.from_submissions(@submissions)
 
-    # most recent Submission for each user
+    # most recent unaccepted Submission for each user
     # TODO: refactor - this is slow
     @most_recent_submissions = @tasks.map{ |task|
-      @users.map{ |user| user.last_submission_for(task) }.compact
-    }.flatten.compact
+      @users.map{ |user| user.last_unaccepted_submission_for(task) }.compact
+    }.flatten
 
     @submission_by_status = @most_recent_submissions.group_by{ |s| s.status }
   end

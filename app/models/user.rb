@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 	def last_submission_for(task)
 		#self.submissions.where(task: task).order(:created_at).first
 		last_submission = self.submissions.where(task: task).order(:created_at).first
-    if last_submission.is_correct?
+    if last_submission and last_submission.is_correct?
       nil # perf: ignore correct submission so we render the view faster
     else
       last_submission

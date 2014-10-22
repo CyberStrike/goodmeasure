@@ -11,7 +11,7 @@ class SubmissionsController < ApplicationController
     @tasks = @cohort.tasks
 
     if params[:unit]
-      @submissions = Submission.where(task: @tasks, unit_id: params[:unit])
+      @submissions = Unit.find(params[:unit]).submissions.where(task: @tasks)
     else
       @submissions = Submission.where(task: @tasks)
     end

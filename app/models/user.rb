@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
 	end
 
   def last_submission_for(task)
-    self.submissions.where(task: task).order(:created_at).first
+    self.submissions.where(task: task).order(:created_at).last
   end
 
   # last unaccepted submission or nil if none

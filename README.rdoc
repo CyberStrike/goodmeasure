@@ -2,6 +2,10 @@
 
 GoodMeasure is a learning platform for coding bootcamps built by {Julie Kramer}[http://juliekramer.co], {Walter Latimer}[http://walterlatimer.com], and {Bryan Perez}[http://bryanprz.com].
 
+=== Issues and Story Tracking
+{Waffle/GoodMeasure}[https://waffle.io/wyncode/goodmeasure]
+
+
 == Current Features
 
 * Task submission revision history

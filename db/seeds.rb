@@ -86,7 +86,8 @@ end
 unit_list.each do |name, description|
   Unit.create(name: name, 
   description: description, 
-  cohort_id: 1)
+  cohort_id: 1,
+  visible: false)
 end
 
 task_list.each do |title, description|

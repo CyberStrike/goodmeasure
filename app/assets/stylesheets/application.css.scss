@@ -458,3 +458,38 @@ aside {
 textarea {
   width: 100%;
 }
+
+.background {
+  width: 100%;
+}
+
+ul {
+  @extend ul%default-ul;
+  padding-left: 2.2em;
+}
+
+ol {
+  @extend ol%default-ol;
+  padding-left: 2.2em;
+}
+
+.profile-submissions {
+  padding-left: 20px;
+}
+
+.fa-exclamation-circle {
+  color: red;
+}
+
+.fa-check-circle {
+  color: green;
+}
+
+.fa-question-circle {
+  color: gray;
+}
+
+.score-block {
+  margin-left: 15px;
+  padding-bottom: 15px;
+}

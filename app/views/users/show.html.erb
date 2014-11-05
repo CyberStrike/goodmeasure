@@ -1,12 +1,12 @@
 <div class="profile-cover-photo">
-   <img src="http://www.wired.com/wp-content/uploads/2014/06/file-sharing.jpg" style="width:100%;">
- </div>
+  <%= image_tag 'background.jpg', class: 'background' %>
+</div>
 
 <section id="profile">
 
- <figure class="avatar-large avatar"><%= image_tag @user.avatar.url(:medium) %></figure>
+  <figure class="avatar-large avatar"><%= image_tag @user.avatar.url(:medium) %></figure>
 
-   <section id="profile-block">
+  <section id="profile-block">
 
     <h2><%= @user.name %></h2>
 
@@ -17,35 +17,75 @@
     <p>Last Name: <%= @user.last_name %></p>
 
     <p>Email: <%= @user.email %></p>
-    </section> 
+  </section> 
 
-      <section id="profile-block">
+  <section id="profile-block">
 
     <h3>About Me</h3>
+    <%# TODO %>
 
-    <p> As a South Florida native I can decidedly say there is no better place to live and work.
-
-      I recently escaped the publishing world to cultivate my web development skills at Wyncode. </p>
-    </section>
+  </section>
 
 
-    <section id="profile-block">
-    
-    <h3> Cohorts Enrolled In</h3>
-    <%@user.cohorts.each do |cohort| %>  <p> <%= cohort.name %><% end %> </p>
+  <section id="profile-block">
 
-    </section> 
+    <h3>Cohorts</h3>
+    <% @user.cohorts.each do |cohort| %>  
+      <h4><%= cohort.name %></h4>
 
-    </section>  
+      <% if me_or_admin?(@user) %>
+        <% cohort.tasks.group_by { |task| task.created_at.beginning_of_week }.each do |week, tasks| %>
+          <h5>Week of <%= week.to_date.to_formatted_s(:short) %></h5>
+          <% tasks_count, tasks_correct = [0, 0] %>
 
-    <script>
+          <ul>
+            <% tasks.each do |task| %>
+              <li><%= link_to task.title, task %>
+
+              <% submission = @user.last_submission_for(task) %>
+              <% if submission.nil? %>
+                <% # not yet submitted %>
+                <% tasks_count += 1 unless task.is_bonus? %>
+                <i class="fa fa-question-circle fa-lg"></i>
+              <% elsif submission.reviewed %>
+                <% tasks_count += 1 unless task.is_bonus? %>
+
+                <% if submission.is_correct? %>
+                  <% tasks_correct += 1 %>
+                  <% # accepted %>
+                  <i class="fa fa-check-circle fa-lg"></i>
+                <% else %>
+                  <% # rejected %>
+                  <i class="fa fa-exclamation-circle fa-lg"></i>
+                <% end %>
+
+              <% else %>
+                <% # pending %>
+                <i class="fa fa-clock-o fa-lg"></i>
+              <% end %> 
+
+            <% end # tasks %>
+          </ul>
+          <div class="score-block">
+            Total: <%= tasks_count %> //
+            Correct: <%= tasks_correct %> //
+            Score: <%= number_to_percentage((tasks_correct.to_f / tasks_count) * 100) %>
+          </div>
+        <% end # tasks_by_week %>
+      <% end # if current_user or admin %>
+    <% end # cohorts %>
+
+  </section> 
+
+</section>  
+
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-46526300-3', 'auto');
   ga('send', 'pageview');
-
 </script>
 

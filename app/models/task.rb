@@ -39,6 +39,10 @@ class Task < ActiveRecord::Base
 		unit.tasks.where("id < ?", self.id).order("id DESC").first
 	end
 
+  def is_bonus?
+    self.title.downcase.include? 'bonus'
+  end
+	
 	## Parses Markdown and adds Pygment
  	protected
 
@@ -72,7 +76,7 @@ class Task < ActiveRecord::Base
  	  doc.to_s
 
  	end
-	
+
 end
 
 ## if we wanted to time up to the milisecond it would go in the task model

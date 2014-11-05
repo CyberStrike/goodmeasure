@@ -66,7 +66,6 @@ class Cohort < ActiveRecord::Base
           listing = Hash.new
           rows.each do |r|
             key = [
-                   r['created_at'],
                    r['task_id'],
                    r['user_id']
                   ]
@@ -80,6 +79,6 @@ class Cohort < ActiveRecord::Base
             listing[key] = value
           end
 
-          return listing.values
+          return listing.values.select{ |v| v['status'] != 'Accepted' }
         end
 end

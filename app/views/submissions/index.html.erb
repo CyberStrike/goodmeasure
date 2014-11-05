@@ -7,13 +7,17 @@
 <section id="main">
 
 
-    <% @submission_by_status.keys.sort.reverse.each do |status| %>
+    <% @submission_by_status.each do |status, vs| %>
         <section class="module small-header"><%= status %></section>
         <section class="module">
-            <%= content_tag_for :article, @submission_by_status[status], class: "submission-list" do |submission| %>
-                <%= link_to submission.task.title, edit_submission_path(submission) %> 
-                | Submitted <%= time_ago_in_words(submission.created_at) %> ago by 
-                <%= link_to submission.user.username, submission.user %>.
+          <% vs.each do |v| %>
+            <article class="submission-list submission">
+            <strong><%= v['submission_id'] %></strong>
+                <%= link_to v['task_title'], edit_submission_path(v['submission_id']) %> 
+                | Submitted <%= time_ago_in_words(v['created_at']) %> ago by 
+                <%= link_to v['user_name'], user_path(v['user_id']) %>.
+
+            </article>
             <% end %>
         </section>
     <% end %>

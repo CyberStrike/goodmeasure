@@ -12,7 +12,6 @@
         <section class="module">
           <% vs.each do |v| %>
             <article class="submission-list submission">
-            <strong><%= v['submission_id'] %></strong>
                 <%= link_to v['task_title'], edit_submission_path(v['submission_id']) %> 
                 | Submitted <%= time_ago_in_words(v['created_at']) %> ago by 
                 <%= link_to v['user_name'], user_path(v['user_id']) %>.

@@ -41,3 +41,11 @@ $ ->
 		$(".js-menu").toggleClass "is-visible"
 		$(".js-menu-screen").toggleClass "is-visible"
 		e.preventDefault()
+
+$(document).on 'page:fetch', ->
+  $('body').plainOverlay('show',
+    progress: -> return $('<div></div>'))
+
+$(document).on 'page:restore', ->
+  $('body').plainOverlay('hide')
+

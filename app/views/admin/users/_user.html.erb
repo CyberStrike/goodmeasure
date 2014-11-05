@@ -19,7 +19,7 @@
 
 </li>
 
-<li> <strong> School: </strong> <%= @user.school.name %> </li>
+<li> <strong> School: </strong> <%= @user.school.name rescue nil %> </li>
 
 <li> <strong>Created:</strong> <%= time_ago_in_words @user.created_at %> ago </li>
 

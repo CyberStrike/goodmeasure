@@ -43,9 +43,9 @@ $ ->
 		e.preventDefault()
 
 $(document).on 'page:fetch', ->
-  $('body').plainOverlay('show',
+  $(document).plainOverlay('show',
     progress: -> return $('<div></div>'))
 
-$(document).on 'page:restore', ->
-  $('body').plainOverlay('hide')
-
+$(document).on 'page:load', ->
+  $(document).plainOverlay('hide',
+    progress: -> return $('<div></div>'))

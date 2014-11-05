@@ -19,19 +19,14 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def school
+  def school
     return @school unless @school.nil?
 
-    if Rails.env.development?
-      @school = School.find_by_name 'Wyncode'
-    else
-		  @school = School.find_by subdomain: request.subdomain
+    @school = School.find_by_name 'Wyncode'
+    if @school.nil?
+      redirect_to 'wyncode.co'
     end
-
-		if @school.nil? and request.subdomain != 'www'
-			redirect_to root_url(subdomain: 'www')
-		end
-	end
+  end
 
 	protect_from_forgery with: :exception
 end

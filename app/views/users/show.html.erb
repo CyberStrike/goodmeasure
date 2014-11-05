@@ -34,7 +34,7 @@
       <h4><%= cohort.name %></h4>
 
       <% if me_or_admin?(@user) %>
-        <% cohort.tasks.group_by { |task| task.created_at.beginning_of_week }.each do |week, tasks| %>
+        <% cohort.tasks.group_by { |task| task.created_at.beginning_of_week }.sort.each do |week, tasks| %>
           <h5>Week of <%= week.to_date.to_formatted_s(:short) %></h5>
           <% tasks_count, tasks_correct = [0, 0] %>
 

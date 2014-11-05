@@ -42,10 +42,5 @@ $ ->
 		$(".js-menu-screen").toggleClass "is-visible"
 		e.preventDefault()
 
-$(document).on 'page:fetch', ->
-  $(document).plainOverlay('show',
-    progress: -> return $('<div></div>'))
 
-$(document).on 'page:load', ->
-  $(document).plainOverlay('hide',
-    progress: -> return $('<div></div>'))
+Turbolinks.enableProgressBar()

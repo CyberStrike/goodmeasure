@@ -493,3 +493,8 @@ ol {
   margin-left: 15px;
   padding-bottom: 15px;
 }
+
+html.turbolinks-progress-bar::before {
+  z-index: 2000;
+  background-color: yellow !important;
+}

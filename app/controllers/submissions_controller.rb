@@ -22,11 +22,14 @@ class SubmissionsController < ApplicationController
 
     # most recent unaccepted Submission for each user
     # TODO: refactor - this is slow
-    @most_recent_submissions = @tasks.map{ |task|
-      @users.map{ |user| user.last_unaccepted_submission_for(task) }.compact
-    }.flatten
+    @most_recent_submissions = @cohort.unaccepted_submissions
 
-    @submission_by_status = @most_recent_submissions.group_by{ |s| s.status }
+    by_status = @most_recent_submissions.group_by{ |s| s['status'] }
+
+    @submission_by_status = {
+      'Pending Review' => by_status['Pending Review'],
+      'Not Accepted' => by_status['Not Accepted']
+    }
   end
 
   # GET /submissions/1
